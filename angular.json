@@ -31,8 +31,7 @@
             ],
             "styles": [
               "node_modules/@aolmosn/tokens/dist/tokens.css",
-              "src/styles.scss",
-              "node_modules/@aolmosn/styles/src/index.scss"
+              "src/styles.scss"
             ]
           },
           "configurations": {
