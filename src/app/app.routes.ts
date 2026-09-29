@@ -1,48 +1,26 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { DocsComponent } from './docs/docs.component';
-import { FormDemoComponent } from './form-demo/form-demo.component';
-import { AlertDemoComponent } from './alert-demo/alert-demo.component';
-import { RadioButtonDemoComponent } from './radio-button-demo/radio-button-demo.component';
-import { CheckBoxDemoComponent } from './check-box-demo/check-box-demo.component';
-import { KebabDemoComponent } from './kebab-demo/kebab-demo.component';
-import { ButtonDemoComponent } from './button-demo/button-demo.component';
-import { OnboardingDemoComponent } from './onboarding-demo/onboarding-demo.component';
-import { TokenDemoComponent } from './token-demo/token-demo.component';
-import { ChipDemoComponent } from './chip-demo/chip-demo.component';
-import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
-import { CalendarDemoComponent } from './calendar-demo/calendar-demo.component';
-import { SelectDemoComponent } from './select-demo/select-demo.component';
-import { TextInputDemoComponent } from './text-input-demo/text-input-demo.component';
-import { TextareaDemoComponent } from './textarea-demo/textarea-demo.component';
-import { CurrencyInputDemoComponent } from './currency-input-demo/currency-input-demo.component';
-import { TableDemoComponent } from './table-demo/table-demo.component';
-import { StepperDemoComponent } from './stepper-demo/stepper-demo.component';
-import { NuevoEmpleadoComponent } from './nuevo-empleado/nuevo-empleado.component';
-import { DemoCompletaComponent } from './demo-completa/demo-completa.component';
-import { InputDateDemoComponent } from './input-date-demo/input-date-demo.component';
 
 export const routes: Routes = [
-  { path: '',              component: HomeComponent },
-  { path: 'docs',          component: DocsComponent },
-  { path: 'form',          component: FormDemoComponent },
-  { path: 'alert',         component: AlertDemoComponent },
-  { path: 'radio-button',  component: RadioButtonDemoComponent },
-  { path: 'check-box',     component: CheckBoxDemoComponent },
-  { path: 'kebab',         component: KebabDemoComponent },
-  { path: 'button',        component: ButtonDemoComponent },
-  { path: 'onboarding',    component: OnboardingDemoComponent },
-  { path: 'token',         component: TokenDemoComponent },
-  { path: 'chip',          component: ChipDemoComponent },
-  { path: 'tooltip',       component: TooltipDemoComponent },
-  { path: 'calendar',      component: CalendarDemoComponent },
-  { path: 'select',        component: SelectDemoComponent },
-  { path: 'text-input',    component: TextInputDemoComponent },
-  { path: 'textarea',        component: TextareaDemoComponent },
-  { path: 'currency-input',  component: CurrencyInputDemoComponent },
-  { path: 'table',           component: TableDemoComponent },
-  { path: 'stepper',         component: StepperDemoComponent },
-  { path: 'nuevo-empleado',  component: NuevoEmpleadoComponent },
-  { path: 'demo-completa',   component: DemoCompletaComponent },
-  { path: 'input-date',      component: InputDateDemoComponent },
+  { path: '',             loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
+  { path: 'docs',         loadComponent: () => import('./docs/docs.component').then(m => m.DocsComponent) },
+  { path: 'form',         loadComponent: () => import('./form-demo/form-demo.component').then(m => m.FormDemoComponent) },
+  { path: 'alert',        loadComponent: () => import('./alert-demo/alert-demo.component').then(m => m.AlertDemoComponent) },
+  { path: 'radio-button', loadComponent: () => import('./radio-button-demo/radio-button-demo.component').then(m => m.RadioButtonDemoComponent) },
+  { path: 'check-box',    loadComponent: () => import('./check-box-demo/check-box-demo.component').then(m => m.CheckBoxDemoComponent) },
+  { path: 'kebab',        loadComponent: () => import('./kebab-demo/kebab-demo.component').then(m => m.KebabDemoComponent) },
+  { path: 'button',       loadComponent: () => import('./button-demo/button-demo.component').then(m => m.ButtonDemoComponent) },
+  { path: 'onboarding',   loadComponent: () => import('./onboarding-demo/onboarding-demo.component').then(m => m.OnboardingDemoComponent) },
+  { path: 'token',        loadComponent: () => import('./token-demo/token-demo.component').then(m => m.TokenDemoComponent) },
+  { path: 'chip',         loadComponent: () => import('./chip-demo/chip-demo.component').then(m => m.ChipDemoComponent) },
+  { path: 'tooltip',      loadComponent: () => import('./tooltip-demo/tooltip-demo.component').then(m => m.TooltipDemoComponent) },
+  { path: 'calendar',     loadComponent: () => import('./calendar-demo/calendar-demo.component').then(m => m.CalendarDemoComponent) },
+  { path: 'select',       loadComponent: () => import('./select-demo/select-demo.component').then(m => m.SelectDemoComponent) },
+  { path: 'text-input',   loadComponent: () => import('./text-input-demo/text-input-demo.component').then(m => m.TextInputDemoComponent) },
+  { path: 'textarea',         loadComponent: () => import('./textarea-demo/textarea-demo.component').then(m => m.TextareaDemoComponent) },
+  { path: 'currency-input',   loadComponent: () => import('./currency-input-demo/currency-input-demo.component').then(m => m.CurrencyInputDemoComponent) },
+  { path: 'table',            loadComponent: () => import('./table-demo/table-demo.component').then(m => m.TableDemoComponent) },
+  { path: 'stepper',          loadComponent: () => import('./stepper-demo/stepper-demo.component').then(m => m.StepperDemoComponent) },
+  { path: 'nuevo-empleado',   loadComponent: () => import('./nuevo-empleado/nuevo-empleado.component').then(m => m.NuevoEmpleadoComponent) },
+  { path: 'demo-completa',    loadComponent: () => import('./demo-completa/demo-completa.component').then(m => m.DemoCompletaComponent) },
+  { path: 'input-date',       loadComponent: () => import('./input-date-demo/input-date-demo.component').then(m => m.InputDateDemoComponent) },
 ];
