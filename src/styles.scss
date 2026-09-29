@@ -1,6 +1,5 @@
 @use './styles/token';
 @use './styles/utils';
-@use '@aolmosn/styles';
 
 
 
@@ -55,8 +54,9 @@ body {
   display: inline-block;
   font-size: var(--wk-font-size-xs, 0.75rem);
   font-weight: var(--wk-font-weight-semibold, 600);
-  color: var(--wk-accent, #2563eb);
-  background: var(--wk-accent-soft, #dbeafe);
+  color: var(--wk-gradient-brand-on);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: var(--wk-radius-full, 9999px);
   padding: 2px 10px;
   margin-bottom: var(--wk-space-2, 8px);
@@ -66,17 +66,18 @@ body {
   font-size: var(--wk-font-size-xl, 1.25rem);
   font-weight: var(--wk-font-weight-semibold, 600);
   margin: var(--wk-space-1, 4px) 0 0;
-  color: var(--wk-color-on-surface, #111827);
+  color: var(--wk-gradient-brand-on);
 }
 
 .header-desc {
   font-size: var(--wk-font-size-sm, 0.875rem);
-  color: var(--wk-color-on-surface-muted, #6b7280);
+  color: rgba(255, 255, 255, 0.75);
   margin: var(--wk-space-1, 4px) 0 0;
 
   code {
     font-family: ui-monospace, monospace;
-    background: var(--wk-color-surface-raised, #f3f4f6);
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--wk-gradient-brand-on);
     border-radius: 4px;
     padding: 1px 5px;
     font-size: 0.8em;
@@ -86,6 +87,18 @@ body {
 .main {
   flex: 1;
   padding: var(--wk-space-6, 24px);
+
+  @media (max-width: 640px) {
+    padding: var(--wk-space-4, 16px);
+  }
+}
+
+@media (max-width: 640px) {
+  .card-body {
+    padding-left: var(--wk-space-4, 16px);
+    padding-right: var(--wk-space-4, 16px);
+    padding-bottom: var(--wk-space-4, 16px);
+  }
 }
 
 .layout {
@@ -116,9 +129,9 @@ body {
   
   .card-header{
     padding: var(--wk-space-2, 24px) var(--wk-space-6);
-    border-bottom: 1px solid var(--wk-color-border-strong, #e5e7eb);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     background: var(--wk-gradient-glow);
-    color: var(--wk-color-on-surface);
+    color: var(--wk-gradient-glow-on);
     h2 {
       font-size: var(--wk-font-size-md);
       font-weight: var(--wk-font-weight-medium);
@@ -156,9 +169,9 @@ body {
   
   .card-table-header{
     padding: var(--wk-space-2, 24px) var(--wk-space-6);
-    border-bottom: 1px solid var(--wk-color-border, #e5e7eb);
-    background-color: var(--wk-color-surface-raised);
-    color: var(--wk-color-on-surface);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--wk-gradient-glow);
+    color: var(--wk-gradient-glow-on);
     h2 {
       font-size: var(--wk-font-size-md);
       font-weight: var(--wk-font-weight-medium);
@@ -178,7 +191,7 @@ body {
 }
 
 /* ── Tablas de API ───────────────────────────────────────────── */
-.dl-table-wrapper { overflow-x: auto; margin-bottom: 1rem; }
+.dl-table-wrapper { overflow-x: auto; }
 
 .dl-table {
   width: 100%;
@@ -186,43 +199,73 @@ body {
   font-size: 0.875rem;
 }
 
+.dl-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 .dl-table th {
   text-align: left;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--wk-color-on-surface);
-  padding: 0.6rem 1rem;
+  letter-spacing: 0.07em;
+  color: var(--wk-color-on-surface-muted);
+  padding: 0.65rem 1rem;
   background: var(--wk-color-surface-alt);
-  border-bottom: 1px solid var(--wk-color-on-surface);
+  border-bottom: 2px solid var(--wk-color-border-strong);
+  white-space: nowrap;
 }
 
 .dl-table td {
-  padding: 0.65rem 1rem;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--wk-color-border);
   color: var(--wk-color-on-surface);
   vertical-align: top;
+  line-height: 1.55;
 }
 
-.dl-table tr:last-child td { border-bottom: none; }
+.dl-table tbody tr {
+  transition: background 0.12s ease;
+
+  &:nth-child(even) td {
+    background: var(--wk-color-surface-alt);
+  }
+
+  &:hover td {
+    background: var(--wk-color-info-subtle, #dbeafe);
+    color: var(--wk-color-info-on-subtle, var(--wk-color-on-surface));
+  }
+
+  &:last-child td { border-bottom: none; }
+}
+
+.dl-table td:first-child {
+  font-weight: 500;
+  white-space: nowrap;
+}
 
 .dl-table code {
   font-family: ui-monospace, monospace;
   font-size: 0.8rem;
   background: var(--wk-code-surface);
   color: var(--wk-on-code-surface);
-  padding: 0.1rem 0.35rem;
-  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
 }
 
-.dl-table .type { color: var(--wk-color-on-surface-muted); }
+.dl-table .type {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: var(--wk-color-on-surface-muted);
+}
 
 // ── Panel debug ──────────────────────────────────────────────────────
 
 .debug-panel {
-  background: #fff;
-  border: 1px solid var(--wk-color-border, #e5e7eb);
+  background: var(--wk-color-surface-raised);
+  border: 1px solid var(--wk-color-border);
   border-radius: var(--wk-radius-lg, 8px);
   padding: var(--wk-space-4, 16px);
   position: sticky;
@@ -250,26 +293,26 @@ body {
   font-weight: var(--wk-font-weight-medium, 500);
   padding: 2px 10px;
   border-radius: var(--wk-radius-full, 9999px);
-  background: var(--wk-color-surface-alt, #f3f4f6);
-  color: var(--wk-color-on-surface, #6b7280);
-  border: 1px solid var(--wk-color-border, #e5e7eb);
+  background: var(--wk-color-surface-alt);
+  color: var(--wk-color-on-surface-muted);
+  border: 1px solid var(--wk-color-border);
 
   &--valid {
-    background: var(--wk-color-action);
-    color: var(--wk-color-action-on, #16a34a);
-    border-color: #bbf7d0;
+    background: var(--wk-color-action-subtle);
+    color: var(--wk-color-action-on-subtle);
+    border-color: var(--wk-color-action-subtle-border);
   }
 
   &--invalid {
-    background: var(--wk-color-danger, #fef2f2);
-    color: var(--wk-color-danger-on, #dc2626);
-    border-color: #fecaca;
+    background: var(--wk-color-danger-subtle);
+    color: var(--wk-color-danger-on-subtle);
+    border-color: var(--wk-color-danger-subtle-border);
   }
 
   &--active {
-    background: var(--wk-accent-100, #dbeafe);
-    color: var(--wk-accent, #2563eb);
-    border-color: var(--wk-accent-200, #bfdbfe);
+    background: var(--wk-color-info-subtle);
+    color: var(--wk-color-info-on-subtle);
+    border-color: var(--wk-color-info-subtle-border);
   }
 }
 
@@ -307,7 +350,7 @@ body {
   &:last-child { border-bottom: none; }
 
   &--error {
-    background: var(--wk-color-danger-on, #fef2f2);
+    background: var(--wk-color-danger-subtle);
   }
 }
 
@@ -332,8 +375,8 @@ body {
   font-size: 0.85rem;
   color: var(--wk-color-on-surface, #6b7280);
 
-  &--ok    { color: var(--wk-color-action-on-subtle, #16a34a); }
-  &--error { color: var(--wk-color-danger-on-subtle, #dc2626); cursor: help; }
+  &--ok    { color: var(--wk-color-action-border); }
+  &--error { color: var(--wk-color-danger-border); cursor: help; }
 }
 
 .debug-hint {
@@ -344,8 +387,8 @@ body {
   
   code {
     font-family: ui-monospace, monospace;
-    background: var(--wk-color-action, #f3f4f6);
-    color: var(--wk-color-action-on, #6b7280);
+    background: var(--wk-code-surface);
+    color: var(--wk-on-code-surface);
     border-radius: 3px;
     padding: 0 4px;
   }

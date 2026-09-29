@@ -1,0 +1,466 @@
+<div class="docs">
+
+  <!-- ══ Hero ══════════════════════════════════════════════════════════ -->
+  <section class="docs-hero">
+    <div class="docs-hero-inner">
+      <div class="docs-badge">
+        <i class="material-icons">menu_book</i>
+        <span>Guía de integración</span>
+      </div>
+      <h1 class="docs-hero-title">Comenzar con Design Lib</h1>
+      <p class="docs-hero-sub">
+        Instala los paquetes, configura tu proyecto Angular y empieza a usar los componentes en minutos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Nav horizontal solo en móvil (la sidebar se oculta) -->
+  <nav class="docs-mobile-nav" aria-label="Secciones">
+    <a [routerLink]="[]" fragment="packages">Paquetes</a>
+    <a [routerLink]="[]" fragment="instalacion">Instalación</a>
+    <a [routerLink]="[]" fragment="tokens">Tokens CSS</a>
+    <a [routerLink]="[]" fragment="angular">Angular</a>
+    <a [routerLink]="[]" fragment="web-components">Web Components</a>
+    <a [routerLink]="[]" fragment="estilos">Estilos</a>
+    <a [routerLink]="[]" fragment="purge">Purge CSS</a>
+    <a [routerLink]="[]" fragment="temas">Temas</a>
+  </nav>
+
+  <div class="docs-body">
+    <aside class="docs-nav">
+      <nav>
+        <ul>
+          <li><a [routerLink]="[]" fragment="packages">Paquetes</a></li>
+          <li><a [routerLink]="[]" fragment="instalacion">Instalación</a></li>
+          <li><a [routerLink]="[]" fragment="tokens">Tokens CSS</a></li>
+          <li><a [routerLink]="[]" fragment="angular">Angular</a></li>
+          <li><a [routerLink]="[]" fragment="web-components">Web Components</a></li>
+          <li><a [routerLink]="[]" fragment="estilos">Estilos</a></li>
+          <li><a [routerLink]="[]" fragment="purge">Purge CSS</a></li>
+          <li><a [routerLink]="[]" fragment="temas">Temas</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="docs-content">
+
+      <!-- ── Paquetes ───────────────────────────────────────────────── -->
+      <section class="docs-section" id="packages">
+        <h2>Paquetes</h2>
+        <p>Design Lib está dividido en cinco paquetes independientes. Instala solo lo que necesitas.</p>
+
+        <div class="pkg-grid">
+          <div class="pkg-card">
+            <div class="pkg-icon"><i class="material-icons">token</i></div>
+            <div class="pkg-info">
+              <code class="pkg-name">&#64;aolmosn/tokens</code>
+              <p>Variables CSS semánticas para colores, tipografía, espaciado, radios y sombras. Incluye tema claro y oscuro.</p>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-icon"><i class="material-icons">widgets</i></div>
+            <div class="pkg-info">
+              <code class="pkg-name">&#64;aolmosn/web-components</code>
+              <p>Componentes UI construidos con Lit 3. Funcionan en cualquier framework o en HTML puro.</p>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-icon"><i class="material-icons">engineering</i></div>
+            <div class="pkg-info">
+              <code class="pkg-name">&#64;aolmosn/angular</code>
+              <p>Wrappers Angular con tipado completo, formularios reactivos y two-way binding.</p>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-icon"><i class="material-icons">palette</i></div>
+            <div class="pkg-info">
+              <code class="pkg-name">&#64;aolmosn/styles</code>
+              <p>SCSS con utilidades de layout responsivo: grid, flex, gap, breakpoints mobile-first.</p>
+            </div>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-icon"><i class="material-icons">data_object</i></div>
+            <div class="pkg-info">
+              <code class="pkg-name">&#64;aolmosn/core</code>
+              <p>Tipos compartidos, constantes y utilidades internas usadas por los demás paquetes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Instalación ─────────────────────────────────────────────── -->
+      <section class="docs-section" id="instalacion">
+        <h2>Instalación</h2>
+        <p>Instala los paquetes que necesites desde npm:</p>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>Terminal</span>
+          </div>
+          <pre><code><span class="token-comment"># Instalación completa (recomendado para Angular)</span>
+npm install &#64;aolmosn/tokens &#64;aolmosn/web-components &#64;aolmosn/angular &#64;aolmosn/styles
+
+<span class="token-comment"># Solo web components (sin Angular)</span>
+npm install &#64;aolmosn/tokens &#64;aolmosn/web-components</code></pre>
+        </div>
+      </section>
+
+      <!-- ── Tokens ──────────────────────────────────────────────────── -->
+      <section class="docs-section" id="tokens">
+        <h2>Tokens CSS</h2>
+        <p>Los tokens son el fundamento del sistema de diseño. Deben cargarse una vez en tu aplicación. El archivo CSS incluye las variables para tema claro y oscuro.</p>
+
+        <h3>Con Angular (angular.json)</h3>
+        <p>Agrega el archivo CSS en la sección <code>styles</code> de tu <code>angular.json</code>:</p>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>angular.json</span>
+          </div>
+          <pre><code><span class="token-key">"styles"</span>: [
+  <span class="token-string">"src/styles.scss"</span>,
+  <span class="token-string">"node_modules/&#64;aolmosn/tokens/dist/tokens.css"</span>
+]</code></pre>
+        </div>
+
+        <h3>En HTML puro</h3>
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>index.html</span>
+          </div>
+          <pre><code><span class="token-tag">&lt;link</span> <span class="token-attr">rel</span>=<span class="token-string">"stylesheet"</span>
+      <span class="token-attr">href</span>=<span class="token-string">"node_modules/&#64;aolmosn/tokens/dist/tokens.css"</span><span class="token-tag">&gt;</span></code></pre>
+        </div>
+      </section>
+
+      <!-- ── Angular ─────────────────────────────────────────────────── -->
+      <section class="docs-section" id="angular">
+        <h2>Wrappers Angular</h2>
+        <p>Cada componente Angular es un <code>standalone</code> que importas directamente en tu componente o módulo.</p>
+
+        <h3>Importar un componente</h3>
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>mi-componente.ts</span>
+          </div>
+          <pre><code><span class="token-keyword">import</span> &#123; Component &#125; <span class="token-keyword">from</span> <span class="token-string">'&#64;angular/core'</span>;
+<span class="token-keyword">import</span> &#123; UiButton &#125;  <span class="token-keyword">from</span> <span class="token-string">'&#64;aolmosn/angular/button'</span>;
+<span class="token-keyword">import</span> &#123; UiSelect &#125;  <span class="token-keyword">from</span> <span class="token-string">'&#64;aolmosn/angular/select'</span>;  <span class="token-comment">// misma idea</span>
+
+<span class="token-decorator">&#64;Component</span>(&#123;
+  standalone: <span class="token-keyword">true</span>,
+  imports: [UiButton, UiSelect],
+  template: <span class="token-string">`
+    &lt;ui-button (ui-click)="guardar()"&gt;Guardar&lt;/ui-button&gt;
+  `</span>,
+&#125;)
+<span class="token-keyword">export class</span> MiComponente &#123; ... &#125;</code></pre>
+        </div>
+
+        <h3>Paquetes secundarios disponibles</h3>
+        <div class="pkg-inline-list">
+          <code>&#64;aolmosn/angular/button</code>
+          <code>&#64;aolmosn/angular/alert</code>
+          <code>&#64;aolmosn/angular/check-box</code>
+          <code>&#64;aolmosn/angular/chip</code>
+          <code>&#64;aolmosn/angular/kebab</code>
+          <code>&#64;aolmosn/angular/onboarding</code>
+          <code>&#64;aolmosn/angular/radio-button</code>
+          <code>&#64;aolmosn/angular/text-field</code>
+          <code>&#64;aolmosn/angular</code>
+          <span class="pkg-hint">(entry point principal — todos los componentes)</span>
+        </div>
+
+        <h3>Formularios reactivos</h3>
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>form.component.ts</span>
+          </div>
+          <pre><code><span class="token-keyword">import</span> &#123; ReactiveFormsModule &#125; <span class="token-keyword">from</span> <span class="token-string">'&#64;angular/forms'</span>;
+<span class="token-keyword">import</span> &#123; UiButton &#125;           <span class="token-keyword">from</span> <span class="token-string">'&#64;aolmosn/angular/button'</span>;
+<span class="token-keyword">import</span> &#123; UiCheckBox &#125;         <span class="token-keyword">from</span> <span class="token-string">'&#64;aolmosn/angular/check-box'</span>;
+
+<span class="token-decorator">&#64;Component</span>(&#123;
+  standalone: <span class="token-keyword">true</span>,
+  imports: [ReactiveFormsModule, UiButton, UiCheckBox],
+  template: <span class="token-string">`
+    &lt;form [formGroup]="form"&gt;
+      &lt;ui-check-box
+        formControlName="acepto"
+        label="Acepto los términos"
+      &gt;&lt;/ui-check-box&gt;
+      &lt;ui-button (ui-click)="submit()"&gt;Enviar&lt;/ui-button&gt;
+    &lt;/form&gt;
+  `</span>,
+&#125;)</code></pre>
+        </div>
+      </section>
+
+      <!-- ── Web Components ──────────────────────────────────────────── -->
+      <section class="docs-section" id="web-components">
+        <h2>Web Components (sin Angular)</h2>
+        <p>Importa los componentes directamente como módulos ES en cualquier entorno.</p>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>main.js</span>
+          </div>
+          <pre><code><span class="token-comment">// Importar componentes individuales (tree-shaking)</span>
+<span class="token-keyword">import</span> <span class="token-string">'&#64;aolmosn/web-components/button'</span>;
+<span class="token-keyword">import</span> <span class="token-string">'&#64;aolmosn/web-components/select'</span>;
+
+<span class="token-comment">// O el bundle completo</span>
+<span class="token-keyword">import</span> <span class="token-string">'&#64;aolmosn/web-components'</span>;</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>index.html</span>
+          </div>
+          <pre><code><span class="token-tag">&lt;ui-button&gt;</span>Guardar<span class="token-tag">&lt;/ui-button&gt;</span>
+
+<span class="token-tag">&lt;ui-text-input</span>
+  <span class="token-attr">label</span>=<span class="token-string">"Correo"</span>
+  <span class="token-attr">placeholder</span>=<span class="token-string">"correo&#64;empresa.com"</span>
+  <span class="token-attr">required</span>
+<span class="token-tag">&gt;&lt;/ui-text-input&gt;</span></code></pre>
+        </div>
+      </section>
+
+      <!-- ── Estilos ─────────────────────────────────────────────────── -->
+      <section class="docs-section" id="estilos">
+        <h2>Estilos y utilidades</h2>
+        <p>El paquete <code>&#64;aolmosn/styles</code> incluye utilidades SCSS de layout. Importa en tu <code>styles.scss</code> principal:</p>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>styles.scss</span>
+          </div>
+          <pre><code><span class="token-comment">// Todas las utilidades (grid, flex, gap, padding, etc.)</span>
+<span class="token-keyword">&#64;use</span> <span class="token-string">'&#64;aolmosn/styles'</span>;
+
+<span class="token-comment">// Solo los mixins de breakpoints</span>
+<span class="token-keyword">&#64;use</span> <span class="token-string">'&#64;aolmosn/styles/mixins'</span>;</code></pre>
+        </div>
+
+        <h3>Clases de layout disponibles</h3>
+        <div class="utils-grid">
+          <div class="utils-group">
+            <div class="utils-group__title">Flex</div>
+            <code>flex-row</code>
+            <code>flex-col</code>
+            <code>flex-wrap</code>
+            <code>flex-a-c</code>
+            <code>flex-j-sb</code>
+          </div>
+          <div class="utils-group">
+            <div class="utils-group__title">Grid responsivo</div>
+            <code>grid-1</code>
+            <code>md:grid-2</code>
+            <code>lg:grid-3</code>
+            <code>xl:grid-4</code>
+          </div>
+          <div class="utils-group">
+            <div class="utils-group__title">Gap</div>
+            <code>gap-4</code>
+            <code>gap-8</code>
+            <code>gap-16</code>
+            <code>gap-default</code>
+            <code>gap-32</code>
+          </div>
+          <div class="utils-group">
+            <div class="utils-group__title">Ancho</div>
+            <code>w-full</code>
+            <code>w-fit</code>
+          </div>
+        </div>
+
+        <h3>Ejemplo</h3>
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>template.html</span>
+          </div>
+          <pre><code><span class="token-comment">&lt;!-- 1 columna en móvil, 2 en tablet --&gt;</span>
+<span class="token-tag">&lt;section</span> <span class="token-attr">class</span>=<span class="token-string">"grid-1 md:grid-2 gap-default w-full"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"card"</span><span class="token-tag">&gt;</span>...<span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"card"</span><span class="token-tag">&gt;</span>...<span class="token-tag">&lt;/div&gt;</span>
+<span class="token-tag">&lt;/section&gt;</span>
+
+<span class="token-comment">&lt;!-- Botones con wrap en móvil --&gt;</span>
+<span class="token-tag">&lt;div</span> <span class="token-attr">class</span>=<span class="token-string">"flex-row flex-wrap gap-8"</span><span class="token-tag">&gt;</span>
+  <span class="token-tag">&lt;ui-button&gt;</span>Cancelar<span class="token-tag">&lt;/ui-button&gt;</span>
+  <span class="token-tag">&lt;ui-button&gt;</span>Guardar<span class="token-tag">&lt;/ui-button&gt;</span>
+<span class="token-tag">&lt;/div&gt;</span></code></pre>
+        </div>
+      </section>
+
+      <!-- ── Purge CSS ─────────────────────────────────────────────────── -->
+      <section class="docs-section" id="purge">
+        <h2>Purge de estilos (producción)</h2>
+        <p>
+          <code>&#64;aolmosn/styles</code> genera <strong>1 226 clases utilitarias</strong> (99 kB).
+          Tu proyecto probablemente usa menos de 50. El CLI de purge escanea tu código fuente y genera
+          un CSS con solo las clases que realmente aparecen, reduciendo el bundle CSS a ~2–5 kB.
+        </p>
+
+        <div class="info-box">
+          <i class="material-icons">tips_and_updates</i>
+          <p>
+            En desarrollo tienes todas las clases disponibles para explorar libremente.
+            El purge solo corre antes del build de producción, sin afectar tu DX.
+          </p>
+        </div>
+
+        <h3>1 · Agregar el script en package.json</h3>
+        <p>
+          El CLI se instala junto con <code>&#64;aolmosn/styles</code>. Agrega dos entradas en tus scripts:
+        </p>
+
+        <div class="code-block">
+          <div class="code-block__header"><span>package.json</span></div>
+          <pre><code><span class="token-string">"scripts"</span>: &#123;
+  <span class="token-string">"start"</span>:         <span class="token-string">"ng serve"</span>,
+  <span class="token-string">"build"</span>:         <span class="token-string">"npm run purge-styles &amp;&amp; ng build"</span>,
+  <span class="token-string">"purge-styles"</span>:  <span class="token-string">"node node_modules/&#64;aolmosn/styles/bin/purge.mjs --src ./src --out ./src/styles-purged.css"</span>
+&#125;</code></pre>
+        </div>
+
+        <h3>2 · Configurar angular.json</h3>
+        <p>
+          Mueve <code>&#64;aolmosn/styles</code> fuera de <code>styles.scss</code> y contrólalo desde el array
+          <code>styles</code> de <code>angular.json</code>. Así cada configuración puede apuntar a un archivo
+          distinto sin duplicar código.
+        </p>
+
+        <div class="code-block">
+          <div class="code-block__header"><span>angular.json — configuración base (desarrollo)</span></div>
+          <pre><code><span class="token-string">"architect"</span>: &#123;
+  <span class="token-string">"build"</span>: &#123;
+    <span class="token-string">"options"</span>: &#123;
+      <span class="token-string">"styles"</span>: [
+        <span class="token-string">"node_modules/&#64;aolmosn/tokens/dist/tokens.css"</span>,
+        <span class="token-string">"node_modules/&#64;aolmosn/styles/src/index.scss"</span>,  <span class="token-comment">// ← full 99 kB en dev</span>
+        <span class="token-string">"src/styles.scss"</span>
+      ]
+    &#125;
+  &#125;
+&#125;</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block__header"><span>angular.json — configuración production</span></div>
+          <pre><code><span class="token-string">"configurations"</span>: &#123;
+  <span class="token-string">"production"</span>: &#123;
+    <span class="token-string">"styles"</span>: [
+      <span class="token-string">"node_modules/&#64;aolmosn/tokens/dist/tokens.css"</span>,
+      <span class="token-string">"src/styles-purged.css"</span>,              <span class="token-comment">// ← purged ~2 kB en prod</span>
+      <span class="token-string">"src/styles.scss"</span>
+    ]
+  &#125;
+&#125;</code></pre>
+        </div>
+
+        <h3>3 · Quitar la importación de styles.scss</h3>
+        <p>
+          Como ahora Angular inyecta las utilidades directamente desde el array, retira la línea
+          <code>&#64;use '&#64;aolmosn/styles'</code> de tu <code>styles.scss</code> para evitar duplicados:
+        </p>
+
+        <div class="code-block">
+          <div class="code-block__header"><span>styles.scss</span></div>
+          <pre><code><span class="token-comment">// ✗ Eliminar esta línea — ahora viene del array de angular.json</span>
+<span class="token-comment">// &#64;use '&#64;aolmosn/styles';</span>
+
+<span class="token-comment">// ✓ Conservar tus propios SCSS</span>
+<span class="token-keyword">&#64;use</span> <span class="token-string">'./styles/token'</span>;
+<span class="token-keyword">&#64;use</span> <span class="token-string">'./styles/utils'</span>;</code></pre>
+        </div>
+
+        <h3>Resultado</h3>
+
+        <div class="purge-comparison">
+          <div class="purge-row">
+            <div class="purge-label">
+              <code>npm start</code>
+              <span class="purge-badge purge-badge--dev">desarrollo</span>
+            </div>
+            <div class="purge-bar-wrap">
+              <div class="purge-bar purge-bar--full"></div>
+              <span class="purge-bar-label">132 kB — 1 226 clases disponibles</span>
+            </div>
+          </div>
+          <div class="purge-row">
+            <div class="purge-label">
+              <code>npm run build</code>
+              <span class="purge-badge purge-badge--prod">producción</span>
+            </div>
+            <div class="purge-bar-wrap">
+              <div class="purge-bar purge-bar--purged"></div>
+              <span class="purge-bar-label">~26 kB — solo las clases usadas</span>
+            </div>
+          </div>
+        </div>
+
+        <h3>Opciones del CLI</h3>
+        <div class="code-block">
+          <div class="code-block__header"><span>Terminal</span></div>
+          <pre><code><span class="token-comment"># Ruta fuente y destino personalizados</span>
+node .../purge.mjs --src ./src --out ./src/styles-purged.css
+
+<span class="token-comment"># Incluir extensiones adicionales</span>
+node .../purge.mjs --ext html,ts,scss,html
+
+<span class="token-comment"># Proteger clases extra (generadas dinámicamente)</span>
+node .../purge.mjs --safelist flex-col,grid-2,p-16
+
+<span class="token-comment"># Ver todas las clases detectadas / eliminadas</span>
+node .../purge.mjs --verbose</code></pre>
+        </div>
+
+        <div class="info-box">
+          <i class="material-icons">warning_amber</i>
+          <p>
+            Si construyes nombres de clase dinámicamente en TypeScript —
+            <code>'gap-' + size</code>, <code>[ngClass]="dynamicMap"</code> —
+            el escáner no los detecta. Agrégalos al flag <code>--safelist</code>
+            para que nunca se eliminen.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Temas ───────────────────────────────────────────────────── -->
+      <section class="docs-section" id="temas">
+        <h2>Temas claro y oscuro</h2>
+        <p>
+          Los tokens incluyen variables para ambos temas. El cambio es automático vía
+          <code>prefers-color-scheme</code>. También puedes forzarlo con el atributo
+          <code>data-theme</code> en el elemento raíz.
+        </p>
+
+        <div class="code-block">
+          <div class="code-block__header">
+            <span>Forzar tema desde código</span>
+          </div>
+          <pre><code><span class="token-comment">// Forzar tema oscuro</span>
+document.documentElement.setAttribute(<span class="token-string">'data-theme'</span>, <span class="token-string">'dark'</span>);
+
+<span class="token-comment">// Forzar tema claro</span>
+document.documentElement.setAttribute(<span class="token-string">'data-theme'</span>, <span class="token-string">'light'</span>);
+
+<span class="token-comment">// Volver a seguir el sistema operativo</span>
+document.documentElement.removeAttribute(<span class="token-string">'data-theme'</span>);</code></pre>
+        </div>
+
+        <div class="info-box">
+          <i class="material-icons">lightbulb</i>
+          <p>
+            Los web components leen los tokens desde el DOM a través del Shadow DOM, por lo que el cambio de tema
+            se propaga automáticamente a todos los componentes sin necesidad de reinicializarlos.
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+</div>

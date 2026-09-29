@@ -181,8 +181,8 @@ ul {
 
     &.active-link {
       background: var(--wk-gradient-brand);
-      color: var(--wk-color-on-surface);
-      border-color: var(--wk-color-border-strong);
+      color: var(--wk-gradient-brand-on);
+      border-color: rgba(255, 255, 255, 0.25);
 
       .pestana {
         left: -1px;

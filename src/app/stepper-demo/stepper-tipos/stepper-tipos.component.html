@@ -55,32 +55,23 @@
             <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
               Completa los campos para habilitar el botón <strong>›</strong>.
             </p>
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <label style="font-size:0.8125rem;font-weight:600;">
-                Nombre completo <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
-              </label>
-              <input
-                type="text"
-                [(ngModel)]="vName"
-                placeholder="Ej. Ana García"
-                style="height:38px;padding:0 12px;border:1px solid var(--wk-color-border,#e2e8ea);
-                       border-radius:6px;font-size:0.875rem;font-family:inherit;outline:none;
-                       transition:border-color 0.15s;"
-              />
-            </div>
-            <div style="display:flex;flex-direction:column;gap:4px;">
-              <label style="font-size:0.8125rem;font-weight:600;">
-                Correo electrónico <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
-              </label>
-              <input
-                type="email"
-                [(ngModel)]="vEmail"
-                placeholder="correo@ejemplo.com"
-                style="height:38px;padding:0 12px;border:1px solid var(--wk-color-border,#e2e8ea);
-                       border-radius:6px;font-size:0.875rem;font-family:inherit;outline:none;
-                       transition:border-color 0.15s;"
-              />
-            </div>
+            <ui-text-input
+              label="Nombre completo"
+              placeholder="Ej. Ana García"
+              required
+              [value]="vName"
+              (ui-input)="vName = $any($event).detail.value"
+            ></ui-text-input>
+            <ui-text-input
+              label="Correo electrónico"
+              type="email"
+              placeholder="correo@ejemplo.com"
+              required
+              [value]="vEmail"
+              [invalid]="vEmailInvalid"
+              error-text="Ingresa un correo válido"
+              (ui-input)="vEmail = $any($event).detail.value"
+            ></ui-text-input>
             <p style="margin:0;font-size:0.75rem;color:var(--wk-color-on-surface-muted,#546e7a);">
               Estado:
               <span [style.color]="stepValidity[0] ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-danger,#ed0c10)'">
@@ -95,26 +86,23 @@
               Selecciona un plan y acepta los términos para continuar.
             </p>
             <div style="display:flex;flex-direction:column;gap:8px;">
-              <label style="font-size:0.8125rem;font-weight:600;">Plan</label>
-              <div style="display:flex;gap:12px;flex-wrap:wrap;">
-                <label *ngFor="let p of ['Básico','Profesional','Empresarial']"
-                  style="display:flex;align-items:center;gap:8px;cursor:pointer;
-                         padding:10px 16px;border-radius:8px;border:2px solid;font-size:0.875rem;
-                         transition:all 0.15s;"
-                  [style.border-color]="vPlan === p ? 'var(--wk-color-focus,#2772cc)' : 'var(--wk-color-border,#e2e8ea)'"
-                  [style.background]="vPlan === p ? 'color-mix(in srgb,var(--wk-color-focus,#2772cc) 8%,transparent)' : 'transparent'"
-                >
-                  <input type="radio" [(ngModel)]="vPlan" [value]="p"
-                    style="accent-color:var(--wk-color-focus,#2772cc);" />
-                  {{ p }}
-                </label>
+              <span style="font-size:0.8125rem;font-weight:600;">Plan</span>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <ui-radio-button
+                  *ngFor="let p of plans"
+                  name="plan"
+                  [label]="p"
+                  [value]="p"
+                  [checked]="vPlan === p"
+                  (ui-change)="vPlan = $any($event).detail.value"
+                ></ui-radio-button>
               </div>
             </div>
-            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.875rem;">
-              <input type="checkbox" [(ngModel)]="vTerms"
-                style="width:16px;height:16px;accent-color:var(--wk-color-action,#28892b);cursor:pointer;" />
-              Acepto los términos y condiciones del servicio
-            </label>
+            <ui-check-box
+              label="Acepto los términos y condiciones del servicio"
+              [checked]="vTerms"
+              (ui-change)="vTerms = $any($event).detail.checked"
+            ></ui-check-box>
             <p style="margin:0;font-size:0.75rem;color:var(--wk-color-on-surface-muted,#546e7a);">
               Estado:
               <span [style.color]="stepValidity[1] ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-danger,#ed0c10)'">
@@ -141,13 +129,7 @@
                 <span>{{ vPlan || '—' }}</span>
               </div>
             </div>
-            <button
-              style="align-self:flex-start;padding:10px 24px;background:var(--wk-color-action,#28892b);
-                     color:#fff;border:none;border-radius:8px;font-size:0.875rem;font-weight:600;
-                     cursor:pointer;font-family:inherit;"
-            >
-              Enviar registro
-            </button>
+            <ui-button style="align-self:flex-start;">Enviar registro</ui-button>
           </div>
 
         </ui-stepper>
@@ -164,28 +146,14 @@
           <span style="font-size:0.8125rem;color:var(--wk-color-on-surface-muted,#546e7a);font-weight:600;">
             Control externo:
           </span>
-          <button (click)="goPrevExternal()"
-            style="padding:6px 14px;border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
-                   background:var(--wk-color-surface,#fff);font-size:0.8125rem;cursor:pointer;font-family:inherit;">
-            ← ui-stepper-prev
-          </button>
-          <button (click)="goNextExternal()"
-            style="padding:6px 14px;border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
-                   background:var(--wk-color-surface,#fff);font-size:0.8125rem;cursor:pointer;font-family:inherit;">
-            ui-stepper-next →
-          </button>
-          <button *ngFor="let n of [1,2,3,4]" (click)="goToExternal(n)"
-            style="padding:6px 12px;border:1px solid var(--wk-color-focus,#2772cc);border-radius:6px;
-                   background:transparent;color:var(--wk-color-focus,#2772cc);font-size:0.8125rem;
-                   cursor:pointer;font-family:inherit;">
-            ir al paso {{ n }}
-          </button>
-          <button (click)="resetCtrl()"
-            style="padding:6px 14px;border:1px solid var(--wk-color-danger,#ed0c10);border-radius:6px;
-                   background:transparent;color:var(--wk-color-danger,#ed0c10);font-size:0.8125rem;
-                   cursor:pointer;font-family:inherit;">
-            reset
-          </button>
+          <ui-button type="SECONDARY" leftIcon="chevron_left" (ui-click)="goPrevExternal()">ui-stepper-prev</ui-button>
+          <ui-button type="SECONDARY" rigthIcon="chevron_right" (ui-click)="goNextExternal()">ui-stepper-next</ui-button>
+          <ui-button
+            *ngFor="let n of [1,2,3,4]"
+            type="TERTIARY"
+            (ui-click)="goToExternal(n)"
+          >paso {{ n }}</ui-button>
+          <ui-button type="TERTIARY" leftIcon="restart_alt" (ui-click)="resetCtrl()">reset</ui-button>
         </div>
 
         <!-- El stepper controlado -->

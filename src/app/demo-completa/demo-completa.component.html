@@ -14,12 +14,12 @@
   </header>
 
   <main class="main">
-    <div class="layout w-full" style="display:flex;flex-direction:column;gap:32px;">
+    <div class="layout w-full flex-col gap-32">
 
       <!-- ══════════════════════════════════════════════════════════════
            SECCIÓN PRINCIPAL: Stepper form + Info panel
       ══════════════════════════════════════════════════════════════════ -->
-      <div style="display:grid;grid-template-columns:1fr 296px;gap:24px;align-items:start;">
+      <div class="demo-layout">
 
         <!-- ── Columna izquierda: Formulario ──────────────────────── -->
         <div style="display:flex;flex-direction:column;gap:16px;min-width:0;">
@@ -230,7 +230,7 @@
               <div slot="step-3" style="padding:24px;display:flex;flex-direction:column;gap:20px;">
 
                 <!-- Resumen -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div class="step-summary">
 
                   <div style="border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;overflow:hidden;">
                     <div style="padding:8px 14px;background:var(--wk-color-surface-alt,#f6f7f8);
@@ -378,7 +378,7 @@
         </div>
 
         <!-- ── Columna derecha: Panel de estado (sticky) ─────────── -->
-        <div style="position:sticky;top:24px;display:flex;flex-direction:column;gap:16px;">
+        <div class="demo-sidebar">
 
           <!-- Progreso global del formulario -->
           <div style="background:var(--wk-color-surface,#fff);border:1px solid var(--wk-color-border,#e2e8ea);

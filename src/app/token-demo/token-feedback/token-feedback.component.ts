@@ -94,7 +94,6 @@ function aplanarTokens(object: any, parent: string| null  = null){
       props.push({ label: key, hasParent: parent !== null, parent, value: rawValue, varRef: stringLimpio, hasChild: false})
     }
   })
-  console.log(props);
   return props;
 }
 

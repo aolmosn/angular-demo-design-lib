@@ -1,4 +1,4 @@
-<section class="flex-row gap-default w-full">
+<section class="flex-col gap-default w-full">
 
   <!-- ── Variaciones ──────────────────────────────────────────────── -->
   <section class="card w-full" aria-labelledby="tipos-title">
@@ -17,7 +17,7 @@
           <ui-chip>small</ui-chip>
           <ui-chip size="medium">medium</ui-chip>
         </div>
-        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+        <div class="flex-row flex-wrap flex-a-c gap-8">
           <span> color: </span>
           <ui-chip>default</ui-chip>
           <ui-chip color="success">success</ui-chip>
@@ -25,7 +25,7 @@
           <ui-chip color="error">error</ui-chip>
           <ui-chip color="warning">warning</ui-chip>
         </div>
-        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+        <div class="flex-row flex-wrap flex-a-c gap-8">
           <span> color outlined: </span>
           <ui-chip variant="outlined" >default</ui-chip>
           <ui-chip variant="outlined" color="success">success</ui-chip>
@@ -39,7 +39,7 @@
           <ui-chip variant="outlined"  [clickeable]="true" (ui-click)="onClick()">outlined</ui-chip>
         </div>
 
-        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+        <div class="flex-row flex-wrap flex-a-c gap-8">
           <span> color clickeable: </span>
           <ui-chip [clickeable]="true">default</ui-chip>
           <ui-chip color="success" [clickeable]="true">success</ui-chip>
@@ -47,7 +47,7 @@
           <ui-chip color="error" [clickeable]="true">error</ui-chip>
           <ui-chip color="warning" [clickeable]="true">warning</ui-chip>
         </div>
-        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+        <div class="flex-row flex-wrap flex-a-c gap-8">
           <span> color outlined clickeable: </span>
           <ui-chip variant="outlined" [clickeable]="true">default</ui-chip>
           <ui-chip variant="outlined" color="success" [clickeable]="true">success</ui-chip>

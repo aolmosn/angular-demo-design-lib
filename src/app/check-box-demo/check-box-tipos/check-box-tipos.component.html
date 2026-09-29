@@ -1,4 +1,4 @@
-<section class="flex-row gap-default w-full">
+<section class="grid-1 md:grid-2 gap-default w-full">
 
   <!-- ── Variaciones ──────────────────────────────────────────────── -->
   <section class="card w-full" aria-labelledby="tipos-title">
@@ -81,7 +81,7 @@
           }
         </div>
 
-        <div class="flex-row gap-16">
+        <div class="flex-row flex-wrap gap-16">
           <ui-button [type]="'SECONDARY'" (ui-click)="onReset()">Limpiar</ui-button>
           <ui-button (ui-click)="onSubmit()">Enviar</ui-button>
         </div>
