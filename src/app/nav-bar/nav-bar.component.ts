@@ -6,6 +6,7 @@ import { filter, Subscription } from "rxjs";
 const options = [
   { label: 'Inicio',        icon: 'home',                  path: '/' },
   { label: 'Docs',          icon: 'menu_book',             path: '/docs' },
+  { label: 'Estilos CSS',   icon: 'css',                   path: '/styles' },
   { label: 'Tokens',        icon: 'token',                 path: '/token' },
   { label: 'Check Box',     icon: 'check_box',             path: '/check-box' },
   { label: 'Radio Button',  icon: 'radio_button_checked',  path: '/radio-button' },

@@ -1,0 +1,108 @@
+<section class="card w-full" aria-labelledby="sl-deco-title">
+  <div class="card-header">
+    <h2 id="sl-deco-title">Bordes, sombras y colores</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- Nota sobre tokens --ui-* -->
+    <div class="info-box">
+      <i class="material-icons">info</i>
+      <p>
+        Las clases de esta sección referencian tokens <code>--ui-*</code> (nombre anterior).
+        Si no ves el efecto visual esperado, asegúrate de que tu tema define esas variables
+        o migra a los tokens <code>--wk-*</code>.
+      </p>
+    </div>
+
+    <!-- ── Radio de borde ─────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Radio de borde</h3>
+      <div class="sld-radius-grid">
+        <div *ngFor="let r of radiusClasses" class="sld-demo-card">
+          <div class="sld-radius-box"
+            [style.border-radius]="r.approx"
+            style="border:2px solid var(--wk-color-focus);background:var(--wk-color-info-subtle);
+                   width:64px;height:64px;">
+          </div>
+          <code class="sld-cls-tag" style="margin-top:6px;">{{ r.cls }}</code>
+          <span class="sld-note">≈ {{ r.approx }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Bordes ─────────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Bordes</h3>
+      <div class="sld-border-grid">
+        <div *ngFor="let r of borderClasses" class="sld-demo-card">
+          <div class="sld-border-box"
+            [style]="r.cls !== 'border-0' ? r.css.replace('var(--ui-color-border)','#d1d5db').replace('var(--ui-color-primary)','var(--wk-color-focus)').replace('var(--ui-color-error)','var(--wk-color-danger)') : 'border:none'"
+            style="width:100%;height:44px;border-radius:6px;background:var(--wk-color-surface-alt);">
+          </div>
+          <code class="sld-cls-tag" style="margin-top:6px;">{{ r.cls }}</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sombras ────────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Sombras</h3>
+      <div class="sld-shadow-grid">
+        <div *ngFor="let r of shadowClasses" class="sld-demo-card" style="padding-bottom:16px;">
+          <div class="sld-shadow-box"
+            [style.box-shadow]="r.cls === 'shadow-none' ? 'none'
+              : r.cls === 'shadow-sm'  ? '0 1px 2px 0 rgba(0,0,0,.06)'
+              : r.cls === 'shadow-md'  ? '0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)'
+              : r.cls === 'shadow-focus-primary' ? '0 0 0 3px rgba(59,130,246,.4)'
+              : '0 0 0 3px rgba(239,68,68,.4)'"
+            style="width:64px;height:64px;border-radius:8px;background:var(--wk-color-surface-alt);
+                   border:1px solid var(--wk-color-border);">
+          </div>
+          <code class="sld-cls-tag" style="margin-top:10px;">{{ r.cls }}</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Colores de texto ───────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Color de texto</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>Token</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of textColorClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.token }}</code></td>
+              <td>
+                <span [style.color]="r.preview" style="font-weight:600;">Texto de muestra</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Colores de fondo ───────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Color de fondo</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>Token</th><th>Muestra</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of bgColorClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.token }}</code></td>
+              <td>
+                <div [style.background]="r.preview"
+                  style="width:32px;height:20px;border-radius:4px;border:1px solid var(--wk-color-border);">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

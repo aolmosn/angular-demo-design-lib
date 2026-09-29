@@ -19,6 +19,7 @@ const components = [
   { label: 'Stepper',       icon: 'linear_scale',           path: '/stepper' },
   { label: 'Onboarding',    icon: 'tour',                   path: '/onboarding' },
   { label: 'Tokens',        icon: 'token',                  path: '/token' },
+  { label: 'Estilos CSS',   icon: 'css',                    path: '/styles' },
 ];
 
 const features = [

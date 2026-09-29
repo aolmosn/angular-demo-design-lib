@@ -1,0 +1,98 @@
+<section class="card w-full" aria-labelledby="sl-typo-title">
+  <div class="card-header">
+    <h2 id="sl-typo-title">Tipografía</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Tamaño de fuente ───────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Tamaño de fuente <span class="resp-badge">Responsive</span></h3>
+      <div class="flex-col gap-4">
+        <div *ngFor="let r of sizeClasses" class="sld-typo-row">
+          <code class="sld-cls-tag">{{ r.cls }}</code>
+          <span [style]="'font-size:' + r.approx.split(' / ')[0]">El veloz zorro marrón</span>
+          <span class="sld-note">≈ {{ r.approx }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Peso de fuente ─────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Peso de fuente</h3>
+      <div class="flex-col gap-4">
+        <div *ngFor="let r of weightClasses" class="sld-typo-row">
+          <code class="sld-cls-tag">{{ r.cls }}</code>
+          <span [style]="'font-weight:' + r.val">El veloz zorro marrón</span>
+          <span class="sld-note">{{ r.val }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Interlineado ───────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Interlineado</h3>
+      <div class="sld-leading-grid">
+        <div *ngFor="let r of leadingClasses" class="sld-demo-card">
+          <code class="sld-cls-tag">{{ r.cls }}</code>
+          <p [style]="'line-height:' + r.val" style="margin:8px 0 0;font-size:0.8125rem;border-left:3px solid var(--wk-color-info-border);padding-left:8px;">
+            Línea uno del texto.<br>Línea dos del texto.<br>Línea tres del texto.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Alineación ─────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Alineación de texto</h3>
+      <div class="sld-align-grid">
+        <div *ngFor="let r of alignClasses" class="sld-demo-card">
+          <code class="sld-cls-tag">{{ r.cls }}</code>
+          <p [class]="r.cls" style="margin:8px 0 0;font-size:0.875rem;border:1px solid var(--wk-color-border);border-radius:6px;padding:8px;">
+            El veloz zorro marrón salta sobre el perro perezoso.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Decoración / Transform ─────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Decoración y transformación</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>CSS</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of decoClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.css }}</code></td>
+              <td>
+                <span [class]="r.cls" [style]="r.cls === 'truncate' ? 'display:block;max-width:100px' : ''">
+                  Texto de ejemplo
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Clases semánticas ──────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Clases semánticas <span class="sld-note">— definen el rol tipográfico según la guía de diseño</span></h3>
+      <div class="flex-col" style="border:1px solid var(--wk-color-border);border-radius:8px;overflow:hidden;">
+        <div *ngFor="let r of semanticClasses; let last = last"
+          class="sld-semantic-row"
+          [style.border-bottom]="last ? 'none' : '1px solid var(--wk-color-border)'">
+          <div class="sld-semantic-meta">
+            <code>{{ r.cls }}</code>
+            <span class="sld-note">{{ r.desc }}</span>
+          </div>
+          <div class="sld-semantic-preview" [style]="r.style">
+            El veloz zorro marrón
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

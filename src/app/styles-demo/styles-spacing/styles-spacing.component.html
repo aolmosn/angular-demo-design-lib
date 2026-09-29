@@ -1,0 +1,88 @@
+<section class="card w-full" aria-labelledby="sl-spacing-title">
+  <div class="card-header">
+    <h2 id="sl-spacing-title">Espaciado</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Escala de espaciado ─────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Escala de espaciado</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Sufijo</th><th>Token CSS</th><th>Valor base</th><th>Visual</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of scale">
+              <td><code>-{{ r.suffix }}</code></td>
+              <td><code>{{ r.token }}</code></td>
+              <td><code>{{ r.px }}</code></td>
+              <td>
+                <div style="background:var(--wk-color-action-subtle);border:1px solid var(--wk-color-action-border);
+                            border-radius:3px;height:16px;min-width:3px;"
+                  [style.width]="r.px === '0px' ? '3px' : r.px">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Gap demo ───────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Gap</h3>
+      <p class="sld-note">
+        <code>gap-&#123;n&#125;</code> · <code>gap-x-&#123;n&#125;</code> · <code>gap-y-&#123;n&#125;</code> — todos responsive.
+      </p>
+      <div class="flex-col gap-12">
+        <div *ngFor="let s of sizeDemo" class="flex items-center gap-16">
+          <span class="sld-label-inline"><code>gap-{{ s }}</code></span>
+          <div class="flex" [class]="'gap-' + s">
+            <div class="sld-space-item">A</div>
+            <div class="sld-space-item">B</div>
+            <div class="sld-space-item">C</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Padding demo ───────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Padding</h3>
+      <p class="sld-note">
+        <code>p-&#123;n&#125;</code> · <code>px-&#123;n&#125;</code> · <code>py-&#123;n&#125;</code> ·
+        <code>pt-&#123;n&#125;</code> · <code>pr-&#123;n&#125;</code> · <code>pb-&#123;n&#125;</code> · <code>pl-&#123;n&#125;</code>
+        — todos responsive.
+      </p>
+      <div class="sld-spacing-grid">
+        <div *ngFor="let prefix of paddingExamples" class="sld-demo-card">
+          <div class="sld-label"><code>{{ prefix }}-16</code></div>
+          <div class="sld-padding-outer">
+            <div [class]="prefix + '-16'" class="sld-padding-inner">contenido</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Margin demo ────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Margin</h3>
+      <p class="sld-note">
+        <code>m-&#123;n&#125;</code> · <code>mx-&#123;n&#125;</code> · <code>my-&#123;n&#125;</code> ·
+        <code>mt-&#123;n&#125;</code> · <code>mr-&#123;n&#125;</code> · <code>mb-&#123;n&#125;</code> · <code>ml-&#123;n&#125;</code>
+        — todos responsive. También <code>mx-auto</code> para centrado horizontal.
+      </p>
+      <div class="sld-spacing-grid">
+        <div *ngFor="let prefix of marginExamples" class="sld-demo-card">
+          <div class="sld-label"><code>{{ prefix }}-16</code></div>
+          <div class="sld-margin-outer">
+            <div [class]="prefix + '-16'" class="sld-margin-inner">contenido</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
