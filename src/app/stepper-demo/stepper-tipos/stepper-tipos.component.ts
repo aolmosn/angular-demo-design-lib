@@ -2,6 +2,10 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angul
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import '@aolmosn/web-components/stepper';
+import '@aolmosn/web-components/text-input';
+import '@aolmosn/web-components/button';
+import '@aolmosn/web-components/check-box';
+import '@aolmosn/web-components/radio-button';
 import type { StepConfig, StepperChangeDetail } from '@aolmosn/web-components/stepper';
 
 @Component({
@@ -39,6 +43,12 @@ export class StepperTiposComponent {
   vEmail   = '';
   vPlan    = '';
   vTerms   = false;
+
+  readonly plans = ['Básico', 'Profesional', 'Empresarial'];
+
+  get vEmailInvalid(): boolean {
+    return this.vEmail.length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+/.test(this.vEmail);
+  }
 
   validCurrentStep = 1;
 

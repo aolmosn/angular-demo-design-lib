@@ -4,8 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "npm run purge-styles && ng build",
+    "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
+    "purge-styles": "node node_modules/@aolmosn/styles/bin/purge.mjs --src ./src --out ./src/styles-purged.css",
     "test": "ng test"
   },
   "private": true,

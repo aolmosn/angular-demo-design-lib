@@ -1,0 +1,155 @@
+/* @aolmosn/styles v0.1.1 — purged build */
+/* generated: 2026-09-29T18:44:09.682Z */
+/* classes used: 43 / 1226 */
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.grid {
+  display: grid;
+}
+.block {
+  display: block;
+}
+.inline-block {
+  display: inline-block;
+}
+.hidden {
+  display: none;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.w-full {
+  width: 100%;
+}
+.grid-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 768px) {
+  .md\:grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1024px) {
+  .lg\:grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (min-width: 1024px) {
+  .lg\:grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 1280px) {
+  .xl\:grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 1280px) {
+  .xl\:grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.sticky {
+  position: sticky;
+}
+.gap-0 {
+  gap: var(--wk-space-0);
+}
+.gap-4 {
+  gap: var(--wk-space-1);
+}
+.gap-8 {
+  gap: var(--wk-space-2);
+}
+.gap-16 {
+  gap: var(--wk-space-4);
+}
+.gap-32 {
+  gap: var(--wk-space-8);
+}
+.p-4 {
+  padding: var(--wk-space-1);
+}
+.p-8 {
+  padding: var(--wk-space-2);
+}
+.py-16 {
+  padding-top: var(--wk-space-4);
+  padding-bottom: var(--wk-space-4);
+}
+.pt-16 {
+  padding-top: var(--wk-space-4);
+}
+.pl-48 {
+  padding-left: var(--wk-space-12);
+}
+.mt-4 {
+  margin-top: var(--wk-space-1);
+}
+.my-16 {
+  margin-top: var(--wk-space-4);
+  margin-bottom: var(--wk-space-4);
+}
+.mt-24 {
+  margin-top: var(--wk-space-6);
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.bg-gray-50 {
+  background-color: var(--ui-color-gray-50);
+}
+.border {
+  border: 1px solid var(--ui-color-border);
+}
+.border-t {
+  border-top: 1px solid var(--ui-color-border);
+}
+.border-r {
+  border-right: 1px solid var(--ui-color-border);
+}
+.border-b {
+  border-bottom: 1px solid var(--ui-color-border);
+}
+.border-l {
+  border-left: 1px solid var(--ui-color-border);
+}
+.border-error {
+  border: 1px solid var(--ui-color-error);
+}
