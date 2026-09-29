@@ -16,7 +16,7 @@ import { CheckBoxTestComponent } from './check-box-test/check-box-test.component
   ],
 })
 export class CheckBoxDemoComponent {
-  lib = '@design-lib/angular';
+  lib = '@aolmosn/angular';
   title = 'Check Box';
   testingComponent = ['UiCheckBoxComponent'];
 }

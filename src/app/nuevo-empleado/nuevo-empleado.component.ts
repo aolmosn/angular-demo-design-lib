@@ -1,10 +1,10 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import '@design-lib/web-components/stepper';
-import '@design-lib/web-components/input-date';
-import '@design-lib/web-components/button';
-import type { StepConfig, StepperChangeDetail } from '@design-lib/web-components/stepper';
+import '@aolmosn/web-components/stepper';
+import '@aolmosn/web-components/input-date';
+import '@aolmosn/web-components/button';
+import type { StepConfig, StepperChangeDetail } from '@aolmosn/web-components/stepper';
 
 interface EmployeeForm {
   firstName: string; lastName: string; email: string; phone: string;

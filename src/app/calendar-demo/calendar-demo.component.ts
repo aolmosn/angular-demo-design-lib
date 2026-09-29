@@ -17,7 +17,7 @@ import { CalendarIntegrationComponent } from './calendar-integration/calendar-in
   ],
 })
 export class CalendarDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Calendar';
   testingComponent = ['ui-calendar'];
 }

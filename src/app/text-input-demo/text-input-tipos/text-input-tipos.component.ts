@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/text-input';
+import '@aolmosn/web-components/text-input';
 
 @Component({
   selector: 'app-text-input-tipos',

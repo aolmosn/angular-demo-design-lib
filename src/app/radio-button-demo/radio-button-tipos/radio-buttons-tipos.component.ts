@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { UiCheckBoxComponent } from "@design-lib/angular/check-box";
-import { UiRadioButtonComponent } from "@design-lib/angular/radio-button";
+import { UiCheckBoxComponent } from "@aolmosn/angular/check-box";
+import { UiRadioButtonComponent } from "@aolmosn/angular/radio-button";
 
 type FormField = 'fruta' | 'mascotaFavorita' | 'valorDisable' | 'preseleccionado';
 

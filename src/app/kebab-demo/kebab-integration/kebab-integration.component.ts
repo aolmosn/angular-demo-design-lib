@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UiKebab, UiKebabOption } from '@design-lib/angular/kebab';
+import { UiKebab, UiKebabOption } from '@aolmosn/angular/kebab';
 
 @Component({
   selector: 'app-kebab-integration',
@@ -15,7 +15,7 @@ export class KebabIntegrationComponent {
   <ui-kebab-option icon="picture_as_pdf">Descargar PDF</ui-kebab-option>
 </ui-kebab-container>`;
 
-  codeTs = `import { UiKebab, UiKebabOption } from '@design-lib/angular/kebab';
+  codeTs = `import { UiKebab, UiKebabOption } from '@aolmosn/angular/kebab';
 
 @Component({
   standalone: true,

@@ -31,7 +31,7 @@ export class TextInputIntegrationComponent {
 
   codeTsDirect =
 `import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/text-input';
+import '@aolmosn/web-components/text-input';
 
 @Component({
   standalone: true,
@@ -67,7 +67,7 @@ export class DemoComponent {
   codeTsAngular =
 `import { Component } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { UiTextFieldComponent } from '@design-lib/angular/text-field';
+import { UiTextFieldComponent } from '@aolmosn/angular/text-field';
 
 @Component({
   standalone: true,

@@ -8,7 +8,7 @@ import { ChipTiposComponent } from "./chip-tipos/chip-tipos.component";
   imports: [ChipTiposComponent]
 })
 export class ChipDemoComponent {
-  lib = '@design-lib/angular';
+  lib = '@aolmosn/angular';
   title = 'Chip';
   testingComponent = ['Chip'];
 }

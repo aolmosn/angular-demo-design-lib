@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { UiKebab, UiKebabOption } from '@design-lib/angular/kebab';
+import { UiKebab, UiKebabOption } from '@aolmosn/angular/kebab';
 
 @Component({
   selector: 'app-kebab-tipos',

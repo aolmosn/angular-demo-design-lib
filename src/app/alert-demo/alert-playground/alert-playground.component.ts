@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { UiAlertComponent, AlertType} from "@design-lib/angular/alert";
-import { UiCheckBoxComponent } from "@design-lib/angular/check-box";
-import { UiTextFieldComponent } from '@design-lib/angular/text-field';
+import { UiAlertComponent, AlertType} from "@aolmosn/angular/alert";
+import { UiCheckBoxComponent } from "@aolmosn/angular/check-box";
+import { UiTextFieldComponent } from '@aolmosn/angular/text-field';
 
 @Component({
   selector: 'app-alert-playground',
@@ -18,7 +18,7 @@ import { UiTextFieldComponent } from '@design-lib/angular/text-field';
 export class AlertPlaygroundComponent implements OnInit {
 
   codejs = `
-import { UiAlertComponent, AlertType} from "@design-lib/angular/alert";
+import { UiAlertComponent, AlertType} from "@aolmosn/angular/alert";
 
 @Component({
   selector: 'app-demo',

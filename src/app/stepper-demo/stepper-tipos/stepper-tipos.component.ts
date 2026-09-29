@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import '@design-lib/web-components/stepper';
-import type { StepConfig, StepperChangeDetail } from '@design-lib/web-components/stepper';
+import '@aolmosn/web-components/stepper';
+import type { StepConfig, StepperChangeDetail } from '@aolmosn/web-components/stepper';
 
 @Component({
   selector: 'app-stepper-tipos',

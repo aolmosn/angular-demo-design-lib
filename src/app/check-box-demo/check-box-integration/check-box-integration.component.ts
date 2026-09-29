@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UiCheckBoxComponent } from '@design-lib/angular/check-box';
+import { UiCheckBoxComponent } from '@aolmosn/angular/check-box';
 
 @Component({
   selector: 'app-check-box-integration',
@@ -13,7 +13,7 @@ export class CheckBoxIntegrationComponent {
 
   codeTs = `import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { UiCheckBoxComponent } from '@design-lib/angular/check-box';
+import { UiCheckBoxComponent } from '@aolmosn/angular/check-box';
 
 @Component({
   standalone: true,

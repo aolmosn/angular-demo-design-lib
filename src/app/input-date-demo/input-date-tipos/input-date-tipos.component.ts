@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import '@design-lib/web-components/input-date';
+import '@aolmosn/web-components/input-date';
 
 @Component({
   selector: 'app-input-date-tipos',

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, NgZone, ViewChild } from '@angular/core';
-import { UiOnboarding } from '@design-lib/angular/onboarding';
-import type { OnboardingStep } from '@design-lib/angular/onboarding';
-import '@design-lib/web-components/button';
+import { UiOnboarding } from '@aolmosn/angular/onboarding';
+import type { OnboardingStep } from '@aolmosn/angular/onboarding';
+import '@aolmosn/web-components/button';
 
 @Component({
   selector: 'app-onboarding-tipos',

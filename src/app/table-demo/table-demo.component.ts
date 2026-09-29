@@ -11,7 +11,7 @@ import { TableIntegrationComponent } from './table-integration/table-integration
   imports: [TableTiposComponent, TablePropsComponent, TableIntegrationComponent],
 })
 export class TableDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Table';
   desc  = 'ui-table';
 }

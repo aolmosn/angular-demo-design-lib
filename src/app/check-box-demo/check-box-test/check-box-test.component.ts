@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { UiButton } from "@design-lib/angular/button";
-import { UiCheckBoxComponent } from "@design-lib/angular/check-box";
+import { UiButton } from "@aolmosn/angular/button";
+import { UiCheckBoxComponent } from "@aolmosn/angular/check-box";
 
 type FormField = 'construir' | 'configurar' | 'desplegar'  ;
 type FormControlField = 'seleccionarTodo';

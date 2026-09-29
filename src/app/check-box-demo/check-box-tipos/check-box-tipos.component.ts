@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UiCheckBoxComponent } from '@design-lib/angular/check-box';
-import { UiButton } from '@design-lib/angular/button';
+import { UiCheckBoxComponent } from '@aolmosn/angular/check-box';
+import { UiButton } from '@aolmosn/angular/button';
 
 type FormField = 'terminos' | 'newsletter' | 'valorDisable';
 

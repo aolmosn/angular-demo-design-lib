@@ -16,7 +16,7 @@ import { ButtonIntegrationComponent } from './button-integration/button-integrat
   ],
 })
 export class ButtonDemoComponent {
-  lib   = '@design-lib/angular';
+  lib   = '@aolmosn/angular';
   title = 'Button';
   testingComponent = ['UiButton'];
 }

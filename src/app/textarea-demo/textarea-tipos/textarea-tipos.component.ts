@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/textarea';
+import '@aolmosn/web-components/textarea';
 
 @Component({
   selector: 'app-textarea-tipos',

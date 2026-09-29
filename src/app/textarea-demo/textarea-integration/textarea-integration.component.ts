@@ -39,8 +39,8 @@ export class TextareaIntegrationComponent {
 
   codeTsBasic =
 `import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/textarea';
-import type { TextareaResize } from '@design-lib/web-components/textarea';
+import '@aolmosn/web-components/textarea';
+import type { TextareaResize } from '@aolmosn/web-components/textarea';
 
 @Component({
   standalone: true,

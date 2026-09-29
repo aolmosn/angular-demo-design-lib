@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { UiTextFieldComponent } from '@design-lib/angular/text-field';
+import { UiTextFieldComponent } from '@aolmosn/angular/text-field';
 
 type FormField = 'nombre' | 'apellido' | 'email' | 'usuario';
 

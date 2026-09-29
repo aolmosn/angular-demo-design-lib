@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { UiKebab, UiKebabOption } from '@design-lib/angular/kebab';
+import { UiKebab, UiKebabOption } from '@aolmosn/angular/kebab';
 
 @Component({
   selector: 'app-kebab-trigger-externo',
@@ -28,7 +28,7 @@ export class KebabTriggerExternoComponent implements AfterViewInit {
 </ui-kebab-container>`;
 
   codeTs = `import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { UiKebab, UiKebabOption } from '@design-lib/angular/kebab';
+import { UiKebab, UiKebabOption } from '@aolmosn/angular/kebab';
 
 @Component({
   standalone: true,

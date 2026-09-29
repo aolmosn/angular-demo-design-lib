@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import '@design-lib/web-components/currency-input';
-import type { CurrencyOption, CurrencyInputChangeDetail } from '@design-lib/web-components/currency-input';
+import '@aolmosn/web-components/currency-input';
+import type { CurrencyOption, CurrencyInputChangeDetail } from '@aolmosn/web-components/currency-input';
 
 @Component({
   selector: 'app-currency-input-tipos',

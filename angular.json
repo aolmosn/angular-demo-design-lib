@@ -30,9 +30,9 @@
               }
             ],
             "styles": [
-              "node_modules/@design-lib/tokens/src/tokens.css",
+              "node_modules/@aolmosn/tokens/dist/tokens.css",
               "src/styles.scss",
-              "../design-lib/packages/styles/src/index.scss"
+              "node_modules/@aolmosn/styles/src/index.scss"
             ]
           },
           "configurations": {
