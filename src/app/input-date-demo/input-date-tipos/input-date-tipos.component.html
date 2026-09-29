@@ -1,6 +1,6 @@
 <section class="flex-col gap-default w-full">
 
-  <div class="flex-row gap-default w-full">
+  <div class="grid-1 md:grid-2 gap-default w-full">
 
     <!-- ── Modo single ────────────────────────────────────────────── -->
     <section class="card w-full" aria-labelledby="id-single-title">
@@ -29,7 +29,7 @@
             Evento <code>(ui-change)</code>
           </p>
           @if (singleValue) {
-            <div class="flex-row gap-8" style="flex-wrap:wrap;">
+            <div class="flex-row flex-wrap gap-8">
               <span class="chip chip--active">value: "{{ singleValue }}"</span>
               <span class="chip">{{ singleEventTs }}</span>
             </div>
@@ -71,7 +71,7 @@
             Evento <code>(ui-change)</code>
           </p>
           @if (rangeFrom && rangeTo) {
-            <div class="flex-row gap-8" style="flex-wrap:wrap;">
+            <div class="flex-row flex-wrap gap-8">
               <span class="chip chip--active">from: "{{ rangeFrom }}"</span>
               <span class="chip chip--active">to: "{{ rangeTo }}"</span>
               <span class="chip">{{ rangeEventTs }}</span>

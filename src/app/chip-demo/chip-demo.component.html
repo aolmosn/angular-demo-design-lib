@@ -5,13 +5,21 @@
     <div class="header-inner">
       <span class="badge">{{ lib }}</span>
       <h1>{{ title }}</h1>
-      <p class="header-desc">Referencia visual de todos los tokens del sistema de diseño</p>
+      <p class="header-desc">
+        {{ testingComponent[0] }} · <code>variant</code> · <code>color</code> · <code>clickeable</code>
+      </p>
     </div>
   </header>
 
   <main class="main">
     <div class="layout flex-col gap-default w-full">
+
       <app-chip-tipos></app-chip-tipos>
+
+      <app-chip-props></app-chip-props>
+
+      <app-chip-integration></app-chip-integration>
+
     </div>
   </main>
 

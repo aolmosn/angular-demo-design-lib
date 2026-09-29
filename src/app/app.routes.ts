@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { DocsComponent } from './docs/docs.component';
 import { FormDemoComponent } from './form-demo/form-demo.component';
 import { AlertDemoComponent } from './alert-demo/alert-demo.component';
 import { RadioButtonDemoComponent } from './radio-button-demo/radio-button-demo.component';
@@ -21,7 +23,9 @@ import { DemoCompletaComponent } from './demo-completa/demo-completa.component';
 import { InputDateDemoComponent } from './input-date-demo/input-date-demo.component';
 
 export const routes: Routes = [
-  { path: '',              component: FormDemoComponent },
+  { path: '',              component: HomeComponent },
+  { path: 'docs',          component: DocsComponent },
+  { path: 'form',          component: FormDemoComponent },
   { path: 'alert',         component: AlertDemoComponent },
   { path: 'radio-button',  component: RadioButtonDemoComponent },
   { path: 'check-box',     component: CheckBoxDemoComponent },

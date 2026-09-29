@@ -16,7 +16,9 @@
 
   <ul>
     @for(option of options; track option.label){
-      <li [routerLink]="option.path" [routerLinkActive]="['active-link']">
+      <li [routerLink]="option.path"
+          [routerLinkActive]="['active-link']"
+          [routerLinkActiveOptions]="{ exact: option.path === '/' }">
         <span class="pestana"></span>
         <i class="material-icons">{{ option.icon }}</i>
         <a>{{ option.label }}</a>

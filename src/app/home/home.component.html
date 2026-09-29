@@ -1,0 +1,130 @@
+<div class="home">
+
+  <!-- ══ Hero ══════════════════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <i class="material-icons">auto_awesome</i>
+        <span>v0.1 · Open Source</span>
+      </div>
+      <h1 class="hero-title">
+        Design <span class="hero-title-accent">Lib</span>
+      </h1>
+      <p class="hero-sub">
+        Componentes UI listos para producción.<br>
+        Web Components + Angular + Design Tokens.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-hero btn-hero--primary" routerLink="/docs">
+          <i class="material-icons">rocket_launch</i>
+          Comenzar
+        </a>
+        <a class="btn-hero btn-hero--ghost" routerLink="/demo-completa">
+          <i class="material-icons">dashboard_customize</i>
+          Ver demo
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-preview" aria-hidden="true">
+      <div class="preview-card">
+        <div class="preview-card__header">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+        </div>
+        <div class="preview-card__body">
+          <div class="preview-row">
+            <div class="preview-label">Nombre</div>
+            <div class="preview-input">Ana García</div>
+          </div>
+          <div class="preview-row">
+            <div class="preview-label">Estado</div>
+            <div class="preview-chips">
+              <span class="preview-chip preview-chip--active">Activo</span>
+              <span class="preview-chip">Pendiente</span>
+            </div>
+          </div>
+          <div class="preview-row">
+            <div class="preview-label">Acción</div>
+            <div class="preview-btn">Guardar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Stats ═════════════════════════════════════════════════════════ -->
+  <section class="stats">
+    <div class="stat">
+      <span class="stat-value">17</span>
+      <span class="stat-label">Componentes</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-value">5</span>
+      <span class="stat-label">Paquetes npm</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-value">Lit 3</span>
+      <span class="stat-label">Web Components</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-value">Angular 17+</span>
+      <span class="stat-label">Framework</span>
+    </div>
+  </section>
+
+  <!-- ══ Features ══════════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-label">Por qué Design Lib</div>
+      <h2 class="section-title">Construido para escalar</h2>
+      <div class="features-grid">
+        @for (f of features; track f.title) {
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="material-icons">{{ f.icon }}</i>
+            </div>
+            <h3 class="feature-title">{{ f.title }}</h3>
+            <p class="feature-desc">{{ f.desc }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ Components grid ════════════════════════════════════════════════ -->
+  <section class="section section--alt">
+    <div class="section-inner">
+      <div class="section-label">Librería de componentes</div>
+      <h2 class="section-title">Todo lo que necesitas</h2>
+      <div class="components-grid">
+        @for (c of components; track c.label) {
+          <a class="component-tile" [routerLink]="c.path">
+            <i class="material-icons component-tile__icon">{{ c.icon }}</i>
+            <span class="component-tile__label">{{ c.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ════════════════════════════════════════════════════════════ -->
+  <section class="cta">
+    <div class="cta-inner">
+      <h2 class="cta-title">Listo para integrarlo?</h2>
+      <p class="cta-sub">Instala los paquetes y empieza en minutos.</p>
+      <div class="cta-code">
+        <code>npm install @aolmosn/tokens @aolmosn/web-components @aolmosn/angular</code>
+      </div>
+      <a class="btn-hero btn-hero--primary" routerLink="/docs">
+        <i class="material-icons">menu_book</i>
+        Ver documentación completa
+      </a>
+    </div>
+  </section>
+
+</div>

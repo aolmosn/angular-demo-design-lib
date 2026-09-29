@@ -1,0 +1,68 @@
+<section class="card-table w-full" aria-labelledby="props-title">
+  <div class="card-table-header">
+    <h2 id="props-title">Propiedades</h2>
+  </div>
+  <div class="card-table-body">
+
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Atributo HTML</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>variant</code></td>
+          <td><code>variant</code></td>
+          <td class="type">'filled' | 'outlined'</td>
+          <td><code>'filled'</code></td>
+          <td>Estilo visual del chip: relleno o con borde</td>
+        </tr>
+        <tr>
+          <td><code>color</code></td>
+          <td><code>color</code></td>
+          <td class="type">'default' | 'success' | 'info' | 'warning' | 'error'</td>
+          <td><code>'default'</code></td>
+          <td>Color semántico del chip</td>
+        </tr>
+        <tr>
+          <td><code>size</code></td>
+          <td><code>size</code></td>
+          <td class="type">'small' | 'medium'</td>
+          <td><code>'small'</code></td>
+          <td>Tamaño del chip</td>
+        </tr>
+        <tr>
+          <td><code>clickeable</code></td>
+          <td><code>clickeable</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Activa el cursor pointer y emite el evento <code>ui-click</code> al hacer clic</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">Eventos</p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>detail</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ui-click</code></td>
+          <td><code>{{ '{' }}{{ '}' }}</code></td>
+          <td>El usuario hace clic en el chip. Solo se emite cuando <code>clickeable</code> es <code>true</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

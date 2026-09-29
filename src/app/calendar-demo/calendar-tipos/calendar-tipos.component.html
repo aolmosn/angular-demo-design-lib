@@ -1,6 +1,6 @@
 <section class="flex-col gap-default w-full">
 
-  <div class="flex-row gap-default w-full">
+  <div class="grid-1 md:grid-2 gap-default w-full">
 
   <!-- ── Single ──────────────────────────────────────────────────── -->
   <section class="card w-full" aria-labelledby="cal-single-title">
@@ -43,7 +43,7 @@
       <div class="flex-col gap-8 border radius-8 p-4">
         <p class="label-section">Evento <code>(ui-change)</code></p>
         @if (rangeFrom && rangeTo) {
-          <div class="flex-row gap-8">
+          <div class="flex-row flex-wrap gap-8">
             <span class="chip chip--active">Desde: {{ rangeFrom }}</span>
             <span class="chip chip--active">Hasta: {{ rangeTo }}</span>
           </div>

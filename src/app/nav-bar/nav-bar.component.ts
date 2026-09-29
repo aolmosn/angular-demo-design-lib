@@ -4,6 +4,8 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from "@angular/ro
 import { filter, Subscription } from "rxjs";
 
 const options = [
+  { label: 'Inicio',        icon: 'home',                  path: '/' },
+  { label: 'Docs',          icon: 'menu_book',             path: '/docs' },
   { label: 'Tokens',        icon: 'token',                 path: '/token' },
   { label: 'Check Box',     icon: 'check_box',             path: '/check-box' },
   { label: 'Radio Button',  icon: 'radio_button_checked',  path: '/radio-button' },
@@ -64,7 +66,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   private _updateActive(url: string): void {
-    const match = this.options.find(o => url.startsWith(o.path));
+    const clean = url.split('?')[0];
+    const match = this.options.find(o =>
+      o.path === '/' ? clean === '/' : clean.startsWith(o.path)
+    );
     if (match) this.activeOption = match;
   }
 }

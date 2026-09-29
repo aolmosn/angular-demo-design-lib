@@ -61,11 +61,6 @@ export class AlertWapperDemoComponent implements OnInit, AfterViewInit {
       },
     });
 
-    // setTimeout(() => {
-    //   this.form.controls['text'].enable({ onlySelf: false, emitEvent: true });
-    //   this.form.controls['noBackground'].enable({ onlySelf: false, emitEvent: true });
-    //   console.log('noBackground habilitado después de 5s');
-    // }, 5000);
   }
 
   getError(_field: string) {
