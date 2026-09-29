@@ -1,0 +1,45 @@
+<section class="card" aria-labelledby="wrapper-demo-title">
+  <div class="card-header">
+    <h2 id="wrapper-demo-title">Integración del componente</h2>
+  </div>
+
+  <div class="card-body">
+    <div class="flex-col gap-16">
+
+      <!-- Controles -->
+      <ui-radio-button name="valorDisable" value="Elemento 1" label="Elemento 1"></ui-radio-button>
+      <ui-radio-button name="valorDisable" value="Elemento 2" label="Elemento 2"></ui-radio-button>
+
+      <!-- Snippet HTML -->
+      <div style="background:#0f172a;border-radius:8px;overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;
+                    padding:0.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="font-size:0.7rem;color:#64748b;font-family:monospace;
+                       text-transform:uppercase;letter-spacing:0.07em;">HTML</span>
+        </div>
+        <pre style="margin:0;padding:1rem 1.25rem;font-size:0.8125rem;color:#e2e8f0;
+                    overflow-x:auto;font-family:'JetBrains Mono',Consolas,monospace;
+                    white-space:pre;line-height:1.65;">{{ codeHtml }}</pre>
+      </div>
+
+      <!-- Snippet JS — solo visible si hay ícono personalizado -->
+      <div style="background:#0f172a;border-radius:8px;overflow:hidden;">
+        <div style="display:flex;align-items:center;justify-content:space-between;
+                    padding:0.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="font-size:0.7rem;color:#64748b;font-family:monospace;
+                       text-transform:uppercase;letter-spacing:0.07em;">TypeScript</span>
+          <!-- @if (form.controls['icon'].value) {
+            <span style="font-size:0.7rem;padding:0.15rem 0.5rem;border-radius:4px;
+                         background:rgba(251,191,36,0.15);color:#fbbf24;font-weight:600;">
+              icons → property JS
+            </span>
+          } -->
+        </div>
+        <pre style="margin:0;padding:1rem 1.25rem;font-size:0.8125rem;color:#e2e8f0;
+                    overflow-x:auto;font-family:'JetBrains Mono',Consolas,monospace;
+                    white-space:pre;line-height:1.65;">{{ codeJs }}</pre>
+      </div>
+
+    </div>
+  </div>
+</section>

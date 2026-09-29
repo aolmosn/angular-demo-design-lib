@@ -1,0 +1,87 @@
+<section class="flex-col gap-default w-full">
+
+  <div class="flex-row gap-default w-full">
+
+  <!-- ── Single ──────────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="cal-single-title">
+    <div class="card-header">
+      <h2 id="cal-single-title">Fecha única <code>mode="single"</code></h2>
+    </div>
+    <div class="card-body flex-col gap-16">
+
+      <ui-calendar
+        mode="single"
+        (ui-change)="onSingleChange($event)"
+        (ui-clear)="onClear()">
+      </ui-calendar>
+
+      <div class="flex-col gap-8 border radius-8 p-4">
+        <p class="label-section">Evento <code>(ui-change)</code></p>
+        @if (singleDate) {
+          <span class="chip chip--active">Fecha: {{ singleDate }}</span>
+        } @else {
+          <span class="chip">Sin selección</span>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Range ───────────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="cal-range-title">
+    <div class="card-header">
+      <h2 id="cal-range-title">Rango de fechas <code>mode="range"</code></h2>
+    </div>
+    <div class="card-body flex-col gap-16">
+
+      <ui-calendar
+        mode="range"
+        (ui-change)="onRangeChange($event)"
+        (ui-clear)="onClear()">
+      </ui-calendar>
+
+      <div class="flex-col gap-8 border radius-8 p-4">
+        <p class="label-section">Evento <code>(ui-change)</code></p>
+        @if (rangeFrom && rangeTo) {
+          <div class="flex-row gap-8">
+            <span class="chip chip--active">Desde: {{ rangeFrom }}</span>
+            <span class="chip chip--active">Hasta: {{ rangeTo }}</span>
+          </div>
+        } @else {
+          <span class="chip">Sin selección completa</span>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  </div>
+
+  <!-- ── Extended ────────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="cal-extended-title">
+    <div class="card-header">
+      <h2 id="cal-extended-title">Rango extendido <code>&lt;ui-calendar-extended&gt;</code></h2>
+    </div>
+    <div class="card-body flex-col gap-16">
+
+      <ui-calendar-extended
+        (ui-change)="onExtendedChange($event)"
+        (ui-clear)="onExtendedClear()">
+      </ui-calendar-extended>
+
+      <div class="flex-col gap-8 border radius-8 p-4">
+        <p class="label-section">Evento <code>(ui-change)</code></p>
+        @if (extFrom && extTo) {
+          <div class="flex-row gap-8">
+            <span class="chip chip--active">Desde: {{ extFrom }}</span>
+            <span class="chip chip--active">Hasta: {{ extTo }}</span>
+          </div>
+        } @else {
+          <span class="chip">Sin selección completa</span>
+        }
+      </div>
+
+    </div>
+  </section>
+
+</section>

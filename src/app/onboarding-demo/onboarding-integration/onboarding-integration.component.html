@@ -1,0 +1,104 @@
+<section class="grid-1 gap-default w-full">
+
+  <!-- ── TypeScript ───────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="ob-int-ts-title">
+    <div class="card-header">
+      <h2 id="ob-int-ts-title">Integración — TypeScript</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Importar y declarar steps</p>
+        <pre class="code-block"><code>import &#123; AfterViewInit, Component, ElementRef, NgZone, ViewChild &#125; from '&#64;angular/core';
+import &#123; UiOnboarding &#125; from '&#64;design-lib/angular/onboarding';
+import type &#123; OnboardingStep &#125; from '&#64;design-lib/angular/onboarding';
+
+&#64;Component(&#123;
+  standalone: true,
+  imports: [UiOnboarding],
+  templateUrl: './mi-componente.component.html',
+&#125;)
+export class MiComponente implements AfterViewInit &#123;
+  constructor(private _zone: NgZone) &#123;&#125;
+
+  &#64;ViewChild('onboarding', &#123; read: ElementRef &#125;) onboardingRef!: ElementRef;
+
+  steps: OnboardingStep[] = [
+    &#123; selector: '#paso-1', title: 'Primer paso',  description: 'Descripción del paso 1.' &#125;,
+    &#123; selector: '#paso-2', title: 'Segundo paso', description: 'Descripción del paso 2.' &#125;,
+  ];
+
+  ngAfterViewInit(): void &#123;
+    const el = this.onboardingRef.nativeElement;
+
+    el.addEventListener('ui-onboarding-step', (e: Event) => &#123;
+      this._zone.run(() => &#123;
+        const &#123; step, index &#125; = (e as CustomEvent).detail;
+        console.log('Paso:', index + 1, step.title);
+      &#125;);
+    &#125;);
+
+    el.addEventListener('ui-onboarding-finish', () => &#123;
+      this._zone.run(() => console.log('Finalizado'));
+    &#125;);
+  &#125;
+
+  iniciar(): void &#123; this.onboardingRef.nativeElement.start(); &#125;
+&#125;</code></pre>
+
+        <p class="label-section">Notas importantes</p>
+        <div class="border radius-8 p-4">
+          <ul class="flex-col gap-8" style="padding-left: 1rem; font-size: 0.875rem; color: var(--ui-color-text-secondary, #6b7280);">
+            <li>Los listeners de eventos deben estar en <code>ngAfterViewInit</code>, no en el constructor</li>
+            <li>Usar <code>NgZone.run()</code> para que Angular detecte los cambios disparados por eventos del Web Component</li>
+            <li>El <code>selector</code> de cada paso debe apuntar a un elemento visible en el DOM al momento de llamar <code>start()</code></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Template ─────────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="ob-int-html-title">
+    <div class="card-header">
+      <h2 id="ob-int-html-title">Integración — Template</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Declarar el componente en el template</p>
+        <pre class="code-block"><code>&lt;!-- Colocar en cualquier parte del template --&gt;
+&lt;ui-onboarding #onboarding [steps]="steps"&gt;&lt;/ui-onboarding&gt;
+
+&lt;!-- Botón para iniciar --&gt;
+&lt;button (click)="iniciar()"&gt;Iniciar tour&lt;/button&gt;</code></pre>
+
+        <p class="label-section">Configuración mobile requerida</p>
+        <pre class="code-block"><code>&lt;!-- index.html --&gt;
+&lt;meta name="viewport"
+  content="width=device-width, initial-scale=1,
+           minimum-scale=1, maximum-scale=1,
+           user-scalable=no, viewport-fit=cover"&gt;</code></pre>
+
+        <pre class="code-block"><code>/* styles.scss — expone safe areas al shadow DOM */
+:root &#123;
+  --safe-area-inset-top:    env(safe-area-inset-top,    0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left:   env(safe-area-inset-left,   0px);
+  --safe-area-inset-right:  env(safe-area-inset-right,  0px);
+&#125;</code></pre>
+
+        <div class="border radius-8 p-4">
+          <p style="font-size: 0.875rem; color: var(--ui-color-text-secondary, #6b7280); margin: 0;">
+            <strong>¿Por qué?</strong> En mobile el coachmark se posiciona en la parte inferior.
+            Sin <code>viewport-fit=cover</code> y las variables de safe area, los botones
+            quedan tapados por la barra de navegación del navegador.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>

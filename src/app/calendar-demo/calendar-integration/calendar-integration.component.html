@@ -1,0 +1,29 @@
+<section class="card w-full" aria-labelledby="cal-integration-title">
+  <div class="card-header">
+    <h2 id="cal-integration-title">Integración del componente</h2>
+  </div>
+  <div class="card-body">
+    <div class="flex-col gap-16">
+
+      <div class="flex-row gap-16">
+        <ui-calendar mode="single"></ui-calendar>
+        <ui-calendar mode="range"></ui-calendar>
+      </div>
+
+      <div style="background:#0f172a;border-radius:8px;overflow:hidden;">
+        <div style="display:flex;align-items:center;padding:0.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="font-size:0.7rem;color:#64748b;font-family:monospace;text-transform:uppercase;letter-spacing:0.07em;">HTML</span>
+        </div>
+        <pre style="margin:0;padding:1rem 1.25rem;font-size:0.8125rem;color:#e2e8f0;overflow-x:auto;font-family:'JetBrains Mono',Consolas,monospace;white-space:pre;line-height:1.65;">{{ codeHtml }}</pre>
+      </div>
+
+      <div style="background:#0f172a;border-radius:8px;overflow:hidden;">
+        <div style="display:flex;align-items:center;padding:0.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="font-size:0.7rem;color:#64748b;font-family:monospace;text-transform:uppercase;letter-spacing:0.07em;">TypeScript</span>
+        </div>
+        <pre style="margin:0;padding:1rem 1.25rem;font-size:0.8125rem;color:#e2e8f0;overflow-x:auto;font-family:'JetBrains Mono',Consolas,monospace;white-space:pre;line-height:1.65;">{{ codeTs }}</pre>
+      </div>
+
+    </div>
+  </div>
+</section>

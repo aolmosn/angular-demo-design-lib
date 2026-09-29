@@ -1,0 +1,207 @@
+<section class="card w-full" aria-labelledby="stp-props-title">
+  <div class="card-header">
+    <h2 id="stp-props-title">API del componente</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Propiedades ─────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Propiedades</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Propiedad (JS)</th>
+              <th>Atributo HTML</th>
+              <th>Tipo</th>
+              <th>Default</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>steps</code></td>
+              <td>— (solo property)</td>
+              <td><code>StepConfig[]</code></td>
+              <td><code>[]</code></td>
+              <td>
+                Definición de los pasos. Cada elemento tiene <code>label</code> (requerido)
+                y <code>description</code> (opcional). Se pasa como propiedad JS.
+              </td>
+            </tr>
+            <tr>
+              <td><code>current</code></td>
+              <td><code>current</code></td>
+              <td><code>number</code></td>
+              <td><code>1</code></td>
+              <td>
+                Paso activo (1-based). Para modo controlado, actualiza este valor al recibir
+                el evento <code>ui-step</code>. El componente también funciona sin binding
+                (modo no controlado).
+              </td>
+            </tr>
+            <tr>
+              <td><code>valid</code></td>
+              <td>— (solo property)</td>
+              <td><code>boolean[]</code></td>
+              <td><code>[]</code></td>
+              <td>
+                Controla si el botón "siguiente" está habilitado por paso.
+                <code>valid[0]</code> controla si se puede avanzar del paso 1 al 2,
+                <code>valid[1]</code> del paso 2 al 3, etc.
+                <code>undefined</code> (sin entrada) se trata como <code>true</code>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Tipo StepConfig ─────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Tipo StepConfig</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Campo</th><th>Tipo</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>label</code></td>
+              <td><code>string</code></td>
+              <td>Título del paso. Aparece en el tooltip del dot y en la fila de info.</td>
+            </tr>
+            <tr>
+              <td><code>description?</code></td>
+              <td><code>string</code></td>
+              <td>Subtítulo opcional debajo del label.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Eventos emitidos ────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Eventos emitidos</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Evento</th><th>Detail</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ui-step</code></td>
+              <td><code>StepperChangeDetail</code></td>
+              <td>Se emite cada vez que cambia el paso activo (via botones, dot click o evento externo).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Tipo StepperChangeDetail ────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Tipo StepperChangeDetail</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Campo</th><th>Tipo</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>step</code></td>
+              <td><code>number</code></td>
+              <td>Número del nuevo paso activo (1-based).</td>
+            </tr>
+            <tr>
+              <td><code>prev</code></td>
+              <td><code>number</code></td>
+              <td>Número del paso anterior.</td>
+            </tr>
+            <tr>
+              <td><code>direction</code></td>
+              <td><code>'next' | 'prev' | 'jump'</code></td>
+              <td>
+                Origen del cambio: <code>next</code> (botón →), <code>prev</code>
+                (botón ← o dot click hacia atrás), <code>jump</code> (evento
+                <code>ui-stepper-go</code>).
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Eventos externos ────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Eventos externos (escuchados por el componente)</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Evento</th><th>Detail</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ui-stepper-next</code></td>
+              <td>—</td>
+              <td>Avanza al paso siguiente si el paso actual es válido.</td>
+            </tr>
+            <tr>
+              <td><code>ui-stepper-prev</code></td>
+              <td>—</td>
+              <td>Retrocede al paso anterior si hay uno.</td>
+            </tr>
+            <tr>
+              <td><code>ui-stepper-go</code></td>
+              <td><code>&#123; step: number &#125;</code></td>
+              <td>Salta directamente al paso indicado (1-based). Útil para reset o navegación programática.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CSS Parts ────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>CSS Parts</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Part</th><th>Elemento</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>header</code></td><td>Barra superior con dots + counter + botones.</td></tr>
+            <tr><td><code>info</code></td><td>Fila con label del paso actual y porcentaje.</td></tr>
+            <tr><td><code>bar</code></td><td>Contenedor de la barra de progreso.</td></tr>
+            <tr><td><code>panels</code></td><td>Contenedor de los slots de contenido.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Slots ────────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Slots de contenido</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Slot</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>step-1</code>, <code>step-2</code>, … <code>step-N</code></td>
+              <td>
+                Contenido del paso correspondiente. El componente solo muestra el slot del paso
+                activo y oculta los demás. El contenido sigue en el DOM (no se destruye),
+                lo que preserva el estado de los formularios.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

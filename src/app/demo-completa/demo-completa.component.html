@@ -1,0 +1,526 @@
+<div class="page">
+
+  <!-- ── Header ─────────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <span class="badge">Demo completa</span>
+      <h1>Gestión de Órdenes de Inversión</h1>
+      <p class="header-desc">
+        Reactive Forms · <code>ui-stepper</code> · <code>ui-text-input</code> ·
+        <code>ui-select</code> · <code>ui-currency-input</code> ·
+        <code>ui-textarea</code> · <code>ui-check-box</code> · <code>ui-table</code>
+      </p>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="layout w-full" style="display:flex;flex-direction:column;gap:32px;">
+
+      <!-- ══════════════════════════════════════════════════════════════
+           SECCIÓN PRINCIPAL: Stepper form + Info panel
+      ══════════════════════════════════════════════════════════════════ -->
+      <div style="display:grid;grid-template-columns:1fr 296px;gap:24px;align-items:start;">
+
+        <!-- ── Columna izquierda: Formulario ──────────────────────── -->
+        <div style="display:flex;flex-direction:column;gap:16px;min-width:0;">
+
+          <!-- Alert de éxito -->
+          <ui-alert *ngIf="submitted"
+            type="SUCCESS"
+            content="Orden {{ lastSubmitted?.referencia }} registrada correctamente para {{ lastSubmitted?.cliente }}."
+          ></ui-alert>
+
+          <!-- Alertas de advertencia contextuales (step 2) -->
+          <ng-container *ngIf="!submitted && currentStep === 2">
+            <ui-alert *ngIf="largeAmountWarning"
+              type="WARNING"
+              content="Monto superior a $50.000.000 para Persona Natural — se requiere documentación adicional según normativa."
+            ></ui-alert>
+            <ui-alert *ngIf="sellWithoutEquityWarning"
+              type="WARNING"
+              content="El tipo de operación seleccionado no es habitual para el instrumento. Verifica la combinación antes de continuar."
+            ></ui-alert>
+          </ng-container>
+
+          <!-- Alerta de RUT duplicado (step 1) -->
+          <ui-alert *ngIf="!submitted && currentStep === 1 && duplicateRutWarning"
+            type="WARNING"
+            content="El RUT {{ fieldRut }} ya tiene órdenes en el sistema. Verifica si se trata de una operación nueva o una duplicada."
+          ></ui-alert>
+
+          <!-- ── Formulario con Stepper ─────────────────────────── -->
+          <ng-container *ngIf="!submitted">
+            <ui-stepper
+              #stepperEl
+              [steps]="steps"
+              [valid]="stepValidity"
+              [attr.current]="currentStep"
+              (ui-step)="onStep($event)"
+            >
+
+              <!-- ════ Paso 1 — Datos del cliente ══════════════════ -->
+              <div slot="step-1" style="padding:24px;display:flex;flex-direction:column;gap:20px;">
+
+                <!-- Nombre + Tipo de cliente (fila) -->
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                  <div style="flex:1 1 220px;min-width:0;">
+                    <ui-text-input
+                      label="Nombre del cliente"
+                      placeholder="Nombre completo o razón social"
+                      required
+                      [attr.value]="form.get('clientName')!.value"
+                      [attr.invalid]="isInvalid('clientName')"
+                      [attr.error-text]="errorFor('clientName')"
+                      helper-text="Mínimo 3 caracteres, máximo 80"
+                      (ui-change)="onText('clientName', $event)"
+                      (ui-blur)="onBlur('clientName')"
+                    ></ui-text-input>
+                  </div>
+                  <div style="flex:1 1 200px;min-width:0;">
+                    <ui-select
+                      label="Tipo de cliente"
+                      placeholder="Selecciona tipo"
+                      [options]="clientTypes"
+                      [attr.value]="form.get('clientType')!.value"
+                      [attr.invalid]="isInvalid('clientType')"
+                      [attr.error-text]="errorFor('clientType')"
+                      smart-position
+                      (ui-change)="onSelect('clientType', $event)"
+                    ></ui-select>
+                  </div>
+                </div>
+
+                <!-- RUT con validación de dígito verificador -->
+                <div>
+                  <ui-text-input
+                    label="RUT"
+                    placeholder="12.345.678-9"
+                    required
+                    [attr.value]="form.get('rut')!.value"
+                    [attr.invalid]="isInvalid('rut')"
+                    [attr.error-text]="errorFor('rut')"
+                    [attr.helper-text]="helperFor('rut')"
+                    (ui-change)="onText('rut', $event)"
+                    (ui-blur)="onBlur('rut')"
+                  ></ui-text-input>
+                  <!-- Indicador de dígito verificador en tiempo real -->
+                  <div *ngIf="form.get('rut')!.value"
+                    style="margin-top:4px;display:flex;align-items:center;gap:6px;
+                           font-size:0.75rem;padding:0 2px;">
+                    <span *ngIf="form.get('rut')!.errors?.['invalidRutDv']"
+                      style="color:var(--wk-color-danger,#ed0c10);">
+                      ✕ Dígito verificador incorrecto
+                    </span>
+                    <span *ngIf="form.get('rut')!.errors?.['invalidRut']"
+                      style="color:var(--wk-color-danger,#ed0c10);">
+                      ✕ Formato inválido
+                    </span>
+                    <span *ngIf="!form.get('rut')!.errors && form.get('rut')!.value"
+                      style="color:var(--wk-color-action,#28892b);">
+                      ✓ RUT válido
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <ui-text-input
+                  label="Correo electrónico"
+                  type="email"
+                  placeholder="contacto@empresa.com"
+                  required
+                  [attr.value]="form.get('email')!.value"
+                  [attr.invalid]="isInvalid('email')"
+                  [attr.error-text]="errorFor('email')"
+                  (ui-change)="onText('email', $event)"
+                  (ui-blur)="onBlur('email')"
+                ></ui-text-input>
+
+                <!-- Nav -->
+                <div style="display:flex;justify-content:flex-end;
+                            padding-top:8px;border-top:1px solid var(--wk-color-border,#e2e8ea);">
+                  <ui-button rigthIcon="arrow_forward" (ui-click)="nextStep()">Siguiente</ui-button>
+                </div>
+
+              </div>
+
+              <!-- ════ Paso 2 — Orden de inversión ═════════════════ -->
+              <div slot="step-2" style="padding:24px;display:flex;flex-direction:column;gap:20px;">
+
+                <!-- Tipo de operación + Instrumento -->
+                <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                  <div style="flex:1 1 200px;min-width:0;">
+                    <ui-select
+                      label="Tipo de operación"
+                      placeholder="Selecciona operación"
+                      [options]="opTypes"
+                      [attr.value]="form.get('operationType')!.value"
+                      [attr.invalid]="isInvalid('operationType')"
+                      [attr.error-text]="errorFor('operationType')"
+                      smart-position
+                      (ui-change)="onSelect('operationType', $event)"
+                    ></ui-select>
+                  </div>
+                  <div style="flex:1 1 200px;min-width:0;">
+                    <ui-select
+                      label="Instrumento"
+                      placeholder="Selecciona instrumento"
+                      [options]="instruments"
+                      [attr.value]="form.get('instrument')!.value"
+                      [attr.invalid]="isInvalid('instrument')"
+                      [attr.error-text]="errorFor('instrument')"
+                      smart-position
+                      (ui-change)="onSelect('instrument', $event)"
+                    ></ui-select>
+                  </div>
+                </div>
+
+                <!-- Monto con selector de moneda -->
+                <ui-currency-input
+                  label="Monto de la operación"
+                  placeholder="0"
+                  required
+                  [currencies]="currencies"
+                  [attr.value]="form.get('amount')!.value"
+                  [attr.currency]="form.get('currency')!.value"
+                  [attr.min]="1000"
+                  [attr.invalid]="isInvalid('amount')"
+                  [attr.error-text]="errorFor('amount')"
+                  [attr.helper-text]="helperFor('amount')"
+                  (ui-change)="onCurrency($event)"
+                  (ui-blur)="onBlur('amount')"
+                ></ui-currency-input>
+
+                <!-- Número de referencia (opcional, con pattern) -->
+                <ui-text-input
+                  label="N° de referencia"
+                  placeholder="ORD-2026-0001"
+                  [attr.value]="form.get('reference')!.value"
+                  [attr.invalid]="isInvalid('reference')"
+                  [attr.error-text]="errorFor('reference')"
+                  [attr.helper-text]="helperFor('reference')"
+                  (ui-change)="onText('reference', $event)"
+                  (ui-blur)="onBlur('reference')"
+                ></ui-text-input>
+
+                <!-- Observaciones con contador de caracteres -->
+                <ui-textarea
+                  label="Observaciones"
+                  placeholder="Instrucciones especiales, condiciones de mercado, etc."
+                  rows="3"
+                  max-length="250"
+                  show-count
+                  resize="vertical"
+                  [attr.value]="form.get('notes')!.value"
+                  [attr.invalid]="isInvalid('notes')"
+                  [attr.error-text]="errorFor('notes')"
+                  (ui-change)="onText('notes', $event)"
+                  (ui-blur)="onBlur('notes')"
+                ></ui-textarea>
+
+                <!-- Nav -->
+                <div style="display:flex;justify-content:space-between;align-items:center;
+                            padding-top:8px;border-top:1px solid var(--wk-color-border,#e2e8ea);">
+                  <ui-button type="SECONDARY" leftIcon="arrow_back" (ui-click)="prevStep()">Anterior</ui-button>
+                  <ui-button rigthIcon="arrow_forward" (ui-click)="nextStep()">Siguiente</ui-button>
+                </div>
+
+              </div>
+
+              <!-- ════ Paso 3 — Revisión ════════════════════════════ -->
+              <div slot="step-3" style="padding:24px;display:flex;flex-direction:column;gap:20px;">
+
+                <!-- Resumen -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+
+                  <div style="border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;overflow:hidden;">
+                    <div style="padding:8px 14px;background:var(--wk-color-surface-alt,#f6f7f8);
+                                 font-size:0.7rem;font-weight:700;text-transform:uppercase;
+                                 letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);">
+                      Cliente
+                    </div>
+                    <div style="padding:12px 14px;display:flex;flex-direction:column;
+                                 gap:6px;font-size:0.8125rem;">
+                      <span>
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Nombre: </span>
+                        <strong>{{ form.get('clientName')!.value || '—' }}</strong>
+                      </span>
+                      <span>
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">RUT: </span>
+                        {{ form.get('rut')!.value || '—' }}
+                      </span>
+                      <span>
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Correo: </span>
+                        {{ form.get('email')!.value || '—' }}
+                      </span>
+                      <span>
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Tipo: </span>
+                        {{ clientTypeLabel(form.get('clientType')!.value) || '—' }}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div style="border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;overflow:hidden;">
+                    <div style="padding:8px 14px;background:var(--wk-color-surface-alt,#f6f7f8);
+                                 font-size:0.7rem;font-weight:700;text-transform:uppercase;
+                                 letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);">
+                      Orden
+                    </div>
+                    <div style="padding:12px 14px;display:flex;flex-direction:column;
+                                 gap:6px;font-size:0.8125rem;">
+                      <span>
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Tipo: </span>
+                        {{ opLabel(form.get('operationType')!.value) || '—' }}
+                      </span>
+                      <span>
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Instrumento: </span>
+                        {{ instrumentLabel(form.get('instrument')!.value) || '—' }}
+                      </span>
+                      <span>
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Monto: </span>
+                        <strong style="color:var(--wk-color-action,#28892b);">
+                          {{ form.get('currency')!.value }}
+                          {{ form.get('amount')!.value | number }}
+                        </strong>
+                      </span>
+                      <span *ngIf="form.get('reference')!.value">
+                        <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Ref: </span>
+                        {{ form.get('reference')!.value }}
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Notas (si hay) -->
+                <div *ngIf="form.get('notes')!.value"
+                  style="background:var(--wk-color-surface-alt,#f6f7f8);border-radius:8px;
+                         padding:12px 14px;font-size:0.8125rem;">
+                  <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;
+                               letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);
+                               margin-bottom:6px;">Observaciones</div>
+                  <p style="margin:0;color:var(--wk-color-on-surface,#37474f);
+                             white-space:pre-wrap;word-break:break-word;">
+                    {{ form.get('notes')!.value }}
+                  </p>
+                </div>
+
+                <!-- Checkboxes de confirmación -->
+                <div style="display:flex;flex-direction:column;gap:12px;
+                             border-top:1px solid var(--wk-color-border,#e2e8ea);
+                             padding-top:16px;">
+                  <ui-check-box
+                    label="Confirmo que la información ingresada es correcta y autorizo el ingreso de esta orden al sistema."
+                    [attr.checked]="form.get('terms1')!.value ? '' : null"
+                    [attr.required]="true"
+                    (ui-change)="onCheck('terms1', $event)"
+                  ></ui-check-box>
+                  <ui-check-box
+                    label="He leído y acepto los Términos y Condiciones de operación, y las políticas de inversión vigentes."
+                    [attr.checked]="form.get('terms2')!.value ? '' : null"
+                    [attr.required]="true"
+                    (ui-change)="onCheck('terms2', $event)"
+                  ></ui-check-box>
+
+                  <div *ngIf="(form.get('terms1')!.invalid && form.get('terms1')!.touched) ||
+                               (form.get('terms2')!.invalid && form.get('terms2')!.touched)"
+                    style="font-size:0.75rem;color:var(--wk-color-danger,#ed0c10);margin-top:4px;">
+                    Debes aceptar ambas confirmaciones para enviar la orden.
+                  </div>
+                </div>
+
+                <!-- Acciones -->
+                <div style="display:flex;gap:12px;padding-top:4px;flex-wrap:wrap;
+                            align-items:center;justify-content:space-between;">
+                  <ui-button type="SECONDARY" leftIcon="arrow_back" (ui-click)="prevStep()">Anterior</ui-button>
+                  <div style="display:flex;gap:12px;">
+                    <button
+                      (click)="submit()"
+                      [disabled]="!stepValidity[2]"
+                      style="padding:12px 28px;border:none;border-radius:8px;
+                             font-size:0.9375rem;font-weight:600;cursor:pointer;font-family:inherit;
+                             transition:background 0.15s,opacity 0.15s;"
+                      [style.background]="stepValidity[2] ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-border,#e2e8ea)'"
+                      [style.color]="stepValidity[2] ? '#fff' : 'var(--wk-color-on-surface-muted,#546e7a)'"
+                    >
+                      Registrar orden
+                    </button>
+                    <button
+                      type="button"
+                      (click)="form.reset(); currentStep = 1"
+                      style="padding:12px 20px;background:transparent;
+                             border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;
+                             font-size:0.875rem;cursor:pointer;font-family:inherit;
+                             color:var(--wk-color-on-surface,#37474f);">
+                      Limpiar
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </ui-stepper>
+          </ng-container>
+
+          <!-- Botón para nueva orden tras éxito -->
+          <div *ngIf="submitted"
+            style="display:flex;gap:12px;align-items:center;padding:4px 0;">
+            <button (click)="newOrder()"
+              style="padding:12px 24px;background:var(--wk-color-action,#28892b);color:#fff;
+                     border:none;border-radius:8px;font-size:0.9375rem;font-weight:600;
+                     cursor:pointer;font-family:inherit;">
+              + Nueva orden
+            </button>
+            <span style="font-size:0.875rem;color:var(--wk-color-on-surface-muted,#546e7a);">
+              La orden aparece en la tabla de abajo
+            </span>
+          </div>
+
+        </div>
+
+        <!-- ── Columna derecha: Panel de estado (sticky) ─────────── -->
+        <div style="position:sticky;top:24px;display:flex;flex-direction:column;gap:16px;">
+
+          <!-- Progreso global del formulario -->
+          <div style="background:var(--wk-color-surface,#fff);border:1px solid var(--wk-color-border,#e2e8ea);
+                       border-radius:12px;overflow:hidden;">
+            <div style="padding:14px 16px;background:var(--wk-color-surface-alt,#f6f7f8);
+                         border-bottom:1px solid var(--wk-color-border,#e2e8ea);">
+              <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;
+                           letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);">
+                Estado del formulario
+              </div>
+            </div>
+            <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
+
+              <!-- Barra de progreso global -->
+              <div>
+                <div style="display:flex;justify-content:space-between;
+                             font-size:0.75rem;font-weight:600;margin-bottom:6px;">
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">
+                    {{ completedFields }} / {{ totalFieldCount }} campos
+                  </span>
+                  <span [style.color]="completedFields === totalFieldCount
+                    ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-focus,#2772cc)'">
+                    {{ (completedFields / totalFieldCount * 100) | number:'1.0-0' }}%
+                  </span>
+                </div>
+                <div style="height:6px;background:var(--wk-color-border,#e2e8ea);border-radius:3px;overflow:hidden;">
+                  <div style="height:100%;border-radius:inherit;transition:width 0.3s ease;"
+                    [style.width]="(completedFields / totalFieldCount * 100) + '%'"
+                    [style.background]="completedFields === totalFieldCount
+                      ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-focus,#2772cc)'">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Estado por campo -->
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                <div *ngFor="let s of fieldStatuses"
+                  style="display:flex;align-items:center;gap:8px;font-size:0.8125rem;
+                         padding:3px 0;">
+                  <span style="font-size:13px;width:14px;text-align:center;"
+                    [style.color]="s.valid ? 'var(--wk-color-action,#28892b)'
+                      : s.touched ? 'var(--wk-color-danger,#ed0c10)'
+                      : 'var(--wk-color-border,#e2e8ea)'">
+                    {{ s.valid ? '●' : s.touched ? '✕' : '○' }}
+                  </span>
+                  <span [style.color]="s.valid ? 'var(--wk-color-on-surface,#37474f)'
+                          : s.touched ? 'var(--wk-color-danger,#ed0c10)'
+                          : 'var(--wk-color-on-surface-muted,#546e7a)'">
+                    {{ s.label }}
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Advertencias activas -->
+          <div *ngIf="(largeAmountWarning || duplicateRutWarning || sellWithoutEquityWarning) && !submitted"
+            style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 16px;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;
+                         color:#f57c00;margin-bottom:8px;">Advertencias activas</div>
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:0.8125rem;color:#e65100;">
+              <span *ngIf="largeAmountWarning">⚠ Monto elevado para persona natural</span>
+              <span *ngIf="duplicateRutWarning">⚠ RUT con órdenes previas</span>
+              <span *ngIf="sellWithoutEquityWarning">⚠ Operación atípica para instrumento</span>
+            </div>
+          </div>
+
+          <!-- Estadísticas de la tabla -->
+          <div style="background:var(--wk-color-surface,#fff);border:1px solid var(--wk-color-border,#e2e8ea);
+                       border-radius:12px;overflow:hidden;">
+            <div style="padding:14px 16px;background:var(--wk-color-surface-alt,#f6f7f8);
+                         border-bottom:1px solid var(--wk-color-border,#e2e8ea);">
+              <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;
+                           letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);">
+                Estadísticas
+              </div>
+            </div>
+            <div style="padding:16px;display:flex;flex-direction:column;gap:10px;font-size:0.875rem;">
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Órdenes en tabla</span>
+                <strong>{{ rows.length }}</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Pendientes</span>
+                <strong style="color:var(--wk-color-focus,#2772cc);">
+                  {{ pendingCount }}
+                </strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;">
+                <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Total CLP</span>
+                <strong style="color:var(--wk-color-action,#28892b);">{{ totalAmount }}</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Atajos de teclado / tips -->
+          <div style="background:var(--wk-color-surface-alt,#f6f7f8);border-radius:12px;padding:14px 16px;">
+            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;
+                         color:var(--wk-color-on-surface-muted,#546e7a);margin-bottom:8px;">
+              Casos borde en este demo
+            </div>
+            <ul style="margin:0;padding:0 0 0 14px;font-size:0.8125rem;
+                        color:var(--wk-color-on-surface-muted,#546e7a);
+                        display:flex;flex-direction:column;gap:5px;list-style:disc;">
+              <li>RUT con dígito verificador real (mod 11)</li>
+              <li>Alerta si monto &gt; 50M persona natural</li>
+              <li>Alerta de RUT duplicado en tabla</li>
+              <li>Alerta operación atípica instrumento/tipo</li>
+              <li>Currency input con CLP, USD, EUR, UF</li>
+              <li>Textarea con contador y límite de 250 chars</li>
+              <li>Referencia con regex (4-20 alfanumérico)</li>
+              <li>Ambos checkbox requeridos en paso 3</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════
+           TABLA DE ÓRDENES
+      ══════════════════════════════════════════════════════════════════ -->
+      <div style="display:flex;flex-direction:column;gap:12px;">
+
+        <div style="display:flex;align-items:baseline;gap:12px;">
+          <h2 style="margin:0;font-size:1.1rem;">Historial de órdenes</h2>
+          <span style="font-size:0.8125rem;color:var(--wk-color-on-surface-muted,#546e7a);">
+            {{ rows.length }} registros — las nuevas órdenes se agregan al inicio
+          </span>
+        </div>
+
+        <ui-table
+          [columns]="columns"
+          [rows]="rows"
+          row-key="id"
+          paginated
+          page-size="8"
+          selectable
+        ></ui-table>
+
+      </div>
+
+    </div>
+  </main>
+</div>

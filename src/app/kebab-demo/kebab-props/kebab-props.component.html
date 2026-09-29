@@ -1,0 +1,116 @@
+<section class="card-table w-full" aria-labelledby="props-title">
+  <div class="card-table-header">
+    <h2 id="props-title">Propiedades</h2>
+  </div>
+  <div class="card-table-body">
+
+    <!-- ui-kebab-container -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      <code>ui-kebab-container</code>
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>hideList</code></td>
+          <td class="type">boolean</td>
+          <td><code>true</code></td>
+          <td>Controla si la lista está visible. <code>true</code> = cerrado</td>
+        </tr>
+        <tr>
+          <td><code>triggerElement</code></td>
+          <td class="type">Element | null</td>
+          <td><code>null</code></td>
+          <td>Elemento externo usado como trigger. Si es <code>null</code> se muestra el ícono ⋮ interno</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ui-kebab-option -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      <code>ui-kebab-option</code>
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Atributo HTML</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>icon</code></td>
+          <td><code>icon</code></td>
+          <td class="type">string</td>
+          <td><code>''</code></td>
+          <td>Nombre del ícono de Material Icons (ej. <code>'download'</code>). El texto de la opción va como contenido del elemento</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Métodos -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      Métodos públicos de <code>ui-kebab-container</code>
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Método</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>show()</code></td>
+          <td>Abre el menú y empieza a trackear posición</td>
+        </tr>
+        <tr>
+          <td><code>hide()</code></td>
+          <td>Cierra el menú y detiene el tracking</td>
+        </tr>
+        <tr>
+          <td><code>toggle()</code></td>
+          <td>Alterna entre abierto y cerrado</td>
+        </tr>
+        <tr>
+          <td><code>setTrigger(el)</code></td>
+          <td>Asigna un elemento externo como trigger. El posicionamiento se calcula respecto a ese elemento</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Eventos -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      Eventos
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>Emitido por</th>
+          <th>detail</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ui-select</code></td>
+          <td><code>ui-kebab-option</code></td>
+          <td><code>{{ '{' }}{{ '}' }}</code></td>
+          <td>Click en una opción. El contenedor lo escucha para cerrarse automáticamente</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

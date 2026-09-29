@@ -1,0 +1,98 @@
+<section class="grid-1 lg:grid-2  gap-default w-full">
+
+  <!-- Ejemplo visual -->
+  <section class="card w-full" aria-label="Ejemplos de feedback">
+    <div class="card-header">
+      <h2>Feedback — Colores semánticos</h2>
+    </div>
+    <div class="card-body">
+      <p class="desc">Los fondos e íconos se invierten en modo dark para mantener contraste. El ícono sin background siempre usa el token principal (500).</p>
+
+      <div class="feedback-list">
+        <div class="feedback-row" *ngFor="let g of groups">
+
+          <!-- Con background -->
+          <div class="feedback-example"
+            [style.background]="'var(' + g.subtle + ')'">
+            <i class="material-icons" [style.color]="'var(' + g.onSubtle + ')'">{{ g.icon }}</i>
+            <div class="feedback-example__info">
+              <p class="feedback-example__name" [style.color]="'var(' + g.onSubtle + ')'">{{ g.label }}</p>
+              <code class="feedback-example__token">bg: {{ g.subtle }}</code>
+              <code class="feedback-example__token">icon: {{ g.onSubtle }}</code>
+            </div>
+          </div>
+
+          <!-- Sin background -->
+          <div class="feedback-example feedback-example--plain">
+            <i class="material-icons" [style.color]="'var(' + g.main + ')'">{{ g.icon }}</i>
+            <div class="feedback-example__info">
+              <p class="feedback-example__name">Sin fondo</p>
+              <code class="feedback-example__token">icon: {{ g.main }}</code>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabla de tokens -->
+  <section class="card w-full" aria-label="Lista de tokens de feedback">
+    <div class="card-header">
+      <h2>Tokens disponibles</h2>
+    </div>
+    <div class="card-body">
+      <div class="group-list">
+        <div class="group" *ngFor="let g of groups">
+          <h3 class="group__title">
+            <i class="material-icons group__icon" [style.color]="'var(' + g.main + ')'">{{ g.icon }}</i>
+            {{ g.label }}
+          </h3>
+          <div class="token-chips">
+            <code class="t-chip" *ngFor="let t of g.tokens">{{ t }}</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card w-full" aria-label="Lista de tokens de feedback">
+    <div class="card-header">
+      <h2>Tokens prueba</h2>
+    </div>
+    <div class="card-body">
+      <div class="group-list">
+        <div class="group" *ngFor="let prop of semanticColorPalete">
+          <h3 class="group__title">
+            <!-- <i class="material-icons group__icon" [style.color]="'var(' + g.main + ')'">{{ g.icon }}</i> -->
+            {{ prop.name }}
+          </h3>
+          <div class="token-chips">
+            
+            <!-- <code class="t-chip" *ngFor="let t of prop.propiedades">{{ t.label }}</code> -->
+            <div *ngFor="let t of prop.propiedades" >
+              <div class="semantic-color-specification" [ngStyle]='{backgroundColor: t.background.hex, color: t.on.hex}'>
+                <span>{{t.type}}</span>
+                <div class="semantic-color-specification-prop" >
+                  <span class="semantic-color-specification-llave">background-color:</span>
+                  <div class="semantic-color-specification-valor">
+                    <span>{{ t.background.varRef }}</span>
+                    <span>{{ t.background.hex }}</span>
+                  </div>
+                </div>
+                <div class="semantic-color-specification-prop">
+                  <span class="semantic-color-specification-llave">color:</span>
+                  <div class="semantic-color-specification-valor">
+                    <span>{{ t.on.varRef }}</span>
+                    <span>{{ t.on.hex }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>

@@ -1,0 +1,78 @@
+<section class="flex-row gap-default w-full">
+
+  <section class="card w-full" aria-labelledby="tooltip-tipos-title">
+    <div class="card-header">
+      <h2 id="tooltip-tipos-title">Posiciones</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Posición <code>top</code> (default)</p>
+        <div class="flex-row gap-8">
+          <ui-tooltip content="Tooltip arriba">
+            <ui-chip>Hover aquí</ui-chip>
+          </ui-tooltip>
+        </div>
+
+        <p class="label-section">Posición <code>bottom</code></p>
+        <div class="flex-row gap-8">
+          <ui-tooltip content="Tooltip abajo" position="bottom">
+            <ui-chip>Hover aquí</ui-chip>
+          </ui-tooltip>
+        </div>
+
+        <p class="label-section">Posición <code>left</code></p>
+        <div class="flex-row gap-8">
+          <ui-tooltip content="Tooltip izquierda" position="left">
+            <ui-chip>Hover aquí</ui-chip>
+          </ui-tooltip>
+        </div>
+
+        <p class="label-section">Posición <code>right</code></p>
+        <div class="flex-row gap-8">
+          <ui-tooltip content="Tooltip derecha" position="right">
+            <ui-chip>Hover aquí</ui-chip>
+          </ui-tooltip>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="card w-full" aria-labelledby="tooltip-usos-title">
+    <div class="card-header">
+      <h2 id="tooltip-usos-title">Casos de uso</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Sobre un botón</p>
+        <div class="flex-row gap-8">
+          <ui-tooltip content="Guardar cambios" position="top">
+            <ui-button>Guardar</ui-button>
+          </ui-tooltip>
+          <ui-tooltip content="Acción irreversible" position="top">
+            <ui-button type="SECONDARY">Eliminar</ui-button>
+          </ui-tooltip>
+        </div>
+
+        <p class="label-section">Sobre un icono de ayuda</p>
+        <div class="flex-row gap-8 flex-a-c">
+          <span>Campo requerido</span>
+          <ui-tooltip content="Este campo es obligatorio para continuar" position="right">
+            <span class="material-icons" style="font-size:1rem;color:var(--wk-color-on-surface-muted);cursor:default">help_outline</span>
+          </ui-tooltip>
+        </div>
+
+        <p class="label-section">Texto largo</p>
+        <div class="flex-row gap-8">
+          <ui-tooltip content="Este es un mensaje más largo que explica en detalle qué hace esta acción cuando el usuario hace hover." position="top">
+            <ui-chip color="info">Info detallada</ui-chip>
+          </ui-tooltip>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>

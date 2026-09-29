@@ -1,0 +1,156 @@
+<section class="flex-col gap-default w-full">
+
+  <div class="flex-row gap-default w-full">
+
+    <!-- Simple con búsqueda -->
+    <section class="card w-full" aria-labelledby="sel-simple-title">
+      <div class="card-header">
+        <h2 id="sel-simple-title">Simple — con búsqueda</h2>
+      </div>
+      <div class="card-body flex-col gap-16">
+
+        <ui-select
+          label="País"
+          placeholder="Selecciona un país"
+          helper-text="Búsqueda activa: ≥ 8 opciones."
+          [options]="countries"
+          [value]="selectedCountry"
+          (ui-change)="onCountryChange($event)"
+        ></ui-select>
+
+        <div class="flex-col gap-8 border radius-8 p-8">
+          <p class="label-section">Evento <code>(ui-change)</code></p>
+          @if (selectedCountry) {
+            <span class="chip chip--active">value: "{{ selectedCountry }}"</span>
+          } @else {
+            <span class="chip">Sin selección</span>
+          }
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Ícono y descripción -->
+    <section class="card w-full" aria-labelledby="sel-icon-title">
+      <div class="card-header">
+        <h2 id="sel-icon-title">Con ícono y descripción</h2>
+      </div>
+      <div class="card-body flex-col gap-16">
+
+        <ui-select
+          label="Rol de usuario"
+          placeholder="Elige un rol"
+          helper-text="Facturación está deshabilitada."
+          [options]="roles"
+          [value]="selectedRole"
+          (ui-change)="onRoleChange($event)"
+        ></ui-select>
+
+        <div class="flex-col gap-8 border radius-8 p-8">
+          <p class="label-section">Evento <code>(ui-change)</code></p>
+          @if (selectedRole) {
+            <span class="chip chip--active">value: "{{ selectedRole }}"</span>
+          } @else {
+            <span class="chip">Sin selección</span>
+          }
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <div class="flex-row gap-default w-full">
+
+    <!-- Grupos -->
+    <section class="card w-full" aria-labelledby="sel-groups-title">
+      <div class="card-header">
+        <h2 id="sel-groups-title">Grupos <code>option.group</code></h2>
+      </div>
+      <div class="card-body flex-col gap-16">
+
+        <ui-select
+          label="Área"
+          placeholder="Selecciona un área"
+          [options]="departments"
+          [value]="selectedDept"
+          (ui-change)="onDeptChange($event)"
+          smart-position
+        ></ui-select>
+
+        <div class="flex-col gap-8 border radius-8 p-8">
+          <p class="label-section">Evento <code>(ui-change)</code></p>
+          @if (selectedDept) {
+            <span class="chip chip--active">value: "{{ selectedDept }}"</span>
+          } @else {
+            <span class="chip">Sin selección</span>
+          }
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Estado error -->
+    <section class="card w-full" aria-labelledby="sel-error-title">
+      <div class="card-header">
+        <h2 id="sel-error-title">Estado error</h2>
+      </div>
+      <div class="card-body flex-col gap-16">
+
+        <ui-select
+          label="País requerido"
+          placeholder="Selecciona un país"
+          error-text="Debes seleccionar un país."
+          [options]="countries"
+          [value]="selectedInvalid"
+          [invalid]="!selectedInvalid"
+          (ui-change)="onInvalidChange($event)"
+        ></ui-select>
+
+        <div class="flex-col gap-8 border radius-8 p-8">
+          <p class="label-section">Estado de validación</p>
+          @if (selectedInvalid) {
+            <span class="chip chip--valid">Válido: "{{ selectedInvalid }}"</span>
+          } @else {
+            <span class="chip chip--invalid">Sin selección</span>
+          }
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <div class="flex-row gap-default w-full">
+
+    <section class="card w-full" aria-labelledby="sel-disabled-title">
+      <div class="card-header">
+        <h2 id="sel-disabled-title">Deshabilitado</h2>
+      </div>
+      <div class="card-body">
+        <ui-select
+          label="País"
+          placeholder="No disponible"
+          [options]="countries"
+          disabled
+        ></ui-select>
+      </div>
+    </section>
+
+    <section class="card w-full" aria-labelledby="sel-readonly-title">
+      <div class="card-header">
+        <h2 id="sel-readonly-title">Solo lectura</h2>
+      </div>
+      <div class="card-body">
+        <ui-select
+          label="País"
+          [options]="countries"
+          value="cl"
+          readonly
+        ></ui-select>
+      </div>
+    </section>
+
+  </div>
+
+</section>

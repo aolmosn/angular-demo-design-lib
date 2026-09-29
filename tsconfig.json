@@ -1,0 +1,64 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "useDefineForClassFields": false,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "paths": {
+      "@design-lib/angular":             ["../design-lib/packages/angular/src/public-api.ts"],
+      "@design-lib/angular/text-field":  ["../design-lib/packages/angular/src/lib/text-field/index.ts"],
+      "@design-lib/angular/alert":       ["../design-lib/packages/angular/src/lib/alert/index.ts"],
+      "@design-lib/web-components":      ["../design-lib/packages/web-components/src/index.ts"],
+      "@design-lib/web-components/text-input": ["../design-lib/packages/web-components/src/components/text-input/index.ts"],
+      "@design-lib/web-components/alert":     ["../design-lib/packages/web-components/src/components/alert/index.ts"],
+      "@design-lib/web-components/check-box": ["../design-lib/packages/web-components/src/components/check-box/index.ts"],
+      "@design-lib/angular/check-box":        ["../design-lib/packages/angular/src/lib/check-box/index.ts"],
+      "@design-lib/web-components/radio-button": ["../design-lib/packages/web-components/src/components/radio-button/index.ts"],
+      "@design-lib/angular/radio-button":        ["../design-lib/packages/angular/src/lib/radio-button/index.ts"],
+      "@design-lib/web-components/button": ["../design-lib/packages/web-components/src/components/button/index.ts"],
+      "@design-lib/angular/button":        ["../design-lib/packages/angular/src/lib/button/index.ts"],
+      "@design-lib/web-components/kebab": ["../design-lib/packages/web-components/src/components/kebab/index.ts"],
+      "@design-lib/angular/kebab":        ["../design-lib/packages/angular/src/lib/kebab/index.ts"],
+      "@design-lib/web-components/onboarding": ["../design-lib/packages/web-components/src/components/onboarding/index.ts"],
+      "@design-lib/angular/onboarding":        ["../design-lib/packages/angular/src/lib/onboarding/index.ts"],
+      "@design-lib/web-components/chip": ["../design-lib/packages/web-components/src/components/chip/index.ts"],
+      "@design-lib/angular/chip":        ["../design-lib/packages/angular/src/lib/chip/index.ts"],
+      "@design-lib/web-components/tooltip":  ["../design-lib/packages/web-components/src/components/tooltip/index.ts"],
+      "@design-lib/web-components/calendar":          ["../design-lib/packages/web-components/src/components/calendar/index.ts"],
+      "@design-lib/web-components/calendar-extended": ["../design-lib/packages/web-components/src/components/calendar/calendar-extended.ts"],
+      "@design-lib/web-components/select":            ["../design-lib/packages/web-components/src/components/select/index.ts"],
+      "@design-lib/web-components/textarea":          ["../design-lib/packages/web-components/src/components/textarea/index.ts"],
+      "@design-lib/web-components/currency-input":    ["../design-lib/packages/web-components/src/components/currency-input/index.ts"],
+      "@design-lib/web-components/table":             ["../design-lib/packages/web-components/src/components/table/index.ts"],
+      "@design-lib/web-components/stepper":           ["../design-lib/packages/web-components/src/components/stepper/index.ts"],
+      "@design-lib/web-components/input-date":        ["../design-lib/packages/web-components/src/components/date-input/index.ts"],
+      "@design-lib/core":                     ["../design-lib/packages/core/src/index.ts"],
+      "@design-lib/tokens":                   ["../design-lib/packages/tokens/src/index.ts"]
+    },
+    "rootDir": "..",
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "preserve",
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ]
+}

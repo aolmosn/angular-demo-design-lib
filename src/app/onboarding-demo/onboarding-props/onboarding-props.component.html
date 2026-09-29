@@ -1,0 +1,124 @@
+<section class="card-table w-full" aria-labelledby="ob-props-title">
+  <div class="card-table-header">
+    <h2 id="ob-props-title">Propiedades</h2>
+  </div>
+  <div class="card-table-body">
+
+    <!-- Input: steps -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      Inputs de <code>ui-onboarding</code>
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>steps</code></td>
+          <td class="type">OnboardingStep[]</td>
+          <td><code>[]</code></td>
+          <td>Array de pasos del recorrido. Cada paso necesita <code>selector</code>, <code>title</code> y <code>description</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- OnboardingStep -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      Interfaz <code>OnboardingStep</code>
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Campo</th>
+          <th>Tipo</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>selector</code></td>
+          <td class="type">string</td>
+          <td>Selector CSS del elemento a resaltar (ej. <code>'#mi-id'</code>, <code>'.mi-clase'</code>)</td>
+        </tr>
+        <tr>
+          <td><code>title</code></td>
+          <td class="type">string</td>
+          <td>Título que muestra el coachmark sobre el elemento</td>
+        </tr>
+        <tr>
+          <td><code>description</code></td>
+          <td class="type">string</td>
+          <td>Descripción o explicación del paso</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Métodos públicos -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      Métodos públicos (via <code>@ViewChild</code> o <code>ElementRef</code>)
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Método</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>start()</code></td>
+          <td>Inicia el recorrido desde el primer paso</td>
+        </tr>
+        <tr>
+          <td><code>stop()</code></td>
+          <td>Cierra el onboarding y emite <code>ui-onboarding-close</code></td>
+        </tr>
+        <tr>
+          <td><code>next()</code></td>
+          <td>Avanza al paso siguiente. Si es el último, cierra y emite <code>ui-onboarding-finish</code></td>
+        </tr>
+        <tr>
+          <td><code>prev()</code></td>
+          <td>Retrocede al paso anterior</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Eventos -->
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">
+      Eventos
+    </p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>detail</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ui-onboarding-step</code></td>
+          <td class="type">{{ '{' }} step, index {{ '}' }}</td>
+          <td>Se emite al navegar a cada paso. <code>index</code> es base 0</td>
+        </tr>
+        <tr>
+          <td><code>ui-onboarding-finish</code></td>
+          <td>—</td>
+          <td>Se emite al completar el último paso</td>
+        </tr>
+        <tr>
+          <td><code>ui-onboarding-close</code></td>
+          <td>—</td>
+          <td>Se emite al cerrar el onboarding con <code>stop()</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

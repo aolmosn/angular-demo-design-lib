@@ -1,0 +1,69 @@
+<section class="card" aria-labelledby="form-title">
+  <div class="card-header">
+    <h2>Playground</h2>
+  </div>
+  <div >
+    <div class="flex-col gap-16 ">
+      <div>
+        <div class="flex-col gap-16 my-16">
+          <form [formGroup]="form" class="flex-col gap-16">
+            <ui-text-field 
+              formControlName="type" 
+              label="type" 
+              placeholder="Ej. INFO" 
+              [required]="true"
+              [errorText]="getError('type')"></ui-text-field>
+            <ui-text-field 
+              formControlName="text" 
+              label="Contenido del alert" 
+              placeholder="Ej. Texto de prueba" 
+              [required]="true"
+              [errorText]="getError('type')"></ui-text-field>
+            <div>
+              <!-- <ui-
+              <input type="checkbox" formControlName="noBackground" >
+              <label for="subscribe">no-background</label> -->
+
+              <ui-check-box formControlName="noBackground">
+                no-background
+              </ui-check-box>
+            </div>
+          </form>
+        </div>
+        <div class="py-16 pt-16 mt-24  border-t">
+          <ui-alert [type]="type" [noBackground]="form.controls['noBackground'].value || false">
+            {{ form.controls['text'].value }}
+          </ui-alert>
+        </div>
+        
+      </div>
+
+      <div>
+        <!-- Código generado -->
+        <div style="background:var(--dl-code-bg,#0f172a);border-top:1px solid var(--dl-border);overflow:hidden;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <span style="font-size:0.75rem;color:#94a3b8;font-family:monospace;">JS</span>
+            <button id="pg-copy" style="font-size:0.75rem;padding:0.2rem 0.6rem;border:1px solid rgba(255,255,255,0.15);border-radius:4px;background:transparent;color:#94a3b8;cursor:pointer;">
+              Copiar
+            </button>
+          </div>
+          <pre id="pg-code" style="margin:0;padding:1rem;font-size:0.8125rem;color:#e2e8f0;overflow-x:auto;font-family:'Fira Code',Consolas,monospace;white-space:pre;line-height:1.6;">{{ codejs }}</pre>
+        </div>
+      </div>
+
+      <div>
+        <!-- Código generado -->
+        <div style="background:var(--dl-code-bg,#0f172a);border-top:1px solid var(--dl-border);border-radius:0 0 8px 8px;overflow:hidden;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:0.5rem 1rem;border-bottom:1px solid rgba(255,255,255,0.06);">
+            <span style="font-size:0.75rem;color:#94a3b8;font-family:monospace;">HTML</span>
+            <button id="pg-copy" style="font-size:0.75rem;padding:0.2rem 0.6rem;border:1px solid rgba(255,255,255,0.15);border-radius:4px;background:transparent;color:#94a3b8;cursor:pointer;">
+              Copiar
+            </button>
+          </div>
+          <pre id="pg-code" style="margin:0;padding:1rem;font-size:0.8125rem;color:#e2e8f0;overflow-x:auto;font-family:'Fira Code',Consolas,monospace;white-space:pre;line-height:1.6;">{{ code }}</pre>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

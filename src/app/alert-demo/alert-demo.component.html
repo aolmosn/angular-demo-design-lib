@@ -1,0 +1,132 @@
+<div class="page">
+
+  <!-- ── Header ─────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <span class="badge">{{ lib }}</span>
+      <h1>{{ title }}</h1>
+      <p class="header-desc">
+         {{ testingComponent[0] }} <!-- · <code>formControlName</code> · <code>ControlValueAccessor</code> -->
+      </p>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="layout flex-col gap-default">
+      
+      <section class="card" aria-labelledby="form-title">
+        <div class="card-header">
+          <h2>Tipos</h2>
+        </div>
+        <div class="card-body">
+
+          <div class="flex-col gap-16">
+  
+            <ui-alert type="SUCCESS">
+              Tu solicitud fue procesada correctamente.
+            </ui-alert>
+    
+            <ui-alert type="INFO">
+              Revisá tu bandeja de entrada para confirmar tu cuenta.
+            </ui-alert>
+    
+            <ui-alert type="WARNING">
+              Tu sesión expira en 5 minutos.
+            </ui-alert>
+    
+            <ui-alert type="ERROR">
+              No se pudo completar la operación. Intentá nuevamente.
+            </ui-alert>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="form-title">
+        <div class="card-header">
+          <h2>Tipos din fondo</h2>
+        </div>
+        <div class="card-body">
+
+          <div class="flex-col gap-16">
+  
+            <ui-alert type="SUCCESS" [noBackground]="true">
+              Tu solicitud fue procesada correctamente.
+            </ui-alert>
+    
+            <ui-alert type="INFO" [noBackground]="true">
+              Revisá tu bandeja de entrada para confirmar tu cuenta.
+            </ui-alert>
+    
+            <ui-alert type="WARNING" [noBackground]="true">
+              Tu sesión expira en 5 minutos.
+            </ui-alert>
+    
+            <ui-alert type="ERROR" [noBackground]="true">
+              No se pudo completar la operación. Intentá nuevamente.
+            </ui-alert>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-table" aria-labelledby="form-title">
+        <div class="card-table-header">
+          <h2>Propiedades</h2>
+        </div>
+        <div class="card-table-body">
+
+          <table class="dl-table">
+            <thead>
+              <tr>
+                <th>Propiedad</th>
+                <th>Atributo HTML</th>
+                <th>Tipo</th>
+                <th>Default</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>type</code></td>
+                <td><code>type</code></td>
+                <td class="type">'INFO' | 'SUCCESS' | 'WARNING' | 'ERROR'</td>
+                <td><code>'INFO'</code></td>
+                <td>Variante visual y semántica de la alerta</td>
+              </tr>
+              <tr>
+                <td><code>noBackground</code></td>
+                <td><code>no-background</code></td>
+                <td class="type">boolean</td>
+                <td><code>false</code></td>
+                <td>Elimina el color de fondo, solo muestra el ícono y texto</td>
+              </tr>
+              <tr>
+                <td><code>content</code></td>
+                <td><code>content</code></td>
+                <td class="type">string</td>
+                <td><code>''</code></td>
+                <td>Texto de la alerta (alternativa al slot por defecto)</td>
+              </tr>
+              <tr>
+                <td><code>icons</code></td>
+                <td><em>solo JS</em></td>
+                <td class="type">Partial&lt;Record&lt;AlertType, string&gt;&gt;</td>
+                <td><code></code></td>
+                <td>Sobreescribe el ícono de una o más variantes. Se setea como property (<code>el.icons = &#123; SUCCESS: 'task_alt' &#125;</code>), no como atributo HTML</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+
+      <app-alert-playground></app-alert-playground>
+
+      <app-alert-wapper-demo></app-alert-wapper-demo>
+    </div>
+  </main>
+
+</div>
+
+
+
+

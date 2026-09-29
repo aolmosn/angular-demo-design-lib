@@ -1,0 +1,248 @@
+<section class="card w-full" aria-labelledby="stp-tipos-title">
+  <div class="card-header">
+    <h2 id="stp-tipos-title">Estados y variantes</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Demo 1: Básico ──────────────────────────────────────── -->
+    <div class="card">
+      <div class="card-header"><h3>Básico — navegación libre</h3></div>
+      <div class="card-body flex-col gap-0" style="padding:0;">
+        <ui-stepper
+          [steps]="basicSteps"
+          [attr.current]="basicCurrentStep"
+          (ui-step)="onBasicStep($event)"
+        >
+          <div slot="step-1" style="padding:24px;">
+            <p style="margin:0 0 8px;font-weight:600;">Información general</p>
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Este es el contenido del <strong>Paso 1</strong>. Puedes navegar libremente
+              sin ninguna restricción usando los botones de la barra superior.
+            </p>
+          </div>
+          <div slot="step-2" style="padding:24px;">
+            <p style="margin:0 0 8px;font-weight:600;">Dirección de envío</p>
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Contenido del <strong>Paso 2</strong>. El punto ①
+              en la barra queda verde (completado) y es clicable para volver.
+            </p>
+          </div>
+          <div slot="step-3" style="padding:24px;">
+            <p style="margin:0 0 8px;font-weight:600;">Confirmación</p>
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Último paso — el botón "siguiente" está deshabilitado porque no hay
+              más pasos. La barra de progreso muestra <strong>100%</strong>.
+            </p>
+          </div>
+        </ui-stepper>
+      </div>
+    </div>
+
+    <!-- ── Demo 2: Con validación ──────────────────────────────── -->
+    <div class="card">
+      <div class="card-header"><h3>Con validación — el botón "siguiente" se bloquea</h3></div>
+      <div class="card-body flex-col gap-0" style="padding:0;">
+        <ui-stepper
+          [steps]="validSteps"
+          [valid]="stepValidity"
+          [attr.current]="validCurrentStep"
+          (ui-step)="onValidStep($event)"
+        >
+
+          <!-- Paso 1: nombre + email requeridos -->
+          <div slot="step-1" style="padding:24px;display:flex;flex-direction:column;gap:16px;">
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Completa los campos para habilitar el botón <strong>›</strong>.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label style="font-size:0.8125rem;font-weight:600;">
+                Nombre completo <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+              </label>
+              <input
+                type="text"
+                [(ngModel)]="vName"
+                placeholder="Ej. Ana García"
+                style="height:38px;padding:0 12px;border:1px solid var(--wk-color-border,#e2e8ea);
+                       border-radius:6px;font-size:0.875rem;font-family:inherit;outline:none;
+                       transition:border-color 0.15s;"
+              />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <label style="font-size:0.8125rem;font-weight:600;">
+                Correo electrónico <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+              </label>
+              <input
+                type="email"
+                [(ngModel)]="vEmail"
+                placeholder="correo@ejemplo.com"
+                style="height:38px;padding:0 12px;border:1px solid var(--wk-color-border,#e2e8ea);
+                       border-radius:6px;font-size:0.875rem;font-family:inherit;outline:none;
+                       transition:border-color 0.15s;"
+              />
+            </div>
+            <p style="margin:0;font-size:0.75rem;color:var(--wk-color-on-surface-muted,#546e7a);">
+              Estado:
+              <span [style.color]="stepValidity[0] ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-danger,#ed0c10)'">
+                {{ stepValidity[0] ? '✓ Listo para continuar' : '✗ Faltan datos requeridos' }}
+              </span>
+            </p>
+          </div>
+
+          <!-- Paso 2: plan + términos -->
+          <div slot="step-2" style="padding:24px;display:flex;flex-direction:column;gap:16px;">
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Selecciona un plan y acepta los términos para continuar.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <label style="font-size:0.8125rem;font-weight:600;">Plan</label>
+              <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                <label *ngFor="let p of ['Básico','Profesional','Empresarial']"
+                  style="display:flex;align-items:center;gap:8px;cursor:pointer;
+                         padding:10px 16px;border-radius:8px;border:2px solid;font-size:0.875rem;
+                         transition:all 0.15s;"
+                  [style.border-color]="vPlan === p ? 'var(--wk-color-focus,#2772cc)' : 'var(--wk-color-border,#e2e8ea)'"
+                  [style.background]="vPlan === p ? 'color-mix(in srgb,var(--wk-color-focus,#2772cc) 8%,transparent)' : 'transparent'"
+                >
+                  <input type="radio" [(ngModel)]="vPlan" [value]="p"
+                    style="accent-color:var(--wk-color-focus,#2772cc);" />
+                  {{ p }}
+                </label>
+              </div>
+            </div>
+            <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.875rem;">
+              <input type="checkbox" [(ngModel)]="vTerms"
+                style="width:16px;height:16px;accent-color:var(--wk-color-action,#28892b);cursor:pointer;" />
+              Acepto los términos y condiciones del servicio
+            </label>
+            <p style="margin:0;font-size:0.75rem;color:var(--wk-color-on-surface-muted,#546e7a);">
+              Estado:
+              <span [style.color]="stepValidity[1] ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-danger,#ed0c10)'">
+                {{ stepValidity[1] ? '✓ Listo para continuar' : '✗ Selecciona un plan y acepta los términos' }}
+              </span>
+            </p>
+          </div>
+
+          <!-- Paso 3: resumen -->
+          <div slot="step-3" style="padding:24px;display:flex;flex-direction:column;gap:16px;">
+            <p style="margin:0 0 4px;font-weight:600;">Revisa tu información</p>
+            <div style="background:var(--wk-color-surface-alt,#f6f7f8);border-radius:8px;padding:16px;
+                        display:flex;flex-direction:column;gap:10px;font-size:0.875rem;">
+              <div style="display:flex;gap:8px;">
+                <span style="font-weight:600;min-width:100px;color:var(--wk-color-on-surface-muted,#546e7a);">Nombre:</span>
+                <span>{{ vName || '—' }}</span>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <span style="font-weight:600;min-width:100px;color:var(--wk-color-on-surface-muted,#546e7a);">Correo:</span>
+                <span>{{ vEmail || '—' }}</span>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <span style="font-weight:600;min-width:100px;color:var(--wk-color-on-surface-muted,#546e7a);">Plan:</span>
+                <span>{{ vPlan || '—' }}</span>
+              </div>
+            </div>
+            <button
+              style="align-self:flex-start;padding:10px 24px;background:var(--wk-color-action,#28892b);
+                     color:#fff;border:none;border-radius:8px;font-size:0.875rem;font-weight:600;
+                     cursor:pointer;font-family:inherit;"
+            >
+              Enviar registro
+            </button>
+          </div>
+
+        </ui-stepper>
+      </div>
+    </div>
+
+    <!-- ── Demo 3: Controlado + eventos externos ──────────────── -->
+    <div class="card">
+      <div class="card-header"><h3>Controlado — eventos externos + log</h3></div>
+      <div class="card-body flex-col gap-16">
+
+        <!-- Botones de control externo -->
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+          <span style="font-size:0.8125rem;color:var(--wk-color-on-surface-muted,#546e7a);font-weight:600;">
+            Control externo:
+          </span>
+          <button (click)="goPrevExternal()"
+            style="padding:6px 14px;border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                   background:var(--wk-color-surface,#fff);font-size:0.8125rem;cursor:pointer;font-family:inherit;">
+            ← ui-stepper-prev
+          </button>
+          <button (click)="goNextExternal()"
+            style="padding:6px 14px;border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                   background:var(--wk-color-surface,#fff);font-size:0.8125rem;cursor:pointer;font-family:inherit;">
+            ui-stepper-next →
+          </button>
+          <button *ngFor="let n of [1,2,3,4]" (click)="goToExternal(n)"
+            style="padding:6px 12px;border:1px solid var(--wk-color-focus,#2772cc);border-radius:6px;
+                   background:transparent;color:var(--wk-color-focus,#2772cc);font-size:0.8125rem;
+                   cursor:pointer;font-family:inherit;">
+            ir al paso {{ n }}
+          </button>
+          <button (click)="resetCtrl()"
+            style="padding:6px 14px;border:1px solid var(--wk-color-danger,#ed0c10);border-radius:6px;
+                   background:transparent;color:var(--wk-color-danger,#ed0c10);font-size:0.8125rem;
+                   cursor:pointer;font-family:inherit;">
+            reset
+          </button>
+        </div>
+
+        <!-- El stepper controlado -->
+        <ui-stepper
+          #ctrlStepper
+          [steps]="ctrlSteps"
+          [attr.current]="ctrlCurrent"
+          (ui-step)="onCtrlStep($event)"
+        >
+          <div slot="step-1" style="padding:24px;">
+            <p style="margin:0 0 6px;font-weight:600;">Inicio del flujo</p>
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Usa los botones de arriba (externos al componente) o los chevrons de la barra
+              para navegar. Angular escucha <code>ui-step</code> y actualiza
+              <code>[current]</code>.
+            </p>
+          </div>
+          <div slot="step-2" style="padding:24px;">
+            <p style="margin:0 0 6px;font-weight:600;">Proceso en ejecución</p>
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Contenido dinámico del Paso 2. Aquí iría un formulario,
+              un panel de configuración, etc.
+            </p>
+          </div>
+          <div slot="step-3" style="padding:24px;">
+            <p style="margin:0 0 6px;font-weight:600;">Resultado obtenido</p>
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Paso 3 de 4 — el botón "siguiente" sigue habilitado.
+            </p>
+          </div>
+          <div slot="step-4" style="padding:24px;">
+            <p style="margin:0 0 6px;font-weight:600;">Cierre y archivado</p>
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Último paso — progreso al 100%.
+            </p>
+          </div>
+        </ui-stepper>
+
+        <!-- Log de eventos -->
+        <div style="border:1px solid var(--wk-color-border,#cfd8dc);border-radius:8px;
+             padding:10px 12px;font-size:0.8125rem;">
+          <span style="font-weight:600;display:block;margin-bottom:6px;">
+            Log de eventos <code>ui-step</code>
+          </span>
+          <div *ngIf="ctrlLog.length === 0"
+            style="color:var(--wk-color-on-surface-muted,#546e7a);font-style:italic;">
+            (sin eventos aún — navega para ver los cambios)
+          </div>
+          <div *ngFor="let entry of ctrlLog"
+            style="font-family:monospace;font-size:0.75rem;
+                   color:var(--wk-color-on-surface,#37474f);padding:2px 0;">
+            {{ entry }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

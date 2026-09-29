@@ -1,0 +1,226 @@
+<section class="card w-full" aria-labelledby="ci-tipos-title">
+  <div class="card-header">
+    <h2 id="ci-tipos-title">Estados y variantes</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Fila 1: moneda única vs selector múltiple ────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- Moneda única (sin selector) -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Moneda única (CLP — sin decimales)</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Monto"
+            currency="CLP"
+            [currencies]="singleCurrencies"
+            helper-text="Solo acepta enteros (decimals=0 heredado de CLP)."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <!-- USD con 2 decimales -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Moneda única (USD — 2 decimales)</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Precio"
+            currency="USD"
+            [currencies]="usdCurrencies"
+            helper-text="Acepta hasta 2 decimales."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <!-- Selector múltiple -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Selector de moneda múltiple</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Monto a transferir"
+            currency="CLP"
+            [currencies]="currencies"
+            helper-text="Haz clic en la moneda para cambiarla."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Fila 2: decimales configurables ────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- decimals="0" explícito -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>decimals="0" (solo enteros)</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Precio (sin decimales)"
+            currency="USD"
+            [currencies]="usdCurrencies"
+            decimals="0"
+            helper-text="Sobreescribe los 2 decimales de USD."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <!-- decimals="4" para UF -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>decimals="4" (UF)</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Monto en UF"
+            currency="UF"
+            [currencies]="currencies"
+            helper-text="Hasta 4 decimales para mayor precisión."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <!-- Con valor inicial -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Con valor inicial</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Saldo actual"
+            currency="USD"
+            [currencies]="currencies"
+            [attr.value]="1500000"
+            helper-text="Valor precargado desde el sistema."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Fila 3: estados de validación ──────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- Error -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Error</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Monto mínimo"
+            currency="CLP"
+            [currencies]="singleCurrencies"
+            [attr.value]="500"
+            invalid
+            error-text="El monto mínimo es $1.000."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <!-- Deshabilitado -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Deshabilitado</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Saldo bloqueado"
+            currency="USD"
+            [currencies]="usdCurrencies"
+            [attr.value]="250000"
+            disabled
+            helper-text="Cuenta con restricción de movimiento."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <!-- Solo lectura -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Solo lectura</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Monto aprobado"
+            currency="CLP"
+            [currencies]="singleCurrencies"
+            [attr.value]="3750000"
+            readonly
+            helper-text="Aprobado por el área financiera."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Requerido ────────────────────────────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Requerido</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Monto de la operación"
+            currency="CLP"
+            [currencies]="currencies"
+            required
+            helper-text="Este campo es obligatorio."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Con min / max</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Inversión (entre $100 y $10.000)"
+            currency="USD"
+            [currencies]="usdCurrencies"
+            min="100"
+            max="10000"
+            helper-text="El valor se ajusta al salir del campo."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Sin selector (solo símbolo)</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-currency-input
+            label="Comisión"
+            currency="USD"
+            helper-text="currencies vacío: muestra símbolo sin interacción."
+          ></ui-currency-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Demo interactivo ────────────────────────────────────── -->
+    <div class="card w-full">
+      <div class="card-header"><h3>Interactivo</h3></div>
+      <div class="card-body flex-col gap-16">
+
+        <ui-currency-input
+          label="Monto de la transacción"
+          [attr.currency]="interactiveCurrency"
+          [currencies]="currencies"
+          helper-text="Selecciona la moneda y escribe el monto."
+          (ui-change)="onInteractiveChange($event)"
+          (ui-currency-change)="onCurrencyChange($event)"
+        ></ui-currency-input>
+
+        <div class="flex-col gap-8" style="border:1px solid var(--wk-color-border,#cfd8dc);
+             border-radius:8px;padding:8px;font-size:0.8125rem;">
+          <span style="font-weight:600;">Último evento ui-change</span>
+          <ng-container *ngIf="lastEvent; else noEvent">
+            <div class="flex-row gap-8" style="flex-wrap:wrap;">
+              <span class="chip chip--active">currency={{ lastEvent.currency }}</span>
+              <span class="chip chip--active">value={{ lastEvent.value }}</span>
+            </div>
+            <div style="font-family:monospace;">formatted="{{ lastEvent.formatted }}"</div>
+          </ng-container>
+          <ng-template #noEvent>
+            <span style="color:var(--wk-color-on-surface-muted,#546e7a);">
+              Aún no hay eventos.
+            </span>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

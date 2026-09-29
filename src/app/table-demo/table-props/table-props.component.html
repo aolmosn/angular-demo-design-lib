@@ -1,0 +1,270 @@
+<section class="card w-full" aria-labelledby="tbl-props-title">
+  <div class="card-header">
+    <h2 id="tbl-props-title">API del componente</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Propiedades ──────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Propiedades</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Propiedad (JS)</th>
+              <th>Atributo HTML</th>
+              <th>Tipo</th>
+              <th>Default</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>columns</code></td>
+              <td>— (solo property)</td>
+              <td><code>TableColumn[]</code></td>
+              <td><code>[]</code></td>
+              <td>Definición de columnas. Se pasa como propiedad JS (no serializable como atributo).</td>
+            </tr>
+            <tr>
+              <td><code>rows</code></td>
+              <td>— (solo property)</td>
+              <td><code>Record&lt;string,any&gt;[]</code></td>
+              <td><code>[]</code></td>
+              <td>Array de objetos que representa cada fila de datos.</td>
+            </tr>
+            <tr>
+              <td><code>rowKey</code></td>
+              <td><code>row-key</code></td>
+              <td><code>string</code></td>
+              <td><code>'id'</code></td>
+              <td>Nombre del campo que actúa como clave única para cada fila.</td>
+            </tr>
+            <tr>
+              <td><code>selectable</code></td>
+              <td><code>selectable</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Muestra la columna de checkbox. Hacer clic en una fila también la selecciona.</td>
+            </tr>
+            <tr>
+              <td><code>selectedKeys</code></td>
+              <td>— (solo property)</td>
+              <td><code>string[]</code></td>
+              <td><code>[]</code></td>
+              <td>Claves preseleccionadas al inicializar. Al cambiar, sincroniza la selección interna.</td>
+            </tr>
+            <tr>
+              <td><code>paginated</code></td>
+              <td><code>paginated</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Muestra el paginador en el footer del componente.</td>
+            </tr>
+            <tr>
+              <td><code>page</code></td>
+              <td><code>page</code></td>
+              <td><code>number</code></td>
+              <td><code>1</code></td>
+              <td>Página actual (1-based). Puede controlarse externamente.</td>
+            </tr>
+            <tr>
+              <td><code>pageSize</code></td>
+              <td><code>page-size</code></td>
+              <td><code>number</code></td>
+              <td><code>10</code></td>
+              <td>Número de filas por página.</td>
+            </tr>
+            <tr>
+              <td><code>pageSizeOptions</code></td>
+              <td>— (solo property)</td>
+              <td><code>number[]</code></td>
+              <td><code>[10, 25, 50, 100]</code></td>
+              <td>Opciones disponibles en el selector de filas por página.</td>
+            </tr>
+            <tr>
+              <td><code>serverPagination</code></td>
+              <td><code>server-pagination</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Modo server-side: el componente emite <code>ui-page</code> pero no corta el array <code>rows</code>.</td>
+            </tr>
+            <tr>
+              <td><code>totalItems</code></td>
+              <td><code>total-items</code></td>
+              <td><code>number</code></td>
+              <td><code>undefined</code></td>
+              <td>Total de ítems para el display "1-10 de N" en modo server-side. Se ignora en modo client-side.</td>
+            </tr>
+            <tr>
+              <td><code>loading</code></td>
+              <td><code>loading</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Reemplaza las filas por filas skeleton animadas.</td>
+            </tr>
+            <tr>
+              <td><code>skeletonRows</code></td>
+              <td><code>skeleton-rows</code></td>
+              <td><code>number</code></td>
+              <td><code>5</code></td>
+              <td>Número de filas skeleton a mostrar durante la carga.</td>
+            </tr>
+            <tr>
+              <td><code>emptyMessage</code></td>
+              <td><code>empty-message</code></td>
+              <td><code>string</code></td>
+              <td><code>'No hay datos...'</code></td>
+              <td>Texto mostrado cuando el array <code>rows</code> está vacío y no está en estado loading.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Tipo TableColumn ─────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Tipo TableColumn</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>key</code></td>
+              <td><code>string</code></td>
+              <td>Nombre del campo en el objeto de datos (<code>row[key]</code>).</td>
+            </tr>
+            <tr>
+              <td><code>label</code></td>
+              <td><code>string</code></td>
+              <td>Texto de la cabecera de la columna.</td>
+            </tr>
+            <tr>
+              <td><code>sortable?</code></td>
+              <td><code>boolean</code></td>
+              <td>Activa el click en cabecera para ordenar. Solo client-side.</td>
+            </tr>
+            <tr>
+              <td><code>align?</code></td>
+              <td><code>'left' | 'center' | 'right'</code></td>
+              <td>Alineación del contenido de la columna. Default: <code>'left'</code>.</td>
+            </tr>
+            <tr>
+              <td><code>width?</code></td>
+              <td><code>string</code></td>
+              <td>Ancho CSS explícito (ej: <code>'120px'</code>, <code>'10%'</code>).</td>
+            </tr>
+            <tr>
+              <td><code>formatter?</code></td>
+              <td><code>(value, row) → string</code></td>
+              <td>Función de formato para transformar el valor antes de mostrarlo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Eventos ──────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Eventos</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Detail</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ui-select</code></td>
+              <td><code>TableSelectDetail</code></td>
+              <td>Se emite al marcar/desmarcar filas o el select-all.</td>
+            </tr>
+            <tr>
+              <td><code>ui-sort</code></td>
+              <td><code>&#123; key: string, direction: 'asc'|'desc' &#125;</code></td>
+              <td>Se emite al hacer clic en una cabecera sortable.</td>
+            </tr>
+            <tr>
+              <td><code>ui-page</code></td>
+              <td><code>TablePageDetail</code></td>
+              <td>Se emite al cambiar de página o al cambiar el tamaño de página.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Tipos de eventos ─────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Tipo TableSelectDetail</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Campo</th><th>Tipo</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>selectedKeys</code></td>
+              <td><code>string[]</code></td>
+              <td>Todas las claves seleccionadas actualmente (puede incluir filas de otras páginas).</td>
+            </tr>
+            <tr>
+              <td><code>allSelected</code></td>
+              <td><code>boolean</code></td>
+              <td>Indica si todas las filas visibles en la página actual están seleccionadas.</td>
+            </tr>
+            <tr>
+              <td><code>triggerKey?</code></td>
+              <td><code>string</code></td>
+              <td>Clave de la fila que disparó el cambio. <code>undefined</code> si fue el select-all.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card-table">
+      <div class="card-table-header"><h3>Tipo TablePageDetail</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Campo</th><th>Tipo</th><th>Descripción</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>page</code></td>
+              <td><code>number</code></td>
+              <td>Número de la nueva página (1-based).</td>
+            </tr>
+            <tr>
+              <td><code>pageSize</code></td>
+              <td><code>number</code></td>
+              <td>Filas por página actualmente configuradas.</td>
+            </tr>
+            <tr>
+              <td><code>totalItems</code></td>
+              <td><code>number</code></td>
+              <td>Total de ítems (calculado o proporcionado con <code>total-items</code>).</td>
+            </tr>
+            <tr>
+              <td><code>totalPages</code></td>
+              <td><code>number</code></td>
+              <td>Total de páginas calculadas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

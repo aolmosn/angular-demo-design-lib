@@ -1,0 +1,93 @@
+<section class="flex-row gap-default w-full">
+
+  <!-- ── Variaciones ──────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="tipos-title">
+    <div class="card-header">
+      <h2 id="tipos-title">Tipos</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+        <form [formGroup]="form">
+
+          <!-- Default / checked -->
+          <p class="label-section">Estados básicos</p>
+          <div class="flex-col gap-8 border radius-8 p-4">
+            <ui-check-box formControlName="terminos" label="Acepto los términos y condiciones"></ui-check-box>
+            <ui-check-box formControlName="newsletter" label="Suscribirme al newsletter"></ui-check-box>
+          </div>
+
+          <!-- Disabled controlado por otro checkbox -->
+          <p class="label-section mt-4">Deshabilitado</p>
+          <div class="flex-col gap-8 border radius-8 p-4">
+            <ui-check-box formControlName="disableCtrl" label="Desactivar siguiente opción"></ui-check-box>
+            <ui-check-box formControlName="valorDisable" label="Esta opción se puede deshabilitar"></ui-check-box>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    @if (submitted) {
+      <div class="result" role="status" aria-live="polite">
+        <span class="result-icon">✓</span>
+        <div>
+          <p class="result-title">Formulario enviado correctamente</p>
+          <pre class="result-json">{{ submittedValue | json }}</pre>
+        </div>
+      </div>
+    }
+  </section>
+
+  <!-- ── Revisión ─────────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="tipos-revision-title">
+    <div class="card-header">
+      <h2 id="tipos-revision-title">Revisión</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <div class="status-chips">
+          <span class="chip" [class.chip--valid]="form.valid" [class.chip--invalid]="form.invalid">
+            {{ form.valid ? 'Válido' : 'Inválido' }}
+          </span>
+          <span class="chip" [class.chip--active]="form.touched">
+            {{ form.touched ? 'Tocado' : 'Sin tocar' }}
+          </span>
+          <span class="chip" [class.chip--active]="form.dirty">
+            {{ form.dirty ? 'Modificado' : 'Limpio' }}
+          </span>
+        </div>
+
+        <div class="fields-table">
+          <div class="fields-header">
+            <span>Campo</span>
+            <span>Valor</span>
+            <span>Estado</span>
+          </div>
+          @for (entry of formState; track entry.name) {
+            <div class="field-row" [class.field-row--error]="entry.hasError">
+              <span class="field-name">{{ entry.name }}</span>
+              <span class="field-value">{{ entry.value }}</span>
+              <span class="field-status">
+                @if (entry.hasError) {
+                  <span class="status-icon status-icon--error" [title]="entry.error">✗</span>
+                } @else if (entry.touched) {
+                  <span class="status-icon status-icon--ok">✓</span>
+                } @else {
+                  <span class="status-icon">–</span>
+                }
+              </span>
+            </div>
+          }
+        </div>
+
+        <div class="flex-row gap-16">
+          <ui-button [type]="'SECONDARY'" (ui-click)="onReset()">Limpiar</ui-button>
+          <ui-button (ui-click)="onSubmit()">Enviar</ui-button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>

@@ -1,0 +1,190 @@
+<section class="flex-col gap-default w-full">
+
+  <!-- ── Propiedades ──────────────────────────────────────────────── -->
+  <section class="card-table w-full" aria-labelledby="sel-props-title">
+    <div class="card-table-header">
+      <h2 id="sel-props-title">Propiedades</h2>
+    </div>
+    <div class="card-table-body">
+
+      <table class="dl-table">
+        <thead>
+          <tr>
+            <th>Propiedad</th>
+            <th>Atributo HTML</th>
+            <th>Tipo</th>
+            <th>Default</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>label</code></td>
+            <td><code>label</code></td>
+            <td class="type">string</td>
+            <td><code>''</code></td>
+            <td>Etiqueta visible sobre el campo</td>
+          </tr>
+          <tr>
+            <td><code>placeholder</code></td>
+            <td><code>placeholder</code></td>
+            <td class="type">string</td>
+            <td><code>'Selecciona una opción'</code></td>
+            <td>Texto cuando no hay valor seleccionado</td>
+          </tr>
+          <tr>
+            <td><code>value</code></td>
+            <td><code>value</code></td>
+            <td class="type">string</td>
+            <td><code>''</code></td>
+            <td>Valor de la opción seleccionada (debe coincidir con <code>SelectOption.value</code>)</td>
+          </tr>
+          <tr>
+            <td><code>options</code></td>
+            <td>—</td>
+            <td class="type">SelectOption[]</td>
+            <td><code>[]</code></td>
+            <td>Array de opciones. Solo se puede pasar como propiedad DOM (<code>[options]="..."</code>)</td>
+          </tr>
+          <tr>
+            <td><code>disabled</code></td>
+            <td><code>disabled</code></td>
+            <td class="type">boolean</td>
+            <td><code>false</code></td>
+            <td>Deshabilita toda interacción con el componente</td>
+          </tr>
+          <tr>
+            <td><code>readonly</code></td>
+            <td><code>readonly</code></td>
+            <td class="type">boolean</td>
+            <td><code>false</code></td>
+            <td>Muestra el valor pero no permite cambiarlo</td>
+          </tr>
+          <tr>
+            <td><code>invalid</code></td>
+            <td><code>invalid</code></td>
+            <td class="type">boolean</td>
+            <td><code>false</code></td>
+            <td>Activa el estado de error visual. Muestra <code>error-text</code> si está definido</td>
+          </tr>
+          <tr>
+            <td><code>helperText</code></td>
+            <td><code>helper-text</code></td>
+            <td class="type">string</td>
+            <td><code>''</code></td>
+            <td>Texto de ayuda bajo el campo. Se oculta cuando hay error activo</td>
+          </tr>
+          <tr>
+            <td><code>errorText</code></td>
+            <td><code>error-text</code></td>
+            <td class="type">string</td>
+            <td><code>''</code></td>
+            <td>Mensaje de error. Solo visible cuando <code>invalid="true"</code></td>
+          </tr>
+          <tr>
+            <td><code>searchThreshold</code></td>
+            <td><code>search-threshold</code></td>
+            <td class="type">number</td>
+            <td><code>8</code></td>
+            <td>Cantidad mínima de opciones para mostrar el campo de búsqueda</td>
+          </tr>
+          <tr>
+            <td><code>smartPosition</code></td>
+            <td><code>smart-position</code></td>
+            <td class="type">boolean</td>
+            <td><code>false</code></td>
+            <td>Abre el dropdown hacia arriba si no hay espacio suficiente hacia abajo</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <!-- ── Eventos ──────────────────────────────────────────────────── -->
+  <section class="card-table w-full" aria-labelledby="sel-events-title">
+    <div class="card-table-header">
+      <h2 id="sel-events-title">Eventos</h2>
+    </div>
+    <div class="card-table-body">
+
+      <table class="dl-table">
+        <thead>
+          <tr>
+            <th>Evento</th>
+            <th>detail</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>ui-change</code></td>
+            <td><code>{{ '{' }} value: string, option: SelectOption {{ '}' }}</code></td>
+            <td>Se emite al seleccionar una opción. No se emite si el valor no cambia</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+  <!-- ── Tipo SelectOption ────────────────────────────────────────── -->
+  <section class="card-table w-full" aria-labelledby="sel-type-title">
+    <div class="card-table-header">
+      <h2 id="sel-type-title">Tipo <code>SelectOption</code></h2>
+    </div>
+    <div class="card-table-body">
+
+      <table class="dl-table">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Tipo</th>
+            <th>Requerido</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>value</code></td>
+            <td class="type">string</td>
+            <td>sí</td>
+            <td>Identificador único de la opción</td>
+          </tr>
+          <tr>
+            <td><code>label</code></td>
+            <td class="type">string</td>
+            <td>sí</td>
+            <td>Texto visible en el listado</td>
+          </tr>
+          <tr>
+            <td><code>group</code></td>
+            <td class="type">string</td>
+            <td>no</td>
+            <td>Nombre del grupo al que pertenece la opción. Las opciones del mismo grupo se agrupan visualmente</td>
+          </tr>
+          <tr>
+            <td><code>disabled</code></td>
+            <td class="type">boolean</td>
+            <td>no</td>
+            <td>Deshabilita esta opción individualmente</td>
+          </tr>
+          <tr>
+            <td><code>icon</code></td>
+            <td class="type">string</td>
+            <td>no</td>
+            <td>Nombre del ícono de <em>Material Icons</em>, e.g. <code>"person"</code></td>
+          </tr>
+          <tr>
+            <td><code>description</code></td>
+            <td class="type">string</td>
+            <td>no</td>
+            <td>Texto secundario visible bajo el label de la opción</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+</section>

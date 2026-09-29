@@ -1,0 +1,92 @@
+
+:root {
+  /* ─── Semánticos: Color ─────────────────────────────────── */
+  --wk-accent:       var(--ui-color-blue-500);
+  --wk-accent-hover: var(--ui-color-blue-400);
+  --wk-accent-alpha: rgba(39, 114, 204, 0.2);
+
+  --ui-color-error:       var(--ui-color-red-500);
+  --ui-color-error-hover: var(--ui-color-red-400);
+  --ui-color-error-alpha: rgba(237, 12, 16, 0.2);
+
+  --ui-color-text-primary:   var(--ui-color-gray-500);
+  --ui-color-text-secondary: var(--ui-color-gray-400);
+  --ui-color-text-disabled:  var(--ui-color-gray-300);
+
+  --ui-color-border:          var(--ui-color-gray-200);
+  --ui-color-border-focus:    var(--ui-color-blue-500);
+  --ui-color-border-error:    var(--ui-color-red-500);
+  --ui-color-border-disabled: var(--ui-color-gray-200);
+
+  --ui-color-surface:          var(--ui-color-white);
+  --ui-color-surface-disabled: var(--ui-color-gray-50);
+  --ui-color-surface-readonly: var(--ui-color-gray-50);
+
+  /* ─── Espaciado (base 4px) ──────────────────────────────── */
+  --wk-space-0: 0px;
+  --wk-space-1: 4px;
+  --wk-space-2: 8px;
+  --wk-space-3: 12px;
+  --wk-space-4: 16px;
+  --wk-space-5: 20px;
+  --wk-space-6: 24px;
+  --wk-space-8: 32px;
+  --wk-space-10: 40px;
+  --wk-space-12: 48px;
+
+  /* ─── Tipografía ────────────────────────────────────────── */
+  --wk-font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --wk-font-size-xs: 0.75rem;   /* 12px */
+  --wk-font-size-sm: 0.875rem;  /* 14px */
+  --wk-font-size-md: 1rem;      /* 16px */
+  --wk-font-size-lg: 1.125rem;  /* 18px */
+  --wk-font-size-xl: 1.25rem;   /* 20px */
+  
+  --wk-font-size-h1: 1.75rem;     /* 28px */
+  --wk-font-size-h2: 1.5rem;      /* 24px */
+  --wk-font-size-h3: 1.25rem;     /* 20px */
+  --wk-font-size-h4: 1rem;        /* 20px */
+  --wk-font-size-b1: 0.875rem;    /* 14px */
+  --wk-font-size-b2: 0.8125rem;   /* 13px */
+  --wk-font-size-b3: 0.8125rem;   /* 13px */
+  --wk-font-size-b4: 0.75rem;     /* 12px */
+
+  --ui-font-line-height-h1: 2rem;      /* 32px */
+  --ui-font-line-height-h2: 1.75rem;  /* 28px */
+  --ui-font-line-height-h3: 1.5rem;   /* 24px */
+  --ui-font-line-height-h4: 1.25rem;  /* 20px */
+  --ui-font-line-height-b1: 1.25rem;  /* 20px */
+  --ui-font-line-height-b2: 1rem;     /* 16px */
+  --ui-font-line-height-b3: 1rem;     /* 16px */
+  --ui-font-line-height-b4: 0.875rem; /* 16px */
+
+  --wk-font-weight-normal:   400;
+  --wk-font-weight-medium:   500;
+  --wk-font-weight-semibold: 600;
+  --wk-font-weight-bold:     700;
+
+
+  /* ─── Radio de borde ────────────────────────────────────── */
+  --wk-radius-sm:   4px;
+  --wk-radius-md:   6px;
+  --wk-radius-lg:   8px;
+  --wk-radius-xl:   12px;
+  --wk-radius-full: 9999px;
+
+  /* ─── Sombras ───────────────────────────────────────────── */
+  --ui-shadow-40:          0 1px 4px 0px #37474F40;
+  --ui-shadow-80:          0 2px 4px 0px #37474F33;
+  --ui-shadow-120:          0 6px 12px 0px #37474F33;
+
+  /* ─── Transiciones ──────────────────────────────────────── */
+  --ui-transition-fast:   0.1s ease;
+  --ui-transition-normal: 0.15s ease;
+  --ui-transition-slow:   0.25s ease;
+
+  /* ─── Breakpoints (referencia, usar en media queries) ───── */
+  --ui-breakpoint-sm: 640px;
+  --ui-breakpoint-md: 768px;
+  --ui-breakpoint-lg: 1024px;
+  --ui-breakpoint-xl: 1280px;
+}

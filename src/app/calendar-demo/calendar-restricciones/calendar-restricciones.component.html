@@ -1,0 +1,38 @@
+<section class="flex-col gap-default w-full">
+
+  <section class="card w-full" aria-labelledby="cal-rest-title">
+    <div class="card-header">
+      <h2 id="cal-rest-title">Restricciones</h2>
+    </div>
+    <div class="card-body">
+      <div class="grid-2 gap-default">
+
+        <!-- Solo fechas futuras -->
+        <div class="flex-col gap-8">
+          <p class="label-section"><code>min-date</code> — Solo fechas futuras</p>
+          <ui-calendar mode="single" [attr.min-date]="today"></ui-calendar>
+        </div>
+
+        <!-- Solo días hábiles -->
+        <div class="flex-col gap-8">
+          <p class="label-section"><code>business-days-only</code></p>
+          <ui-calendar mode="single" business-days-only></ui-calendar>
+        </div>
+
+        <!-- Rango acotado max-date -->
+        <div class="flex-col gap-8">
+          <p class="label-section"><code>min-date</code> + <code>max-date</code> — Próximos 30 días</p>
+          <ui-calendar mode="range" [attr.min-date]="today" [attr.max-date]="in30days"></ui-calendar>
+        </div>
+
+        <!-- Rango con minDays y maxDays -->
+        <div class="flex-col gap-8">
+          <p class="label-section"><code>min-days="3"</code> + <code>max-days="14"</code></p>
+          <ui-calendar mode="range" [attr.min-date]="today" min-days="3" max-days="14"></ui-calendar>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>

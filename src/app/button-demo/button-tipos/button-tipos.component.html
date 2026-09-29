@@ -1,0 +1,59 @@
+<section class="flex-col gap-default w-full">
+
+  <!-- ── Variaciones ──────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="tipos-title">
+    <div class="card-header">
+      <h2 id="tipos-title">Tipos</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Variantes</p>
+        <div class="flex-row gap-8">
+          <ui-button (ui-click)="onClick('PRIMARY')">Primario</ui-button>
+          <ui-button [type]="'SECONDARY'" (ui-click)="onClick('SECONDARY')">Secundario</ui-button>
+          <ui-button [type]="'TERTIARY'"  (ui-click)="onClick('TERTIARY')">Terciario</ui-button>
+          <ui-button [type]="'LINK'"      (ui-click)="onClick('LINK')">Link</ui-button>
+        </div>
+
+        <p class="label-section">Expandido</p>
+        <div class="flex-row gap-8">
+          <ui-button [expanded]="true" (ui-click)="onClick('EXPANDED')">Primario expandido</ui-button>
+          <ui-button [type]="'SECONDARY'" [expanded]="true" (ui-click)="onClick('EXPANDED')">Secundario expandido</ui-button>
+        </div>
+
+        <p class="label-section">Deshabilitado</p>
+        <div class="flex-row gap-8">
+          <ui-button [disabled]="true">Primario</ui-button>
+          <ui-button [type]="'SECONDARY'" [disabled]="true">Secundario</ui-button>
+          <ui-button [type]="'TERTIARY'"  [disabled]="true">Terciario</ui-button>
+          <ui-button [type]="'LINK'"      [disabled]="true">Link</ui-button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Revisión ─────────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="tipos-revision-title">
+    <div class="card-header">
+      <h2 id="tipos-revision-title">Revisión</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Evento <code>(ui-click)</code></p>
+        <div class="flex-col gap-8 border radius-8 p-4">
+          <div class="flex-row gap-8">
+            <span class="chip">Clicks: <strong>{{ clickCount }}</strong></span>
+            @if (lastType) {
+              <span class="chip chip--active">Último: {{ lastType }}</span>
+            }
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>

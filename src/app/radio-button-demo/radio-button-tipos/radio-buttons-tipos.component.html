@@ -1,0 +1,117 @@
+<section class="flex-row gap-default w-full">
+  <section class="card w-full" aria-labelledby="form-title">
+    <div class="card-header">
+      <h2>Tipos</h2>
+    </div>
+    <div class="card-body">
+  
+      <div class="flex-col gap-16">
+        <form [formGroup]="form">
+          <div class="border radius-8 flex-col flex-j-c p-4 gap-8">
+            <ui-radio-button formControlName="fruta" name="fruta" value="manzana" label="Manzana"></ui-radio-button>
+            <ui-radio-button formControlName="fruta" name="fruta" value="naranja" label="Naranja"></ui-radio-button>
+            <ui-radio-button formControlName="fruta" name="fruta" value="kiwi"    label="Kiwi"></ui-radio-button>
+          </div>
+          
+          <div class="border radius-8 flex-col flex-j-c p-4 gap-8 mt-4">
+            <ui-radio-button formControlName="mascotaFavorita" name="mascotaFavorita" value="Gato" label="Gato"></ui-radio-button>
+            <ui-radio-button formControlName="mascotaFavorita" name="mascotaFavorita" value="Perro" label="Perro"></ui-radio-button>
+            <ui-radio-button formControlName="mascotaFavorita" name="mascotaFavorita" value="Otro"  label="Otro"></ui-radio-button>
+          </div>
+          <ui-check-box formControlName="disableControl">
+            desactivar
+          </ui-check-box>
+          <div class="border radius-8 flex-col flex-j-c p-4 gap-8 mt-4">
+            <ui-radio-button formControlName="valorDisable" name="valorDisable" value="AM" label="AM"></ui-radio-button>
+            <ui-radio-button formControlName="valorDisable" name="valorDisable" value="PM" label="PM"></ui-radio-button>
+          </div>
+          <div class="border radius-8 flex-col flex-j-c p-4 gap-8 mt-4">
+            <ui-radio-button formControlName="preseleccionado" value="on" name="preseleccionado" value="PRESELECCIONADO" label="PRESELECCIONADO"></ui-radio-button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    @if (submitted) {
+      <div class="result" role="status" aria-live="polite">
+        <span class="result-icon">✓</span>
+        <div>
+          <p class="result-title">Formulario enviado correctamente</p>
+          <pre class="result-json">{{ submittedValue | json }}</pre>
+        </div>
+      </div>
+    }
+  </section>
+  
+  <section class="card w-full" aria-labelledby="form-title">
+    <div class="card-header">
+      <h2>Revisión</h2>
+    </div>
+    <div class="card-body">
+  
+      <div class="flex-col gap-16">
+        <div class="status-chips">
+          <span
+            class="chip"
+            [class.chip--valid]="form.valid"
+            [class.chip--invalid]="form.invalid"
+          >{{ form.valid ? 'Válido' : 'Inválido' }}</span>
+  
+          <span class="chip" [class.chip--active]="form.touched">
+            {{ form.touched ? 'Tocado' : 'Sin tocar' }}
+          </span>
+  
+          <span class="chip" [class.chip--active]="form.dirty">
+            {{ form.dirty ? 'Modificado' : 'Limpio' }}
+          </span>
+        </div>
+  
+          <div class="fields-table">
+            <div class="fields-header">
+              <span>Campo</span>
+              <span>Valor</span>
+              <span>Estado</span>
+            </div>
+  
+            @for (entry of formState; track entry.name) {
+              <div class="field-row" [class.field-row--error]="entry.hasError">
+                <span class="field-name">{{ entry.name }}</span>
+                <span class="field-value">{{ entry.value }}</span>
+                <span class="field-status">
+                  @if (entry.hasError) {
+                    <span class="status-icon status-icon--error" [title]="entry.error">✗</span>
+                  } @else if (entry.touched) {
+                    <span class="status-icon status-icon--ok">✓</span>
+                  } @else {
+                    <span class="status-icon">–</span>
+                  }
+                </span>
+              </div>
+            }
+          </div>
+      </div>
+      <!-- <p class="debug-hint">
+        Los errores se muestran cuando el campo pierde el foco
+        (<code>touched</code>), o al intentar enviar el formulario.
+      </p> -->
+      <button
+        type="button"
+        class="btn btn--secondary"
+        (click)="onReset()"
+      >
+        Limpiar
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn--primary"
+      >
+        Enviar
+      </button>
+    </div>
+  
+    
+  
+  </section>
+</section>

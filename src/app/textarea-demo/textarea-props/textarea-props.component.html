@@ -1,0 +1,249 @@
+<section class="card w-full" aria-labelledby="ta-props-title">
+  <div class="card-header">
+    <h2 id="ta-props-title">API del componente</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Propiedades ──────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header">
+        <h3>Propiedades</h3>
+      </div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Atributo HTML</th>
+              <th>Tipo</th>
+              <th>Default</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>label</code></td>
+              <td><code>label</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Etiqueta visible del campo. Si está vacío, no se renderiza el <code>&lt;label&gt;</code>.</td>
+            </tr>
+            <tr>
+              <td><code>value</code></td>
+              <td><code>value</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Valor actual del textarea.</td>
+            </tr>
+            <tr>
+              <td><code>placeholder</code></td>
+              <td><code>placeholder</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Texto placeholder nativo.</td>
+            </tr>
+            <tr>
+              <td><code>name</code></td>
+              <td><code>name</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Atributo <code>name</code> para formularios HTML.</td>
+            </tr>
+            <tr>
+              <td><code>rows</code></td>
+              <td><code>rows</code></td>
+              <td><code>number</code></td>
+              <td><code>3</code></td>
+              <td>Número de filas visibles del <code>&lt;textarea&gt;</code> nativo. Controla la altura inicial.</td>
+            </tr>
+            <tr>
+              <td><code>resize</code></td>
+              <td><code>resize</code></td>
+              <td><code>'vertical' | 'horizontal' | 'both' | 'none'</code></td>
+              <td><code>'vertical'</code></td>
+              <td>Dirección en que el usuario puede redimensionar el textarea. <code>'none'</code> lo deshabilita.</td>
+            </tr>
+            <tr>
+              <td><code>maxLength</code></td>
+              <td><code>max-length</code></td>
+              <td><code>number</code></td>
+              <td><code>undefined</code></td>
+              <td>Límite máximo de caracteres. Al superar el límite se activa el estado de error visual y se muestra el contador.</td>
+            </tr>
+            <tr>
+              <td><code>showCount</code></td>
+              <td><code>show-count</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Muestra el contador de caracteres escritos. Se activa automáticamente si se define <code>max-length</code>.</td>
+            </tr>
+            <tr>
+              <td><code>disabled</code></td>
+              <td><code>disabled</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Deshabilita el campo. Visualmente atenuado, sin interacción y sin resize.</td>
+            </tr>
+            <tr>
+              <td><code>readonly</code></td>
+              <td><code>readonly</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Solo lectura. Se puede copiar pero no editar. Deshabilita el resize.</td>
+            </tr>
+            <tr>
+              <td><code>required</code></td>
+              <td><code>required</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Marca el campo como obligatorio. Agrega asterisco rojo a la etiqueta.</td>
+            </tr>
+            <tr>
+              <td><code>invalid</code></td>
+              <td><code>invalid</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Activa el estado de error visual. Muestra <code>error-text</code> si está definido.</td>
+            </tr>
+            <tr>
+              <td><code>helperText</code></td>
+              <td><code>helper-text</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Texto de ayuda. Se oculta cuando <code>invalid</code> es <code>true</code> y hay un <code>error-text</code>.</td>
+            </tr>
+            <tr>
+              <td><code>errorText</code></td>
+              <td><code>error-text</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Mensaje de error. Solo visible cuando <code>invalid</code> es <code>true</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Eventos ──────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header">
+        <h3>Eventos</h3>
+      </div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Detail</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ui-input</code></td>
+              <td><code>&#123; value: string &#125;</code></td>
+              <td>Se emite en cada keystroke.</td>
+            </tr>
+            <tr>
+              <td><code>ui-change</code></td>
+              <td><code>&#123; value: string &#125;</code></td>
+              <td>Se emite al confirmar el valor (blur). Equivalente al evento <code>change</code> nativo.</td>
+            </tr>
+            <tr>
+              <td><code>ui-focus</code></td>
+              <td><code>&#123;&#125;</code></td>
+              <td>El textarea recibió el foco.</td>
+            </tr>
+            <tr>
+              <td><code>ui-blur</code></td>
+              <td><code>&#123;&#125;</code></td>
+              <td>El textarea perdió el foco.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CSS Custom Properties ────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header">
+        <h3>CSS Custom Properties</h3>
+      </div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Variable</th>
+              <th>Default</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--ui-textarea-min-height</code></td>
+              <td><code>80px</code></td>
+              <td>Altura mínima del campo. Útil para garantizar un tamaño base independiente de <code>rows</code>.</td>
+            </tr>
+            <tr>
+              <td><code>--ui-textarea-resize</code></td>
+              <td>valor de <code>resize</code></td>
+              <td>Controlado internamente por la prop <code>resize</code>. Puede sobreescribirse vía CSS desde el host.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CSS Parts ────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header">
+        <h3>CSS Parts</h3>
+      </div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Part</th>
+              <th>Elemento</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>::part(field)</code></td>
+              <td><code>.input-wrap</code></td>
+              <td>Contenedor raíz del componente.</td>
+            </tr>
+            <tr>
+              <td><code>::part(label)</code></td>
+              <td><code>&lt;label&gt;</code></td>
+              <td>Etiqueta del campo.</td>
+            </tr>
+            <tr>
+              <td><code>::part(textarea)</code></td>
+              <td><code>&lt;textarea&gt;</code></td>
+              <td>Textarea nativo.</td>
+            </tr>
+            <tr>
+              <td><code>::part(helper)</code></td>
+              <td><code>.input-helper</code></td>
+              <td>Texto de ayuda.</td>
+            </tr>
+            <tr>
+              <td><code>::part(error)</code></td>
+              <td><code>.input-error-msg</code></td>
+              <td>Mensaje de error.</td>
+            </tr>
+            <tr>
+              <td><code>::part(count)</code></td>
+              <td><code>.char-count</code></td>
+              <td>Contador de caracteres.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,78 @@
+<section class="flex-row gap-default w-full">
+  <section class="card w-full" aria-label="Paleta de color primitiva">
+    <div class="card-header">
+      <h2>Paleta de color — Primitivos</h2>
+    </div>
+    <div class="card-body">
+      <p class="section-desc">Valores fijos del sistema. Son la base de todos los tokens semánticos. No se usan directamente en componentes.</p>
+
+      <div class="color-families">
+        <div class="color-family" *ngFor="let family of colorFamilies">
+          <p class="family-name">{{ family.name }}</p>
+          <div class="swatches">
+            <div class="swatch"
+              *ngFor="let s of family.swatches"
+              [style.background]="'var(' + s.cssVar + ')'">
+              <span class="swatch-label" [class.swatch-label--dark]="!s.lightText">{{ s.label }}</span>
+              <code class="swatch-var" [class.swatch-var--dark]="!s.lightText">{{ s.cssVar }}</code>
+              <code class="swatch-hex" [class.swatch-hex--dark]="!s.lightText">{{ s.hex }}</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<style>
+  .section-desc {
+    font-size: var(--wk-font-size-b2);
+    color: var(--wk-color-on-surface-muted);
+    margin: 0 0 1.25rem;
+  }
+
+  .color-families { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .color-family { display: flex; align-items: center; gap: 0.75rem; }
+
+  .family-name {
+    font-size: var(--wk-font-size-b3);
+    font-weight: var(--wk-font-weight-medium);
+    color: var(--wk-color-on-surface-muted);
+    width: 4.5rem;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .swatches { display: flex; flex-direction: row; gap: 4px; flex-wrap: nowrap; width: 100%; }
+
+  .swatch {
+    width: 100%;
+    height: 64px;
+    border-radius: var(--wk-radius-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4px 6px;
+    border: 1px solid rgba(0,0,0,0.08);
+    gap: 1px;
+  }
+
+  .swatch-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.2;
+  }
+  .swatch-label--dark { color: rgba(0,0,0,0.7); }
+
+  .swatch-var, .swatch-hex {
+    font-family: ui-monospace, monospace;
+    font-size: 0.5rem;
+    color: rgba(255,255,255,0.65);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .swatch-var--dark, .swatch-hex--dark { color: rgba(0,0,0,0.45); }
+</style>

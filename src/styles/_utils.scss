@@ -1,0 +1,110 @@
+@use "sass:map";
+@use "sass:list";
+@use "sass:math";
+
+$colors: (
+    "blue": (50, 100, 200, 300, 400, 500),
+    "red": (50, 100, 200, 300, 400, 500),
+    "yellow": (50, 100, 200, 300, 400, 500),
+    "green": (50, 100, 200, 300, 400, 500),
+    "gray": (50, 100, 200, 300, 400, 500)
+);
+
+@each $color, $shades in $colors {
+    
+    @each $shade in $shades {
+        $variable: --wk-#{$color}-#{$shade};
+        
+        .bg-#{$color}-#{$shade} { background-color: var($variable);}
+        .text-#{$color}-#{$shade} { background-color: var($variable);}
+    }
+}
+
+
+$flex-direction-values: (
+  row: row,
+  col: column,
+  row-r: row-reverse,
+  col-r: column-reverse
+);
+
+$flex-gap-values: (
+    default: 1rem,
+    4:  math.div(4, 16) * 1rem,  // 0.25rem
+    8:  math.div(8, 16) * 1rem,  // 0.5rem
+    16: 1rem,                     // 1rem
+    24: math.div(24, 16) * 1rem, // 1.5rem
+    32: math.div(32, 16) * 1rem, // 2rem
+);
+
+@each $prop, $value in $flex-direction-values {
+    .flex-#{$prop} { display: flex; flex-direction: $value; }
+}
+@each $label, $value in $flex-gap-values {
+    .gap-#{$label} { gap: $value}
+}
+
+
+// SPACES ---------------------------------------
+
+$spaces-values: (
+    4:  math.div(4, 16) * 1rem,  // 0.25rem
+    8:  math.div(8, 16) * 1rem,  // 0.5rem
+    16: 1rem,                     // 1rem
+    24: math.div(24, 16) * 1rem, // 1.5rem
+    32: math.div(32, 16) * 1rem, // 2rem
+    36: math.div(36, 16) * 1rem, // 2.25rem
+    40: math.div(40, 16) * 1rem, // 2.5rem
+    44: math.div(44, 16) * 1rem, // 2.75rem
+    48: math.div(48, 16) * 1rem, // 3rem
+);
+
+@each $prop, $value in $spaces-values {
+    .m-#{$prop} { margin: $value }
+    .mt-#{$prop} { margin-top: $value }
+    .mb-#{$prop} { margin-bottom: $value }
+    .mr-#{$prop} { margin-right: $value }
+    .ml-#{$prop} { margin-left: $value }
+    .my-#{$prop} { margin-left: $value; margin-right: $value }
+    .mx-#{$prop} { margin-top: $value; margin-bottom: $value}
+    
+    .p-#{$prop} { padding: $value }
+    .pt-#{$prop} { padding-top: $value }
+    .pb-#{$prop} { padding-bottom: $value }
+    .pr-#{$prop} { padding-right: $value }
+    .pl-#{$prop} { padding-left: $value }
+    .py-#{$prop} { padding-left: $value; padding-right: $value }
+    .px-#{$prop} { padding-top: $value; padding-bottom: $value}
+}
+
+
+// BORDER ---------------------------------------------
+
+.border { border: 1px solid var(--ui-color-border); }
+.border-r { border-right: 1px solid var(--ui-color-border); }
+.border-l { border-left: 1px solid var(--ui-color-border); }
+.border-b { border-bottom: 1px solid var(--ui-color-border); }
+.border-t { border-top: 1px solid var(--ui-color-border); }
+.border-y { border-top: 1px solid var(--ui-color-border); border-bottom: 1px solid var(--ui-color-border);}
+.border-x { border-left: 1px solid var(--ui-color-border); border-right: 1px solid var(--ui-color-border);}
+
+// BORDER-RADIUS ---------------------------------------------
+
+$radius-values: (
+    4:  math.div(4, 16) * 1rem,  // 0.25rem
+    8:  math.div(8, 16) * 1rem,  // 0.5rem
+    16: 1rem,                     // 1rem
+    24: math.div(24, 16) * 1rem, // 1.5rem
+    32: math.div(32, 16) * 1rem, // 2rem
+);
+
+@each $prop, $value in $radius-values {
+    .radius-#{$prop} { overflow: hidden; border-radius: $value;}
+    .radius-top-#{$prop} { overflow: hidden; border-radius: $value $value 0px 0px ;}
+    .radius-bottom-#{$prop} { overflow: hidden; border-radius: 0px 0px $value $value;}
+    .radius-left-#{$prop} { overflow: hidden; border-radius: $value 0px 0px $value;}
+    .radius-right-#{$prop} { overflow: hidden; border-radius: 0px $value $value 0px;}
+}
+
+// WIDTH ----------------
+.w-full { width: 100% }

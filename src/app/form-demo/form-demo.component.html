@@ -1,0 +1,146 @@
+<div class="page">
+
+  <!-- ── Header ─────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <span class="badge">@design-lib/angular</span>
+      <h1>Test de integración</h1>
+      <p class="header-desc">
+        Reactive Forms · <code>formControlName</code> · <code>ControlValueAccessor</code>
+      </p>
+    </div>
+  </header>
+
+  <!-- ── Layout principal ───────────────────────────────────────── -->
+  <main class="main">
+    <div class="layout">
+
+      <!-- Formulario -->
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title" class="card-title">Registro de usuario</h2>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate class="form">
+
+          <!-- Nombre + Apellido (2 columnas) -->
+          <div class="row-2">
+            <ui-text-field
+              formControlName="nombre"
+              label="Nombre"
+              placeholder="Ej. María"
+              [required]="true"
+              [errorText]="getError('nombre')"
+            ></ui-text-field>
+
+            <ui-text-field
+              formControlName="apellido"
+              label="Apellido"
+              placeholder="Ej. García"
+              [required]="true"
+              [errorText]="getError('apellido')"
+            ></ui-text-field>
+          </div>
+
+          <!-- Email (ancho completo) -->
+          <ui-text-field
+            formControlName="email"
+            label="Correo electrónico"
+            placeholder="tu@correo.com"
+            [required]="true"
+            helperText="Usaremos este correo para enviarte la confirmación"
+            [errorText]="getError('email')"
+          ></ui-text-field>
+
+          <!-- Usuario (ancho completo) -->
+          <ui-text-field
+            formControlName="usuario"
+            label="Nombre de usuario"
+            placeholder="sin espacios · mínimo 3 caracteres"
+            [required]="true"
+            [errorText]="getError('usuario')"
+          ></ui-text-field>
+
+          <!-- Acciones -->
+          <div class="actions">
+            <button
+              type="button"
+              class="btn btn--secondary"
+              (click)="onReset()"
+            >
+              Limpiar
+            </button>
+            <button
+              type="submit"
+              class="btn btn--primary"
+            >
+              Registrar
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Resultado del envío -->
+        @if (submitted) {
+          <div class="result" role="status" aria-live="polite">
+            <span class="result-icon">✓</span>
+            <div>
+              <p class="result-title">Formulario enviado correctamente</p>
+              <pre class="result-json">{{ submittedValue | json }}</pre>
+            </div>
+          </div>
+        }
+      </section>
+
+      <!-- Panel de estado en tiempo real -->
+      <aside class="debug-panel" aria-label="Estado del formulario">
+        <h3 class="debug-title">Estado del formulario</h3>
+
+        <div class="status-chips">
+          <span
+            class="chip"
+            [class.chip--valid]="form.valid"
+            [class.chip--invalid]="form.invalid"
+          >{{ form.valid ? 'Válido' : 'Inválido' }}</span>
+
+          <span class="chip" [class.chip--active]="form.touched">
+            {{ form.touched ? 'Tocado' : 'Sin tocar' }}
+          </span>
+
+          <span class="chip" [class.chip--active]="form.dirty">
+            {{ form.dirty ? 'Modificado' : 'Limpio' }}
+          </span>
+        </div>
+
+        <div class="fields-table">
+          <div class="fields-header">
+            <span>Campo</span>
+            <span>Valor</span>
+            <span>Estado</span>
+          </div>
+
+          @for (entry of formState; track entry.name) {
+            <div class="field-row" [class.field-row--error]="entry.hasError">
+              <span class="field-name">{{ entry.name }}</span>
+              <span class="field-value">{{ entry.value }}</span>
+              <span class="field-status">
+                @if (entry.hasError) {
+                  <span class="status-icon status-icon--error" [title]="entry.error">✗</span>
+                } @else if (entry.touched) {
+                  <span class="status-icon status-icon--ok">✓</span>
+                } @else {
+                  <span class="status-icon">–</span>
+                }
+              </span>
+            </div>
+          }
+        </div>
+
+        <p class="debug-hint">
+          Los errores se muestran cuando el campo pierde el foco
+          (<code>touched</code>), o al intentar enviar el formulario.
+        </p>
+      </aside>
+
+    </div>
+  </main>
+
+</div>

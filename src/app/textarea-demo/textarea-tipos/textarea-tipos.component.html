@@ -1,0 +1,224 @@
+<section class="card w-full" aria-labelledby="ta-tipos-title">
+  <div class="card-header">
+    <h2 id="ta-tipos-title">Estados y variantes</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Fila 1: estados básicos ─────────────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- Default -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Default</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Comentarios"
+            placeholder="Escribe tu comentario aquí…"
+            helper-text="Máximo 500 caracteres."
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <!-- Con valor (filled) -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Con valor</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Descripción"
+            value="Este es un texto de ejemplo que ya viene precargado en el componente. Representa un estado de campo con contenido."
+            helper-text="Puedes editar este texto."
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <!-- Requerido -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Requerido</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Motivo de solicitud"
+            placeholder="Explica brevemente el motivo…"
+            required
+            helper-text="Este campo es obligatorio."
+          ></ui-textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Fila 2: estados de validación ──────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- Error -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Error</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Descripción"
+            value="x"
+            invalid
+            error-text="La descripción debe tener al menos 20 caracteres."
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <!-- Deshabilitado -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Deshabilitado</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Notas internas"
+            value="Este campo no está disponible en este flujo."
+            disabled
+            helper-text="No disponible para este usuario."
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <!-- Solo lectura -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Solo lectura</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Términos aceptados"
+            value="El usuario aceptó los términos y condiciones el 15 de enero de 2025 a las 14:32 UTC."
+            readonly
+            helper-text="Registro de auditoría, no editable."
+          ></ui-textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Contador de caracteres ──────────────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- show-count sin límite -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Contador simple</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Mensaje"
+            placeholder="Escribe tu mensaje…"
+            show-count
+            helper-text="Escribe lo que necesites."
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <!-- max-length con contador -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Con límite (max-length)</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Bio"
+            placeholder="Cuéntanos sobre ti…"
+            max-length="160"
+            helper-text="Usada en tu perfil público."
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <!-- resize none -->
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>Sin resize</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Respuesta fija"
+            placeholder="Altura fija, sin redimensionar…"
+            resize="none"
+            rows="4"
+            helper-text="Altura controlada por rows."
+          ></ui-textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Filas configurables ────────────────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>rows="2"</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Respuesta corta"
+            placeholder="Respuesta breve…"
+            rows="2"
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>rows="5"</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Descripción larga"
+            placeholder="Descripción detallada…"
+            rows="5"
+          ></ui-textarea>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1;min-width:220px;">
+        <div class="card-header"><h3>rows="8"</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-textarea
+            label="Cuerpo del mensaje"
+            placeholder="Escribe el cuerpo completo…"
+            rows="8"
+            show-count
+          ></ui-textarea>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Demo interactivo ────────────────────────────────────── -->
+    <div class="card w-full">
+      <div class="card-header"><h3>Interactivo</h3></div>
+      <div class="card-body flex-col gap-16">
+
+        <ui-textarea
+          label="Prueba el componente"
+          placeholder="Escribe algo para ver el estado…"
+          max-length="200"
+          [attr.invalid]="stateInvalid || null"
+          error-text="Campo marcado como inválido manualmente."
+          helper-text="Se muestra cuando no hay error."
+          (ui-input)="onInput($event)"
+        ></ui-textarea>
+
+        <div class="flex-col gap-8" style="border:1px solid var(--wk-color-border,#cfd8dc);
+             border-radius:8px;padding:8px;font-size:0.8125rem;">
+          <span style="font-weight:600;">Estado actual</span>
+          <div class="flex-row gap-8" style="flex-wrap:wrap;">
+            <span class="chip" [class.chip--active]="!!stateValue">
+              filled={{ !!stateValue }}
+            </span>
+            <span class="chip" [class.chip--invalid]="stateInvalid">
+              invalid={{ stateInvalid }}
+            </span>
+            <span class="chip" [class.chip--active]="stateValue.length >= charLimit">
+              over-limit={{ stateValue.length >= charLimit }}
+            </span>
+          </div>
+          <div style="font-family:monospace;white-space:pre-wrap;word-break:break-all;">
+            value="{{ stateValue }}"
+          </div>
+          <button
+            style="align-self:flex-start;padding:4px 12px;border-radius:6px;
+                   border:1px solid var(--wk-color-border,#cfd8dc);cursor:pointer;
+                   background:transparent;font-size:0.8rem;"
+            (click)="stateInvalid = !stateInvalid"
+          >
+            Toggle invalid
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

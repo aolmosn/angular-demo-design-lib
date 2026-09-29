@@ -1,0 +1,303 @@
+<section class="card w-full" aria-labelledby="ci-props-title">
+  <div class="card-header">
+    <h2 id="ci-props-title">API del componente</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Propiedades ──────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Propiedades</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Atributo HTML</th>
+              <th>Tipo</th>
+              <th>Default</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>value</code></td>
+              <td><code>value</code></td>
+              <td><code>number | null</code></td>
+              <td><code>null</code></td>
+              <td>Valor numérico en bruto. <code>null</code> representa el campo vacío.</td>
+            </tr>
+            <tr>
+              <td><code>currency</code></td>
+              <td><code>currency</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Código ISO de la moneda actualmente seleccionada (ej: <code>'CLP'</code>, <code>'USD'</code>).</td>
+            </tr>
+            <tr>
+              <td><code>currencies</code></td>
+              <td>—</td>
+              <td><code>CurrencyOption[]</code></td>
+              <td><code>[]</code></td>
+              <td>Lista de monedas disponibles. Si está vacío o tiene un solo elemento, el selector no es interactivo.</td>
+            </tr>
+            <tr>
+              <td><code>decimals</code></td>
+              <td><code>decimals</code></td>
+              <td><code>number</code></td>
+              <td><code>undefined</code></td>
+              <td>Límite de decimales. <code>0</code> = solo enteros. Si no se define, se usa el valor de la moneda seleccionada o <code>2</code> por defecto.</td>
+            </tr>
+            <tr>
+              <td><code>locale</code></td>
+              <td><code>locale</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Locale para el valor <code>formatted</code> en eventos (ej: <code>'es-CL'</code>, <code>'en-US'</code>). Default: usa el locale del navegador.</td>
+            </tr>
+            <tr>
+              <td><code>label</code></td>
+              <td><code>label</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Etiqueta visible del campo.</td>
+            </tr>
+            <tr>
+              <td><code>placeholder</code></td>
+              <td><code>placeholder</code></td>
+              <td><code>string</code></td>
+              <td><code>'0'</code></td>
+              <td>Texto placeholder del input.</td>
+            </tr>
+            <tr>
+              <td><code>name</code></td>
+              <td><code>name</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Atributo <code>name</code> del input nativo.</td>
+            </tr>
+            <tr>
+              <td><code>min</code></td>
+              <td><code>min</code></td>
+              <td><code>number</code></td>
+              <td><code>undefined</code></td>
+              <td>Valor mínimo. Se aplica al perder el foco (clamp en blur).</td>
+            </tr>
+            <tr>
+              <td><code>max</code></td>
+              <td><code>max</code></td>
+              <td><code>max</code></td>
+              <td><code>undefined</code></td>
+              <td>Valor máximo. Se aplica al perder el foco (clamp en blur).</td>
+            </tr>
+            <tr>
+              <td><code>disabled</code></td>
+              <td><code>disabled</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Deshabilita el campo y el selector de moneda.</td>
+            </tr>
+            <tr>
+              <td><code>readonly</code></td>
+              <td><code>readonly</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Campo de solo lectura. Deshabilita el selector de moneda.</td>
+            </tr>
+            <tr>
+              <td><code>required</code></td>
+              <td><code>required</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Marca el campo como obligatorio.</td>
+            </tr>
+            <tr>
+              <td><code>invalid</code></td>
+              <td><code>invalid</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Activa el estado de error visual.</td>
+            </tr>
+            <tr>
+              <td><code>helperText</code></td>
+              <td><code>helper-text</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Texto de ayuda secundario.</td>
+            </tr>
+            <tr>
+              <td><code>errorText</code></td>
+              <td><code>error-text</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Mensaje de error. Solo visible cuando <code>invalid</code> es <code>true</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Eventos ──────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Eventos</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Detail</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ui-input</code></td>
+              <td><code>CurrencyInputChangeDetail</code></td>
+              <td>Se emite en cada keystroke con el valor numérico, código de moneda y string formateado.</td>
+            </tr>
+            <tr>
+              <td><code>ui-change</code></td>
+              <td><code>CurrencyInputChangeDetail</code></td>
+              <td>Se emite al perder el foco (blur). El valor ya tiene aplicado el clamp de min/max.</td>
+            </tr>
+            <tr>
+              <td><code>ui-currency-change</code></td>
+              <td><code>&#123; currency: string &#125;</code></td>
+              <td>Se emite al seleccionar una nueva moneda en el dropdown.</td>
+            </tr>
+            <tr>
+              <td><code>ui-focus</code></td>
+              <td><code>&#123;&#125;</code></td>
+              <td>El input recibió el foco.</td>
+            </tr>
+            <tr>
+              <td><code>ui-blur</code></td>
+              <td><code>&#123;&#125;</code></td>
+              <td>El input perdió el foco.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Tipo CurrencyOption ──────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Tipo CurrencyOption</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>code</code></td>
+              <td><code>string</code></td>
+              <td>Código ISO de la moneda (ej: <code>'CLP'</code>, <code>'USD'</code>, <code>'EUR'</code>).</td>
+            </tr>
+            <tr>
+              <td><code>symbol</code></td>
+              <td><code>string</code></td>
+              <td>Símbolo para mostrar en el trigger (ej: <code>'$'</code>, <code>'€'</code>, <code>'£'</code>).</td>
+            </tr>
+            <tr>
+              <td><code>name</code></td>
+              <td><code>string</code></td>
+              <td>Nombre descriptivo de la moneda (ej: <code>'Peso chileno'</code>). Usado en el dropdown.</td>
+            </tr>
+            <tr>
+              <td><code>decimals?</code></td>
+              <td><code>number</code></td>
+              <td>Número de decimales sugerido para esta moneda. Solo aplica si <code>decimals</code> no está definido en el componente.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Tipo CurrencyInputChangeDetail ──────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Tipo CurrencyInputChangeDetail</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>value</code></td>
+              <td><code>number | null</code></td>
+              <td>Valor numérico puro (sin formato). <code>null</code> si el campo está vacío.</td>
+            </tr>
+            <tr>
+              <td><code>currency</code></td>
+              <td><code>string</code></td>
+              <td>Código de la moneda seleccionada en el momento del evento.</td>
+            </tr>
+            <tr>
+              <td><code>formatted</code></td>
+              <td><code>string</code></td>
+              <td>Cadena formateada según el <code>locale</code> del componente. Útil para mostrar al usuario.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CSS Parts ────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>CSS Parts</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Part</th>
+              <th>Elemento</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>::part(field)</code></td>
+              <td><code>.input-wrap</code></td>
+              <td>Contenedor raíz.</td>
+            </tr>
+            <tr>
+              <td><code>::part(label)</code></td>
+              <td><code>&lt;label&gt;</code></td>
+              <td>Etiqueta.</td>
+            </tr>
+            <tr>
+              <td><code>::part(trigger)</code></td>
+              <td><code>.currency-trigger</code></td>
+              <td>Botón selector de moneda.</td>
+            </tr>
+            <tr>
+              <td><code>::part(input)</code></td>
+              <td><code>&lt;input&gt;</code></td>
+              <td>Input numérico nativo.</td>
+            </tr>
+            <tr>
+              <td><code>::part(helper)</code></td>
+              <td><code>.input-helper</code></td>
+              <td>Texto de ayuda.</td>
+            </tr>
+            <tr>
+              <td><code>::part(error)</code></td>
+              <td><code>.input-error-msg</code></td>
+              <td>Mensaje de error.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

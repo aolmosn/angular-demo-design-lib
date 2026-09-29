@@ -1,0 +1,66 @@
+<section class="flex-row gap-default w-full">
+
+  <!-- ── Variaciones ──────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="tipos-title">
+    <div class="card-header">
+      <h2 id="tipos-title">Tipos</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+        <div class="flex-row flex-a-c gap-8">
+          <span> variante: </span>
+          <ui-chip>filled</ui-chip>
+          <ui-chip variant="outlined">outlined</ui-chip>
+        </div>
+        <div class="flex-row flex-a-c gap-8">
+          <span> size: </span>
+          <ui-chip>small</ui-chip>
+          <ui-chip size="medium">medium</ui-chip>
+        </div>
+        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+          <span> color: </span>
+          <ui-chip>default</ui-chip>
+          <ui-chip color="success">success</ui-chip>
+          <ui-chip color="info">info</ui-chip>
+          <ui-chip color="error">error</ui-chip>
+          <ui-chip color="warning">warning</ui-chip>
+        </div>
+        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+          <span> color outlined: </span>
+          <ui-chip variant="outlined" >default</ui-chip>
+          <ui-chip variant="outlined" color="success">success</ui-chip>
+          <ui-chip variant="outlined" color="info">info</ui-chip>
+          <ui-chip variant="outlined" color="error">error</ui-chip>
+          <ui-chip variant="outlined" color="warning">warning</ui-chip>
+        </div>
+        <div class="flex-row flex-a-c gap-8">
+          <span> clickeable: </span>
+          <ui-chip >filled</ui-chip>
+          <ui-chip variant="outlined"  [clickeable]="true" (ui-click)="onClick()">outlined</ui-chip>
+        </div>
+
+        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+          <span> color clickeable: </span>
+          <ui-chip [clickeable]="true">default</ui-chip>
+          <ui-chip color="success" [clickeable]="true">success</ui-chip>
+          <ui-chip color="info" [clickeable]="true">info</ui-chip>
+          <ui-chip color="error" [clickeable]="true">error</ui-chip>
+          <ui-chip color="warning" [clickeable]="true">warning</ui-chip>
+        </div>
+        <div class="flex-row flex-a-c gap-8" style="flex-wrap: balance;">
+          <span> color outlined clickeable: </span>
+          <ui-chip variant="outlined" [clickeable]="true">default</ui-chip>
+          <ui-chip variant="outlined" color="success" [clickeable]="true">success</ui-chip>
+          <ui-chip variant="outlined" color="info" [clickeable]="true">info</ui-chip>
+          <ui-chip variant="outlined" color="error" [clickeable]="true">error</ui-chip>
+          <ui-chip variant="outlined" color="warning" [clickeable]="true">warning</ui-chip>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+</section>

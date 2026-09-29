@@ -1,0 +1,26 @@
+<div class="overlay" [class.overlay--visible]="isOpen" (click)="close()"></div>
+
+<button class="trigger" [class.trigger--hidden]="isOpen" (click)="toggle()" aria-label="Abrir navegación">
+  <i class="material-icons">{{ activeOption.icon }}</i>
+  <span class="trigger-label">{{ activeOption.label }}</span>
+  <i class="material-icons trigger-chevron">chevron_left</i>
+</button>
+
+<nav [class.nav--open]="isOpen">
+  <div class="nav-header">
+    <span class="nav-title">Design Lib</span>
+    <button class="nav-close" (click)="close()" aria-label="Cerrar navegación">
+      <i class="material-icons">chevron_right</i>
+    </button>
+  </div>
+
+  <ul>
+    @for(option of options; track option.label){
+      <li [routerLink]="option.path" [routerLinkActive]="['active-link']">
+        <span class="pestana"></span>
+        <i class="material-icons">{{ option.icon }}</i>
+        <a>{{ option.label }}</a>
+      </li>
+    }
+  </ul>
+</nav>

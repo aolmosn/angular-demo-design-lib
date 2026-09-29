@@ -1,0 +1,132 @@
+<section class="grid-1 lg:grid-2 gap-default w-full">
+
+  <!-- Surface -->
+  <section class="card" aria-label="Tokens de superficie">
+    <div class="card-header">
+      <h2>Surface — Superficies</h2>
+    </div>
+    <div class="card-body">
+      <p class="desc">Describen el fondo de contenedores. Cambian automáticamente con el tema.</p>
+
+      <div class="surface-stack">
+        <div class="surface-item"
+          *ngFor="let s of surfaces"
+          [style.background]="'var(' + s.cssVar + ')'">
+          <code class="token-chip">{{ s.cssVar }}</code>
+          <p class="surface-item__desc">{{ s.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- On-surface + Border -->
+  <section class="card w-full" aria-label="Tokens de texto y borde">
+    <div class="card-header">
+      <h2>Texto y bordes</h2>
+    </div>
+    <div class="card-body">
+
+      <h3 class="sub-title">On-surface</h3>
+      <p class="desc">Color del contenido sobre cada superficie.</p>
+      <div class="token-rows">
+        <div class="token-row" *ngFor="let t of textTokens">
+          <div class="dot" [style.background]="'var(' + t.cssVar + ')'"></div>
+          <code class="token-row__var">{{ t.cssVar }}</code>
+          <span class="token-row__desc">{{ t.desc }}</span>
+        </div>
+      </div>
+
+      <h3 class="sub-title mt">Border</h3>
+      <p class="desc">Bordes y separadores.</p>
+      <div class="token-rows">
+        <div class="token-row" *ngFor="let t of borderTokens">
+          <div class="dot dot--border" [style.border-color]="'var(' + t.cssVar + ')'"></div>
+          <code class="token-row__var">{{ t.cssVar }}</code>
+          <span class="token-row__desc">{{ t.desc }}</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</section>
+
+<style>
+  .desc {
+    font-size: var(--wk-font-size-b2);
+    color: var(--wk-color-on-surface-muted);
+    margin: 0 0 1rem;
+  }
+
+  .sub-title {
+    font-size: var(--wk-font-size-b2);
+    font-weight: var(--wk-font-weight-semibold);
+    color: var(--wk-color-on-surface-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.5rem;
+  }
+  .sub-title.mt { margin-top: 1.5rem; }
+
+  .token-chip {
+    display: inline-block;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    background: var(--wk-color-surface-raised);
+    color: var(--wk-color-on-surface-muted);
+    border: 1px solid var(--wk-color-border);
+    border-radius: var(--wk-radius-sm);
+    padding: 2px 6px;
+  }
+
+  /* Surface stack */
+  .surface-stack { display: flex; flex-direction: column; gap: 4px; }
+
+  .surface-item {
+    padding: 0.875rem 1rem;
+    border-radius: var(--wk-radius-md);
+    border: 1px solid var(--wk-color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .surface-item__desc {
+    font-size: var(--wk-font-size-b3);
+    color: var(--wk-color-on-surface-muted);
+    margin: 0;
+  }
+
+  /* Token rows */
+  .token-rows { display: flex; flex-direction: column; gap: 8px; }
+
+  .token-row {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .dot {
+    width: 20px; height: 20px;
+    border-radius: var(--wk-radius-sm);
+    border: 1px solid var(--wk-color-border);
+    flex-shrink: 0;
+  }
+  .dot--border {
+    background: transparent;
+    border-width: 3px;
+  }
+
+  .token-row__var {
+    font-family: ui-monospace, monospace;
+    font-size: var(--wk-font-size-b3);
+    color: var(--wk-color-on-surface);
+  }
+
+  .token-row__desc {
+    font-size: var(--wk-font-size-b3);
+    color: var(--wk-color-on-surface-muted);
+    text-align: right;
+  }
+</style>

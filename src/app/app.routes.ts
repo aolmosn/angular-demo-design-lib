@@ -1,0 +1,44 @@
+import { Routes } from '@angular/router';
+import { FormDemoComponent } from './form-demo/form-demo.component';
+import { AlertDemoComponent } from './alert-demo/alert-demo.component';
+import { RadioButtonDemoComponent } from './radio-button-demo/radio-button-demo.component';
+import { CheckBoxDemoComponent } from './check-box-demo/check-box-demo.component';
+import { KebabDemoComponent } from './kebab-demo/kebab-demo.component';
+import { ButtonDemoComponent } from './button-demo/button-demo.component';
+import { OnboardingDemoComponent } from './onboarding-demo/onboarding-demo.component';
+import { TokenDemoComponent } from './token-demo/token-demo.component';
+import { ChipDemoComponent } from './chip-demo/chip-demo.component';
+import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
+import { CalendarDemoComponent } from './calendar-demo/calendar-demo.component';
+import { SelectDemoComponent } from './select-demo/select-demo.component';
+import { TextInputDemoComponent } from './text-input-demo/text-input-demo.component';
+import { TextareaDemoComponent } from './textarea-demo/textarea-demo.component';
+import { CurrencyInputDemoComponent } from './currency-input-demo/currency-input-demo.component';
+import { TableDemoComponent } from './table-demo/table-demo.component';
+import { StepperDemoComponent } from './stepper-demo/stepper-demo.component';
+import { NuevoEmpleadoComponent } from './nuevo-empleado/nuevo-empleado.component';
+import { DemoCompletaComponent } from './demo-completa/demo-completa.component';
+import { InputDateDemoComponent } from './input-date-demo/input-date-demo.component';
+
+export const routes: Routes = [
+  { path: '',              component: FormDemoComponent },
+  { path: 'alert',         component: AlertDemoComponent },
+  { path: 'radio-button',  component: RadioButtonDemoComponent },
+  { path: 'check-box',     component: CheckBoxDemoComponent },
+  { path: 'kebab',         component: KebabDemoComponent },
+  { path: 'button',        component: ButtonDemoComponent },
+  { path: 'onboarding',    component: OnboardingDemoComponent },
+  { path: 'token',         component: TokenDemoComponent },
+  { path: 'chip',          component: ChipDemoComponent },
+  { path: 'tooltip',       component: TooltipDemoComponent },
+  { path: 'calendar',      component: CalendarDemoComponent },
+  { path: 'select',        component: SelectDemoComponent },
+  { path: 'text-input',    component: TextInputDemoComponent },
+  { path: 'textarea',        component: TextareaDemoComponent },
+  { path: 'currency-input',  component: CurrencyInputDemoComponent },
+  { path: 'table',           component: TableDemoComponent },
+  { path: 'stepper',         component: StepperDemoComponent },
+  { path: 'nuevo-empleado',  component: NuevoEmpleadoComponent },
+  { path: 'demo-completa',   component: DemoCompletaComponent },
+  { path: 'input-date',      component: InputDateDemoComponent },
+];

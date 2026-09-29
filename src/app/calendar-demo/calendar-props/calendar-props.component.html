@@ -1,0 +1,124 @@
+<section class="card-table w-full" aria-labelledby="cal-props-title">
+  <div class="card-table-header">
+    <h2 id="cal-props-title">Propiedades</h2>
+  </div>
+  <div class="card-table-body">
+
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Atributo HTML</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>mode</code></td>
+          <td><code>mode</code></td>
+          <td class="type">'single' | 'range'</td>
+          <td><code>'single'</code></td>
+          <td>Modo de selección. <code>single</code> selecciona una fecha, <code>range</code> selecciona un rango desde/hasta.</td>
+        </tr>
+        <tr>
+          <td><code>value</code></td>
+          <td><code>value</code></td>
+          <td class="type">string (ISO)</td>
+          <td><code>''</code></td>
+          <td>Fecha seleccionada en modo <code>single</code>. Formato <code>YYYY-MM-DD</code>.</td>
+        </tr>
+        <tr>
+          <td><code>from</code></td>
+          <td><code>from</code></td>
+          <td class="type">string (ISO)</td>
+          <td><code>''</code></td>
+          <td>Fecha de inicio en modo <code>range</code>. Formato <code>YYYY-MM-DD</code>.</td>
+        </tr>
+        <tr>
+          <td><code>to</code></td>
+          <td><code>to</code></td>
+          <td class="type">string (ISO)</td>
+          <td><code>''</code></td>
+          <td>Fecha de fin en modo <code>range</code>. Formato <code>YYYY-MM-DD</code>.</td>
+        </tr>
+        <tr>
+          <td><code>minDate</code></td>
+          <td><code>min-date</code></td>
+          <td class="type">string (ISO)</td>
+          <td><code>''</code></td>
+          <td>Fecha mínima seleccionable. Días anteriores quedan deshabilitados.</td>
+        </tr>
+        <tr>
+          <td><code>maxDate</code></td>
+          <td><code>max-date</code></td>
+          <td class="type">string (ISO)</td>
+          <td><code>''</code></td>
+          <td>Fecha máxima seleccionable. Días posteriores quedan deshabilitados.</td>
+        </tr>
+        <tr>
+          <td><code>minDays</code></td>
+          <td><code>min-days</code></td>
+          <td class="type">number</td>
+          <td><code>1</code></td>
+          <td>Mínimo de días que debe abarcar el rango (solo <code>range</code>). Los primeros N-1 días después del <code>from</code> quedan deshabilitados.</td>
+        </tr>
+        <tr>
+          <td><code>maxDays</code></td>
+          <td><code>max-days</code></td>
+          <td class="type">number</td>
+          <td><code>0</code></td>
+          <td>Máximo de días del rango (solo <code>range</code>). <code>0</code> significa sin límite.</td>
+        </tr>
+        <tr>
+          <td><code>businessDaysOnly</code></td>
+          <td><code>business-days-only</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Solo permite seleccionar días hábiles (lunes a viernes). Sábados y domingos quedan deshabilitados.</td>
+        </tr>
+        <tr>
+          <td><code>locale</code></td>
+          <td><code>locale</code></td>
+          <td class="type">string</td>
+          <td><code>navigator.language</code></td>
+          <td>Locale para nombres de meses, días y formato de fechas. Ej: <code>'es-CL'</code>, <code>'en-US'</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">Eventos</p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>Modo</th>
+          <th>Detail</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ui-change</code></td>
+          <td><code>single</code></td>
+          <td class="type">&#123; date: Date &#125;</td>
+          <td>El usuario selecciona una fecha.</td>
+        </tr>
+        <tr>
+          <td><code>ui-change</code></td>
+          <td><code>range</code></td>
+          <td class="type">&#123; from: Date, to: Date &#125;</td>
+          <td>El usuario completa la selección del rango.</td>
+        </tr>
+        <tr>
+          <td><code>ui-clear</code></td>
+          <td>ambos</td>
+          <td class="type">&#123;&#125;</td>
+          <td>El usuario presiona el botón Limpiar.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

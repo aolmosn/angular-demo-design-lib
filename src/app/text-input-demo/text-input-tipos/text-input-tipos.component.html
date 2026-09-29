@@ -1,0 +1,196 @@
+<section class="card w-full" aria-labelledby="ti-tipos-title">
+  <div class="card-header">
+    <h2 id="ti-tipos-title">Estados y variantes</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Fila 1: estados básicos ─────────────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- Default -->
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Default</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Correo"
+            placeholder="nombre@empresa.com"
+            helper-text="Ingresa tu correo corporativo."
+          ></ui-text-input>
+        </div>
+      </div>
+
+      <!-- Filled -->
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Con valor</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Nombre completo"
+            value="Juan Pérez"
+            helper-text="Nombre tal como aparece en el RUT."
+          ></ui-text-input>
+        </div>
+      </div>
+
+      <!-- Required -->
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Requerido</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Nombre completo"
+            placeholder="Ej: Ana García"
+            required
+            helper-text="Este campo es obligatorio."
+          ></ui-text-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Fila 2: estados de validación ──────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <!-- Error -->
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Error</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Email"
+            type="email"
+            [attr.value]="valueError"
+            invalid
+            error-text="El formato del correo no es válido."
+          ></ui-text-input>
+        </div>
+      </div>
+
+      <!-- Disabled -->
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Deshabilitado</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="RUT empresa"
+            value="76.123.456-7"
+            disabled
+            helper-text="Este campo no se puede editar."
+          ></ui-text-input>
+        </div>
+      </div>
+
+      <!-- Readonly -->
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Solo lectura</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Código de referencia"
+            value="REF-2025-00482"
+            readonly
+            helper-text="Generado automáticamente."
+          ></ui-text-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Tamaños ─────────────────────────────────────────────── -->
+    <div class="card w-full">
+      <div class="card-header"><h3>Tamaños</h3></div>
+      <div class="card-body flex-col gap-16">
+        <ui-text-input
+          label="Small (32px)"
+          placeholder="Tamaño sm"
+          size="sm"
+        ></ui-text-input>
+        <ui-text-input
+          label="Medium (40px)"
+          placeholder="Tamaño md (default)"
+        ></ui-text-input>
+        <ui-text-input
+          label="Large (48px)"
+          placeholder="Tamaño lg"
+          size="lg"
+        ></ui-text-input>
+      </div>
+    </div>
+
+    <!-- ── Tipos de input ─────────────────────────────────────── -->
+    <div class="flex-row gap-default w-full">
+
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Password</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Contraseña"
+            type="password"
+            placeholder="••••••••"
+            helper-text="Mínimo 8 caracteres."
+          ></ui-text-input>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Number</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Cantidad"
+            type="number"
+            placeholder="0"
+            helper-text="Ingresa un número entero."
+          ></ui-text-input>
+        </div>
+      </div>
+
+      <div class="card" style="flex:1;min-width:200px;">
+        <div class="card-header"><h3>Search</h3></div>
+        <div class="card-body flex-col gap-16">
+          <ui-text-input
+            label="Buscar"
+            type="search"
+            placeholder="Escribe para buscar…"
+          ></ui-text-input>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Interactivo con estado ──────────────────────────────── -->
+    <div class="card w-full">
+      <div class="card-header"><h3>Interactivo</h3></div>
+      <div class="card-body flex-col gap-16">
+        <ui-text-input
+          label="Prueba el componente"
+          placeholder="Escribe algo…"
+          helper-text="El estado se refleja abajo."
+          [attr.value]="stateValue"
+          [attr.invalid]="stateInvalid || null"
+          error-text="Campo inválido (activado manualmente)."
+          (ui-input)="onInput($event)"
+        ></ui-text-input>
+
+        <div class="flex-col gap-8" style="border:1px solid var(--wk-color-border,#cfd8dc);
+             border-radius:8px;padding:8px;font-size:0.8125rem;">
+          <span style="font-weight:600;">Estado actual</span>
+          <div class="flex-row gap-8" style="flex-wrap:wrap;">
+            <span class="chip" [class.chip--active]="!!stateValue">
+              filled={{ !!stateValue }}
+            </span>
+            <span class="chip" [class.chip--invalid]="stateInvalid">
+              invalid={{ stateInvalid }}
+            </span>
+          </div>
+          <div style="font-family:monospace;">value="{{ stateValue }}"</div>
+          <button
+            style="align-self:flex-start;padding:4px 12px;border-radius:6px;
+                   border:1px solid var(--wk-color-border,#cfd8dc);cursor:pointer;
+                   background:transparent;font-size:0.8rem;"
+            (click)="stateInvalid = !stateInvalid"
+          >
+            Toggle invalid
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

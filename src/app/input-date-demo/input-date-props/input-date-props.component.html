@@ -1,0 +1,242 @@
+<section class="flex-col gap-default w-full">
+
+  <!-- ── Propiedades ──────────────────────────────────────────────── -->
+  <section class="card-table w-full" aria-labelledby="id-props-title">
+    <div class="card-table-header">
+      <h2 id="id-props-title">Propiedades</h2>
+    </div>
+    <div class="card-table-body">
+      <div class="dl-table-wrapper">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Atributo HTML</th>
+              <th>Tipo</th>
+              <th>Default</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>mode</code></td>
+              <td><code>mode</code></td>
+              <td class="type">'single' | 'range'</td>
+              <td><code>'single'</code></td>
+              <td>
+                Modo de selección.
+                <code>single</code>: una fecha, cierra al seleccionar.
+                <code>range</code>: rango inicio/fin, se confirma con el botón "Listo".
+              </td>
+            </tr>
+            <tr>
+              <td><code>value</code></td>
+              <td><code>value</code></td>
+              <td class="type">string (ISO)</td>
+              <td><code>''</code></td>
+              <td>Fecha seleccionada en modo <code>single</code>. Formato <code>YYYY-MM-DD</code>.</td>
+            </tr>
+            <tr>
+              <td><code>from</code></td>
+              <td><code>from</code></td>
+              <td class="type">string (ISO)</td>
+              <td><code>''</code></td>
+              <td>Fecha de inicio del rango confirmado en modo <code>range</code>. Formato <code>YYYY-MM-DD</code>.</td>
+            </tr>
+            <tr>
+              <td><code>to</code></td>
+              <td><code>to</code></td>
+              <td class="type">string (ISO)</td>
+              <td><code>''</code></td>
+              <td>Fecha de fin del rango confirmado en modo <code>range</code>. Formato <code>YYYY-MM-DD</code>.</td>
+            </tr>
+            <tr>
+              <td><code>label</code></td>
+              <td><code>label</code></td>
+              <td class="type">string</td>
+              <td><code>''</code></td>
+              <td>Etiqueta visible sobre el campo.</td>
+            </tr>
+            <tr>
+              <td><code>placeholder</code></td>
+              <td><code>placeholder</code></td>
+              <td class="type">string</td>
+              <td>Auto según modo</td>
+              <td>
+                Texto cuando no hay valor seleccionado.
+                Default: <code>'Selecciona una fecha'</code> / <code>'Selecciona un rango'</code>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>minDate</code></td>
+              <td><code>min-date</code></td>
+              <td class="type">string (ISO)</td>
+              <td><code>''</code></td>
+              <td>Fecha mínima seleccionable. Las fechas anteriores aparecen deshabilitadas en el calendario.</td>
+            </tr>
+            <tr>
+              <td><code>maxDate</code></td>
+              <td><code>max-date</code></td>
+              <td class="type">string (ISO)</td>
+              <td><code>''</code></td>
+              <td>Fecha máxima seleccionable. Las fechas posteriores aparecen deshabilitadas en el calendario.</td>
+            </tr>
+            <tr>
+              <td><code>locale</code></td>
+              <td><code>locale</code></td>
+              <td class="type">string</td>
+              <td><code>'es-CL'</code></td>
+              <td>
+                Locale para el formateo del calendario y del valor mostrado en el trigger.
+                Ej: <code>'es-CL'</code>, <code>'en-US'</code>, <code>'pt-BR'</code>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>invalid</code></td>
+              <td><code>invalid</code></td>
+              <td class="type">boolean</td>
+              <td><code>false</code></td>
+              <td>Activa el estado de error visual en el campo.</td>
+            </tr>
+            <tr>
+              <td><code>errorText</code></td>
+              <td><code>error-text</code></td>
+              <td class="type">string</td>
+              <td><code>''</code></td>
+              <td>Mensaje de error que aparece bajo el campo cuando <code>invalid</code> es <code>true</code>.</td>
+            </tr>
+            <tr>
+              <td><code>helperText</code></td>
+              <td><code>helper-text</code></td>
+              <td class="type">string</td>
+              <td><code>''</code></td>
+              <td>Texto de ayuda que aparece bajo el campo cuando no hay error.</td>
+            </tr>
+            <tr>
+              <td><code>required</code></td>
+              <td><code>required</code></td>
+              <td class="type">boolean</td>
+              <td><code>false</code></td>
+              <td>Muestra el asterisco <code>*</code> junto al label. No añade validación nativa (la valida el formulario consumidor).</td>
+            </tr>
+            <tr>
+              <td><code>disabled</code></td>
+              <td><code>disabled</code></td>
+              <td class="type">boolean</td>
+              <td><code>false</code></td>
+              <td>Deshabilita el campo: no abre el popover, reduce la opacidad.</td>
+            </tr>
+            <tr>
+              <td><code>size</code></td>
+              <td><code>size</code></td>
+              <td class="type">'sm' | 'md' | 'lg'</td>
+              <td><code>'md'</code></td>
+              <td>Altura del trigger: <code>sm</code> = 32px, <code>md</code> = 40px, <code>lg</code> = 48px.</td>
+            </tr>
+            <tr>
+              <td><code>name</code></td>
+              <td><code>name</code></td>
+              <td class="type">string</td>
+              <td><code>''</code></td>
+              <td>Nombre del campo, útil cuando se integra en formularios nativos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Eventos ──────────────────────────────────────────────────── -->
+  <section class="card-table w-full" aria-labelledby="id-events-title">
+    <div class="card-table-header">
+      <h2 id="id-events-title">Eventos</h2>
+    </div>
+    <div class="card-table-body">
+      <div class="dl-table-wrapper">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Detail (single)</th>
+              <th>Detail (range)</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ui-change</code></td>
+              <td class="type">
+                <code>&#123; mode: 'single', value: string, date: Date &#125;</code>
+              </td>
+              <td class="type">
+                <code>&#123; mode: 'range', from: string, to: string, fromDate: Date, toDate: Date &#125;</code>
+              </td>
+              <td>
+                Se emite al confirmar una fecha (single: al hacer click en el calendario)
+                o un rango (range: al pulsar el botón "Listo").
+                El campo <code>value</code>/<code>from</code>/<code>to</code> es ISO <code>YYYY-MM-DD</code>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>ui-clear</code></td>
+              <td class="type">—</td>
+              <td class="type"><code>&#123;&#125;</code></td>
+              <td>
+                Se emite solo en modo <code>range</code> al pulsar el botón <strong>×</strong> en el trigger.
+                Limpia <code>from</code> y <code>to</code>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CSS parts ────────────────────────────────────────────────── -->
+  <section class="card-table w-full" aria-labelledby="id-parts-title">
+    <div class="card-table-header">
+      <h2 id="id-parts-title">CSS Parts</h2>
+    </div>
+    <div class="card-table-body">
+      <div class="dl-table-wrapper">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Part</th>
+              <th>Elemento</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>::part(wrap)</code></td>
+              <td><code>.input-wrap</code></td>
+              <td>Contenedor externo que agrupa label + field + helper.</td>
+            </tr>
+            <tr>
+              <td><code>::part(label)</code></td>
+              <td><code>label</code></td>
+              <td>Elemento de la etiqueta.</td>
+            </tr>
+            <tr>
+              <td><code>::part(field)</code></td>
+              <td><code>.input-field</code></td>
+              <td>El trigger visible (el "input"). Recibe los class modifiers de estado.</td>
+            </tr>
+            <tr>
+              <td><code>::part(error)</code></td>
+              <td><code>.input-error-msg</code></td>
+              <td>Mensaje de error bajo el field.</td>
+            </tr>
+            <tr>
+              <td><code>::part(helper)</code></td>
+              <td><code>.input-helper</code></td>
+              <td>Texto de ayuda bajo el field.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</section>

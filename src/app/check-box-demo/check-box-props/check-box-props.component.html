@@ -1,0 +1,94 @@
+<section class="card-table w-full" aria-labelledby="props-title">
+  <div class="card-table-header">
+    <h2 id="props-title">Propiedades</h2>
+  </div>
+  <div class="card-table-body">
+
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Atributo HTML</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>label</code></td>
+          <td><code>label</code></td>
+          <td class="type">string</td>
+          <td><code>''</code></td>
+          <td>Texto que se muestra junto al checkbox</td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td><code>name</code></td>
+          <td class="type">string</td>
+          <td><code>''</code></td>
+          <td>Atributo <code>name</code> del <code>input</code> nativo</td>
+        </tr>
+        <tr>
+          <td><code>value</code></td>
+          <td><code>value</code></td>
+          <td class="type">string</td>
+          <td><code>'on'</code></td>
+          <td>Valor del <code>input</code> nativo al enviarse en un form HTML</td>
+        </tr>
+        <tr>
+          <td><code>checked</code></td>
+          <td><code>checked</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Estado seleccionado. Con Reactive Forms se controla vía <code>FormControl</code></td>
+        </tr>
+        <tr>
+          <td><code>disabled</code></td>
+          <td><code>disabled</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Deshabilita la interacción. Con Reactive Forms usar <code>control.disable()</code></td>
+        </tr>
+        <tr>
+          <td><code>required</code></td>
+          <td><code>required</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Marca el campo como obligatorio</td>
+        </tr>
+        <tr>
+          <td><code>indeterminado</code></td>
+          <td><code>indeterminado</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Estado intermedio (ni marcado ni desmarcado). Se usa en el patrón "seleccionar todo". Al hacer click el usuario lo resetea a <code>false</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">Eventos</p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Evento</th>
+          <th>detail</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>ui-change</code></td>
+          <td><code>{{ '{' }} checked: boolean, value: string {{ '}' }}</code></td>
+          <td>El usuario cambia el estado del checkbox</td>
+        </tr>
+        <tr>
+          <td><code>ui-blur</code></td>
+          <td><code>{{ '{' }}{{ '}' }}</code></td>
+          <td>El input nativo pierde el foco</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

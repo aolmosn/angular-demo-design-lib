@@ -1,0 +1,91 @@
+<section class="card-table w-full" aria-labelledby="props-title">
+  <div class="card-table-header">
+    <h2 id="props-title">Propiedades</h2>
+  </div>
+  <div class="card-table-body">
+
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Atributo HTML</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>type</code></td>
+          <td><code>type</code></td>
+          <td class="type">ButtonType</td>
+          <td><code>'PRIMARY'</code></td>
+          <td>Variante visual. Valores: <code>'PRIMARY'</code> · <code>'SECONDARY'</code> · <code>'TERTIARY'</code> · <code>'LINK'</code> · <code>'QUINARY'</code></td>
+        </tr>
+        <tr>
+          <td><code>disabled</code></td>
+          <td><code>disabled</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Deshabilita el botón. Bloquea el click y aplica estilos de estado deshabilitado</td>
+        </tr>
+        <tr>
+          <td><code>expanded</code></td>
+          <td><code>expanded</code></td>
+          <td class="type">boolean</td>
+          <td><code>false</code></td>
+          <td>Aumenta el padding vertical (variante XL). Útil para botones principales de acción</td>
+        </tr>
+        <tr>
+          <td><code>leftIcon</code></td>
+          <td><code>leftIcon</code></td>
+          <td class="type">string</td>
+          <td><code>''</code></td>
+          <td>Nombre del ícono de Material Icons que aparece a la izquierda del texto (ej. <code>'add'</code>, <code>'edit'</code>)</td>
+        </tr>
+        <tr>
+          <td><code>rigthIcon</code></td>
+          <td><code>rigthIcon</code></td>
+          <td class="type">string</td>
+          <td><code>''</code></td>
+          <td>Nombre del ícono de Material Icons que aparece a la derecha del texto (ej. <code>'arrow_forward'</code>)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">Eventos</p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Evento Angular</th>
+          <th>Evento nativo (CustomEvent)</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>(ui-click)</code></td>
+          <td><code>ui-click</code></td>
+          <td>El usuario hace click en el botón y no está deshabilitado. Usar <code>(ui-click)</code> en el template (no <code>(click)</code>)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">Contenido</p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Mecanismo</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>&lt;ng-content&gt;</code> / <code>&lt;slot&gt;</code></td>
+          <td>El texto del botón se pasa como contenido entre las etiquetas: <code>&lt;ui-button&gt;Texto&lt;/ui-button&gt;</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

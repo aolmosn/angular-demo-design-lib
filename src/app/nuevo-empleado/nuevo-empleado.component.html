@@ -1,0 +1,544 @@
+<div class="page">
+
+  <!-- ── Header ──────────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <span class="badge">Ejemplo de uso</span>
+      <h1>Nuevo empleado</h1>
+      <p class="header-desc">Asistente de registro en 4 pasos con validación por paso</p>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="layout flex-col gap-default w-full"
+         style="max-width:720px;margin:0 auto;">
+
+      <!-- ── Estado de éxito ──────────────────────────────────────── -->
+      <div *ngIf="submitted" style="
+        background:var(--wk-color-surface,#fff);
+        border:1px solid var(--wk-color-border,#e2e8ea);
+        border-radius:12px;
+        overflow:hidden;">
+
+        <!-- Banner verde -->
+        <div style="background:var(--wk-color-action,#28892b);padding:32px 24px;
+                    text-align:center;color:#fff;">
+          <div style="font-size:48px;margin-bottom:8px;">✓</div>
+          <div style="font-size:1.25rem;font-weight:700;margin-bottom:4px;">
+            Empleado creado correctamente
+          </div>
+          <div style="font-size:0.875rem;opacity:0.85;">
+            {{ form.firstName }} {{ form.lastName }} ha sido registrado en el sistema.
+          </div>
+        </div>
+
+        <!-- Resumen -->
+        <div style="padding:24px;display:flex;flex-direction:column;gap:20px;">
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div style="background:var(--wk-color-surface-alt,#f6f7f8);border-radius:8px;padding:16px;">
+              <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;
+                          letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);
+                          margin-bottom:10px;">Datos personales</div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:0.875rem;">
+                <span><strong>Nombre:</strong> {{ form.firstName }} {{ form.lastName }}</span>
+                <span><strong>Correo:</strong> {{ form.email }}</span>
+                <span *ngIf="form.phone"><strong>Teléfono:</strong> {{ form.phone }}</span>
+              </div>
+            </div>
+
+            <div style="background:var(--wk-color-surface-alt,#f6f7f8);border-radius:8px;padding:16px;">
+              <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;
+                          letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);
+                          margin-bottom:10px;">Dirección</div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:0.875rem;">
+                <span><strong>Dirección:</strong> {{ form.address }}</span>
+                <span><strong>Ciudad:</strong> {{ form.city }}</span>
+                <span *ngIf="form.region"><strong>Región:</strong> {{ form.region }}</span>
+              </div>
+            </div>
+
+            <div style="background:var(--wk-color-surface-alt,#f6f7f8);border-radius:8px;padding:16px;
+                        grid-column:1/-1;">
+              <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;
+                          letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);
+                          margin-bottom:10px;">Información laboral</div>
+              <div style="display:flex;gap:24px;flex-wrap:wrap;font-size:0.875rem;">
+                <span><strong>Departamento:</strong> {{ form.department }}</span>
+                <span><strong>Cargo:</strong> {{ form.role }}</span>
+                <span><strong>Salario:</strong> {{ formattedSalary }}</span>
+                <span><strong>Inicio:</strong> {{ form.startDate }}</span>
+                <span *ngIf="form.contract"><strong>Contrato:</strong> {{ form.contract }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;">
+            <button (click)="reset()" style="
+              padding:10px 20px;background:var(--wk-color-action,#28892b);color:#fff;
+              border:none;border-radius:8px;font-size:0.875rem;font-weight:600;
+              cursor:pointer;font-family:inherit;">
+              + Registrar otro empleado
+            </button>
+            <button (click)="reset()" style="
+              padding:10px 20px;background:transparent;
+              border:1px solid var(--wk-color-border,#e2e8ea);
+              border-radius:8px;font-size:0.875rem;cursor:pointer;font-family:inherit;
+              color:var(--wk-color-on-surface,#37474f);">
+              Volver al listado
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── Formulario multi-paso ────────────────────────────────── -->
+      <ng-container *ngIf="!submitted">
+
+        <ui-stepper
+          #stepperEl
+          [steps]="steps"
+          [valid]="stepValidity"
+          [attr.current]="currentStep"
+          (ui-step)="onStep($event)"
+        >
+
+          <!-- ════ Paso 1 — Datos personales ════════════════════════ -->
+          <div slot="step-1" style="padding:24px;display:flex;flex-direction:column;gap:18px;">
+
+            <!-- Nombre + Apellido -->
+            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+
+              <div style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:180px;">
+                <label style="font-size:0.8125rem;font-weight:600;
+                               color:var(--wk-color-on-surface,#37474f);">
+                  Nombre <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+                </label>
+                <input
+                  type="text"
+                  [(ngModel)]="form.firstName"
+                  placeholder="Ej. Ana"
+                  style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;
+                         border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                         font-size:0.875rem;font-family:inherit;outline:none;
+                         background:var(--wk-color-surface,#fff);
+                         color:var(--wk-color-on-surface,#37474f);transition:border-color 0.15s;"
+                  [style.border-color]="isStepTouched(1) && !form.firstName.trim()
+                    ? 'var(--wk-color-danger,#ed0c10)' : 'var(--wk-color-border,#e2e8ea)'"
+                />
+                <span *ngIf="isStepTouched(1) && !form.firstName.trim()"
+                  style="font-size:0.75rem;color:var(--wk-color-danger,#ed0c10);">
+                  Campo requerido
+                </span>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:180px;">
+                <label style="font-size:0.8125rem;font-weight:600;
+                               color:var(--wk-color-on-surface,#37474f);">
+                  Apellido <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+                </label>
+                <input
+                  type="text"
+                  [(ngModel)]="form.lastName"
+                  placeholder="Ej. García"
+                  style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;
+                         border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                         font-size:0.875rem;font-family:inherit;outline:none;
+                         background:var(--wk-color-surface,#fff);
+                         color:var(--wk-color-on-surface,#37474f);transition:border-color 0.15s;"
+                  [style.border-color]="isStepTouched(1) && !form.lastName.trim()
+                    ? 'var(--wk-color-danger,#ed0c10)' : 'var(--wk-color-border,#e2e8ea)'"
+                />
+                <span *ngIf="isStepTouched(1) && !form.lastName.trim()"
+                  style="font-size:0.75rem;color:var(--wk-color-danger,#ed0c10);">
+                  Campo requerido
+                </span>
+              </div>
+
+            </div>
+
+            <!-- Correo -->
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:0.8125rem;font-weight:600;
+                             color:var(--wk-color-on-surface,#37474f);">
+                Correo electrónico <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+              </label>
+              <input
+                type="email"
+                [(ngModel)]="form.email"
+                placeholder="correo@empresa.com"
+                style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;
+                       border:1px solid;border-radius:6px;font-size:0.875rem;
+                       font-family:inherit;outline:none;
+                       background:var(--wk-color-surface,#fff);
+                       color:var(--wk-color-on-surface,#37474f);transition:border-color 0.15s;"
+                [style.border-color]="isStepTouched(1) && form.email && form.email.indexOf('@') < 0
+                  ? 'var(--wk-color-danger,#ed0c10)'
+                  : isStepTouched(1) && !form.email
+                    ? 'var(--wk-color-danger,#ed0c10)'
+                    : 'var(--wk-color-border,#e2e8ea)'"
+              />
+              <span
+                *ngIf="form.email.length > 0"
+                style="font-size:0.75rem;"
+                [style.color]="stepValidity[0] || form.email.indexOf('@') > 0
+                  ? 'var(--wk-color-action,#28892b)' : 'var(--wk-color-danger,#ed0c10)'">
+                {{ form.email.indexOf('@') > 0 ? '✓ Correo válido' : '✗ Ingresa un correo válido' }}
+              </span>
+            </div>
+
+            <!-- Teléfono (opcional) -->
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:0.8125rem;font-weight:600;
+                             color:var(--wk-color-on-surface,#37474f);">
+                Teléfono
+                <span style="font-weight:400;color:var(--wk-color-on-surface-muted,#546e7a);">
+                  (opcional)
+                </span>
+              </label>
+              <input
+                type="tel"
+                [(ngModel)]="form.phone"
+                placeholder="+56 9 1234 5678"
+                style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;
+                       border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                       font-size:0.875rem;font-family:inherit;outline:none;
+                       background:var(--wk-color-surface,#fff);
+                       color:var(--wk-color-on-surface,#37474f);transition:border-color 0.15s;"
+              />
+            </div>
+
+            <!-- Nav -->
+            <div style="padding-top:8px;border-top:1px solid var(--wk-color-border,#e2e8ea);
+                        display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <span style="font-size:0.75rem;color:var(--wk-color-on-surface-muted,#546e7a);">
+                Los campos marcados con <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+                son requeridos para continuar.
+              </span>
+              <ui-button rigthIcon="arrow_forward" (ui-click)="nextStep()">Siguiente</ui-button>
+            </div>
+
+          </div>
+
+          <!-- ════ Paso 2 — Dirección ═══════════════════════════════ -->
+          <div slot="step-2" style="padding:24px;display:flex;flex-direction:column;gap:18px;">
+
+            <!-- Dirección (calle) -->
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:0.8125rem;font-weight:600;
+                             color:var(--wk-color-on-surface,#37474f);">
+                Dirección <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+              </label>
+              <input
+                type="text"
+                [(ngModel)]="form.address"
+                placeholder="Calle y número, ej. Av. Providencia 1234"
+                style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;
+                       border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                       font-size:0.875rem;font-family:inherit;outline:none;
+                       background:var(--wk-color-surface,#fff);
+                       color:var(--wk-color-on-surface,#37474f);"
+                [style.border-color]="isStepTouched(2) && !form.address.trim()
+                  ? 'var(--wk-color-danger,#ed0c10)' : 'var(--wk-color-border,#e2e8ea)'"
+              />
+            </div>
+
+            <!-- Ciudad + Región -->
+            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+
+              <div style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:160px;">
+                <label style="font-size:0.8125rem;font-weight:600;
+                               color:var(--wk-color-on-surface,#37474f);">
+                  Ciudad <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+                </label>
+                <input
+                  type="text"
+                  [(ngModel)]="form.city"
+                  placeholder="Ej. Santiago"
+                  style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;
+                         border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                         font-size:0.875rem;font-family:inherit;outline:none;
+                         background:var(--wk-color-surface,#fff);
+                         color:var(--wk-color-on-surface,#37474f);"
+                  [style.border-color]="isStepTouched(2) && !form.city.trim()
+                    ? 'var(--wk-color-danger,#ed0c10)' : 'var(--wk-color-border,#e2e8ea)'"
+                />
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:160px;">
+                <label style="font-size:0.8125rem;font-weight:600;
+                               color:var(--wk-color-on-surface,#37474f);">
+                  Región
+                </label>
+                <select
+                  [(ngModel)]="form.region"
+                  style="height:40px;padding:0 32px 0 12px;width:100%;box-sizing:border-box;
+                         border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                         font-size:0.875rem;font-family:inherit;outline:none;
+                         background-color:var(--wk-color-surface,#fff);
+                         background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23546e7a%27 d=%27M1.41 0 6 4.58 10.59 0 12 1.41l-6 6-6-6L1.41 0z%27/%3E%3C/svg%3E');
+                         background-repeat:no-repeat;background-position:right 10px center;
+                         appearance:none;-webkit-appearance:none;
+                         color:var(--wk-color-on-surface,#37474f);cursor:pointer;"
+                >
+                  <option value="">Selecciona una región</option>
+                  <option *ngFor="let r of regions" [value]="r">{{ r }}</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Código postal (opcional) -->
+            <div style="display:flex;flex-direction:column;gap:5px;max-width:200px;">
+              <label style="font-size:0.8125rem;font-weight:600;
+                             color:var(--wk-color-on-surface,#37474f);">
+                Código postal
+                <span style="font-weight:400;color:var(--wk-color-on-surface-muted,#546e7a);">
+                  (opcional)
+                </span>
+              </label>
+              <input
+                type="text"
+                [(ngModel)]="form.zip"
+                placeholder="Ej. 7500000"
+                maxlength="8"
+                style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;
+                       border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                       font-size:0.875rem;font-family:inherit;outline:none;
+                       background:var(--wk-color-surface,#fff);
+                       color:var(--wk-color-on-surface,#37474f);"
+              />
+            </div>
+
+            <!-- Nav -->
+            <div style="padding-top:8px;border-top:1px solid var(--wk-color-border,#e2e8ea);
+                        display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <ui-button type="SECONDARY" leftIcon="arrow_back" (ui-click)="prevStep()">Anterior</ui-button>
+              <ui-button rigthIcon="arrow_forward" (ui-click)="nextStep()">Siguiente</ui-button>
+            </div>
+
+          </div>
+
+          <!-- ════ Paso 3 — Información laboral ════════════════════ -->
+          <div slot="step-3" style="padding:24px;display:flex;flex-direction:column;gap:18px;">
+
+            <!-- Departamento + Cargo -->
+            <div style="display:flex;gap:16px;flex-wrap:wrap;">
+
+              <div style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:160px;">
+                <label style="font-size:0.8125rem;font-weight:600;
+                               color:var(--wk-color-on-surface,#37474f);">
+                  Departamento <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+                </label>
+                <select
+                  [(ngModel)]="form.department"
+                  style="height:40px;padding:0 32px 0 12px;width:100%;box-sizing:border-box;
+                         border:1px solid;border-radius:6px;
+                         font-size:0.875rem;font-family:inherit;outline:none;
+                         background-color:var(--wk-color-surface,#fff);
+                         background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23546e7a%27 d=%27M1.41 0 6 4.58 10.59 0 12 1.41l-6 6-6-6L1.41 0z%27/%3E%3C/svg%3E');
+                         background-repeat:no-repeat;background-position:right 10px center;
+                         appearance:none;-webkit-appearance:none;
+                         color:var(--wk-color-on-surface,#37474f);cursor:pointer;"
+                  [style.border-color]="isStepTouched(3) && !form.department
+                    ? 'var(--wk-color-danger,#ed0c10)' : 'var(--wk-color-border,#e2e8ea)'"
+                >
+                  <option value="">Selecciona un departamento</option>
+                  <option *ngFor="let d of departments" [value]="d">{{ d }}</option>
+                </select>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:5px;flex:1;min-width:160px;">
+                <label style="font-size:0.8125rem;font-weight:600;
+                               color:var(--wk-color-on-surface,#37474f);">
+                  Cargo <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+                </label>
+                <select
+                  [(ngModel)]="form.role"
+                  style="height:40px;padding:0 32px 0 12px;width:100%;box-sizing:border-box;
+                         border:1px solid;border-radius:6px;
+                         font-size:0.875rem;font-family:inherit;outline:none;
+                         background-color:var(--wk-color-surface,#fff);
+                         background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23546e7a%27 d=%27M1.41 0 6 4.58 10.59 0 12 1.41l-6 6-6-6L1.41 0z%27/%3E%3C/svg%3E');
+                         background-repeat:no-repeat;background-position:right 10px center;
+                         appearance:none;-webkit-appearance:none;
+                         color:var(--wk-color-on-surface,#37474f);cursor:pointer;"
+                  [style.border-color]="isStepTouched(3) && !form.role
+                    ? 'var(--wk-color-danger,#ed0c10)' : 'var(--wk-color-border,#e2e8ea)'"
+                >
+                  <option value="">Selecciona un cargo</option>
+                  <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Salario -->
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:0.8125rem;font-weight:600;color:var(--wk-color-on-surface,#37474f);">
+                Salario bruto (CLP) <span style="color:var(--wk-color-danger,#ed0c10)">*</span>
+              </label>
+              <input type="number" [(ngModel)]="form.salary" placeholder="Ej. 1200000" min="0"
+                style="height:40px;padding:0 12px;width:100%;box-sizing:border-box;border:1px solid;
+                       border-radius:6px;font-size:0.875rem;font-family:inherit;outline:none;
+                       background:var(--wk-color-surface,#fff);color:var(--wk-color-on-surface,#37474f);"
+                [style.border-color]="isStepTouched(3) && !form.salary
+                  ? 'var(--wk-color-danger,#ed0c10)' : 'var(--wk-color-border,#e2e8ea)'" />
+              <span *ngIf="form.salary"
+                style="font-size:0.75rem;color:var(--wk-color-on-surface-muted,#546e7a);">
+                {{ formattedSalary }}
+              </span>
+            </div>
+
+            <!-- Fecha de inicio -->
+            <ui-input-date
+              label="Fecha de inicio"
+              placeholder="Selecciona una fecha"
+              required
+              [attr.value]="form.startDate || null"
+              [attr.min-date]="todayISO"
+              locale="es-CL"
+              [attr.invalid]="isStepTouched(3) && !form.startDate ? true : null"
+              [attr.error-text]="isStepTouched(3) && !form.startDate ? 'Selecciona una fecha de inicio' : null"
+              (ui-change)="onCalendarChange($event)"
+            ></ui-input-date>
+
+            <!-- Tipo de contrato -->
+            <div style="display:flex;flex-direction:column;gap:5px;max-width:280px;">
+              <label style="font-size:0.8125rem;font-weight:600;
+                             color:var(--wk-color-on-surface,#37474f);">
+                Tipo de contrato
+                <span style="font-weight:400;color:var(--wk-color-on-surface-muted,#546e7a);">
+                  (opcional)
+                </span>
+              </label>
+              <select
+                [(ngModel)]="form.contract"
+                style="height:40px;padding:0 32px 0 12px;width:100%;box-sizing:border-box;
+                       border:1px solid var(--wk-color-border,#e2e8ea);border-radius:6px;
+                       font-size:0.875rem;font-family:inherit;outline:none;
+                       background-color:var(--wk-color-surface,#fff);
+                       background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27%3E%3Cpath fill=%27%23546e7a%27 d=%27M1.41 0 6 4.58 10.59 0 12 1.41l-6 6-6-6L1.41 0z%27/%3E%3C/svg%3E');
+                       background-repeat:no-repeat;background-position:right 10px center;
+                       appearance:none;-webkit-appearance:none;
+                       color:var(--wk-color-on-surface,#37474f);cursor:pointer;"
+              >
+                <option value="">Sin especificar</option>
+                <option *ngFor="let c of contracts" [value]="c">{{ c }}</option>
+              </select>
+            </div>
+
+            <!-- Nav -->
+            <div style="padding-top:8px;border-top:1px solid var(--wk-color-border,#e2e8ea);
+                        display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <ui-button type="SECONDARY" leftIcon="arrow_back" (ui-click)="prevStep()">Anterior</ui-button>
+              <ui-button rigthIcon="arrow_forward" (ui-click)="nextStep()">Siguiente</ui-button>
+            </div>
+
+          </div>
+
+          <!-- ════ Paso 4 — Confirmación ════════════════════════════ -->
+          <div slot="step-4" style="padding:24px;display:flex;flex-direction:column;gap:20px;">
+
+            <p style="margin:0;color:var(--wk-color-on-surface-muted,#546e7a);font-size:0.875rem;">
+              Revisa la información antes de crear el registro. Puedes volver atrás
+              con el botón <strong>‹</strong> para hacer correcciones.
+            </p>
+
+            <!-- Resumen de datos -->
+            <div style="display:flex;flex-direction:column;gap:12px;">
+
+              <div style="border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;
+                          overflow:hidden;">
+                <div style="padding:10px 16px;background:var(--wk-color-surface-alt,#f6f7f8);
+                             font-size:0.75rem;font-weight:700;text-transform:uppercase;
+                             letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);">
+                  Datos personales
+                </div>
+                <div style="padding:14px 16px;display:grid;
+                             grid-template-columns:140px 1fr;gap:8px;font-size:0.875rem;">
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Nombre completo</span>
+                  <span style="font-weight:500;">{{ form.firstName }} {{ form.lastName }}</span>
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Correo</span>
+                  <span>{{ form.email }}</span>
+                  <span *ngIf="form.phone"
+                    style="color:var(--wk-color-on-surface-muted,#546e7a);">Teléfono</span>
+                  <span *ngIf="form.phone">{{ form.phone }}</span>
+                </div>
+              </div>
+
+              <div style="border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;
+                          overflow:hidden;">
+                <div style="padding:10px 16px;background:var(--wk-color-surface-alt,#f6f7f8);
+                             font-size:0.75rem;font-weight:700;text-transform:uppercase;
+                             letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);">
+                  Dirección
+                </div>
+                <div style="padding:14px 16px;display:grid;
+                             grid-template-columns:140px 1fr;gap:8px;font-size:0.875rem;">
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Dirección</span>
+                  <span>{{ form.address }}</span>
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Ciudad</span>
+                  <span>{{ form.city }}{{ form.region ? ', ' + form.region : '' }}</span>
+                  <span *ngIf="form.zip"
+                    style="color:var(--wk-color-on-surface-muted,#546e7a);">Código postal</span>
+                  <span *ngIf="form.zip">{{ form.zip }}</span>
+                </div>
+              </div>
+
+              <div style="border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;
+                          overflow:hidden;">
+                <div style="padding:10px 16px;background:var(--wk-color-surface-alt,#f6f7f8);
+                             font-size:0.75rem;font-weight:700;text-transform:uppercase;
+                             letter-spacing:0.06em;color:var(--wk-color-on-surface-muted,#546e7a);">
+                  Información laboral
+                </div>
+                <div style="padding:14px 16px;display:grid;
+                             grid-template-columns:140px 1fr;gap:8px;font-size:0.875rem;">
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Departamento</span>
+                  <span>{{ form.department }}</span>
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Cargo</span>
+                  <span>{{ form.role }}</span>
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Salario bruto</span>
+                  <span style="font-weight:600;color:var(--wk-color-action,#28892b);">
+                    {{ formattedSalary }}
+                  </span>
+                  <span style="color:var(--wk-color-on-surface-muted,#546e7a);">Fecha de inicio</span>
+                  <span>{{ form.startDate }}</span>
+                  <span *ngIf="form.contract"
+                    style="color:var(--wk-color-on-surface-muted,#546e7a);">Contrato</span>
+                  <span *ngIf="form.contract">{{ form.contract }}</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Acciones -->
+            <div style="display:flex;gap:12px;padding-top:4px;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+              <ui-button type="SECONDARY" leftIcon="arrow_back" (ui-click)="prevStep()">Anterior</ui-button>
+              <div style="display:flex;gap:12px;">
+                <button (click)="submit()" style="
+                  padding:12px 28px;background:var(--wk-color-action,#28892b);color:#fff;
+                  border:none;border-radius:8px;font-size:0.9375rem;font-weight:600;
+                  cursor:pointer;font-family:inherit;
+                  transition:background 0.15s;">
+                  Crear empleado
+                </button>
+                <button (click)="reset()" style="
+                  padding:12px 20px;background:transparent;color:var(--wk-color-on-surface,#37474f);
+                  border:1px solid var(--wk-color-border,#e2e8ea);border-radius:8px;
+                  font-size:0.875rem;cursor:pointer;font-family:inherit;">
+                  Cancelar
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </ui-stepper>
+
+      </ng-container>
+
+    </div>
+  </main>
+</div>

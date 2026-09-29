@@ -1,0 +1,52 @@
+<section class="card-table w-full" aria-labelledby="tooltip-props-title">
+  <div class="card-table-header">
+    <h2 id="tooltip-props-title">Propiedades</h2>
+  </div>
+  <div class="card-table-body">
+
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Propiedad</th>
+          <th>Atributo HTML</th>
+          <th>Tipo</th>
+          <th>Default</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>content</code></td>
+          <td><code>content</code></td>
+          <td class="type">string</td>
+          <td><code>''</code></td>
+          <td>Texto que se muestra en el tooltip. Si está vacío el tooltip no aparece.</td>
+        </tr>
+        <tr>
+          <td><code>position</code></td>
+          <td><code>position</code></td>
+          <td class="type">TooltipPosition</td>
+          <td><code>'top'</code></td>
+          <td>Posición del tooltip respecto al trigger. Valores: <code>'top'</code> · <code>'bottom'</code> · <code>'left'</code> · <code>'right'</code></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="label-section" style="padding: 0.75rem 1rem 0.25rem;">Contenido</p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>Mecanismo</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>&lt;slot&gt;</code></td>
+          <td>El elemento trigger se pasa como contenido entre las etiquetas. El tooltip aparece al hacer hover o focus sobre ese elemento.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

@@ -1,0 +1,101 @@
+<section class="grid-1 lg:grid-2  gap-default w-full">
+
+  <!-- Encabezados y cuerpo -->
+  <section class="card w-full" aria-label="Escala tipográfica">
+    <div class="card-header">
+      <h2>Tipografía — Escala</h2>
+    </div>
+    <div class="card-body">
+
+      <h3 class="sub-title">Encabezados</h3>
+      <div class="type-scale">
+        <div class="type-row" *ngFor="let h of headings">
+          <div class="type-meta">
+            <code class="t-chip">{{ h.cssVar }}</code>
+            <span class="type-hint">{{ h.hint }}</span>
+          </div>
+          <span [style.font-size]="'var(' + h.cssVar + ')'">{{ h.sample }}</span>
+        </div>
+      </div>
+
+      <h3 class="sub-title mt">Cuerpo</h3>
+      <div class="type-scale">
+        <div class="type-row" *ngFor="let b of bodyTypes">
+          <div class="type-meta">
+            <code class="t-chip">{{ b.cssVar }}</code>
+            <span class="type-hint">{{ b.hint }}</span>
+          </div>
+          <span [style.font-size]="'var(' + b.cssVar + ')'">{{ b.sample }}</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Pesos -->
+  <section class="card" aria-label="Pesos de fuente" >
+    <div class="card-header">
+      <h2>Peso de fuente</h2>
+    </div>
+    <div class="card-body">
+      <div class="type-scale">
+        <div class="type-row" *ngFor="let w of fontWeights">
+          <div class="type-meta">
+            <code class="t-chip">{{ w.cssVar }}</code>
+            <span class="type-hint">{{ w.hint }}</span>
+          </div>
+          <span [style.font-weight]="'var(' + w.cssVar + ')'">{{ w.sample }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<style>
+  .sub-title {
+    font-size: var(--wk-font-size-b2);
+    font-weight: var(--wk-font-weight-semibold);
+    color: var(--wk-color-on-surface-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.75rem;
+  }
+  .sub-title.mt { margin-top: 1.5rem; }
+
+  .t-chip {
+    display: inline-block;
+    font-family: ui-monospace, monospace;
+    font-size: 0.68rem;
+    background: var(--wk-color-surface-raised);
+    color: var(--wk-color-on-surface-muted);
+    border: 1px solid var(--wk-color-border);
+    border-radius: var(--wk-radius-sm);
+    padding: 2px 6px;
+  }
+
+  .type-scale { display: flex; flex-direction: column; }
+
+  .type-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0.625rem 0;
+    border-bottom: 1px solid var(--wk-color-border);
+    color: var(--wk-color-on-surface);
+
+    &:last-child { border-bottom: none; }
+  }
+
+  .type-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .type-hint {
+    font-family: ui-monospace, monospace;
+    font-size: var(--wk-font-size-b4);
+    color: var(--wk-color-on-surface-muted);
+  }
+</style>

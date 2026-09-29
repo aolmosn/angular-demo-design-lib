@@ -1,0 +1,142 @@
+<section class="flex-row gap-default w-full">
+  <section class="card w-full" aria-labelledby="form-title">
+    <div class="card-header">
+      <h2>Tipos</h2>
+    </div>
+    <div class="card-body">
+  
+      <div class="flex-col">
+        <form [formGroup]="parentForm">
+          <div class="flex-row gap-8 border radius-top-4">
+            <div class="bg-gray-50 border-r p-8">
+              <ui-check-box formControlName="seleccionarTodo" [indeterminado]="parentIndeterminado"></ui-check-box>
+            </div>
+            <div class="p-8">
+              📌 - Tareas 
+            </div>
+          </div>  
+        </form>
+        <form [formGroup]="form">
+          <div class="flex-row gap-8 border-r border-l border-b ">
+            <div class="bg-gray-50 border-r p-8 pl-48">
+              <ui-check-box formControlName="construir"></ui-check-box>
+            </div>
+            <div class="p-8">
+              🔨 - Construir
+            </div>
+          </div>  
+          <div class="flex-row gap-8 border-r border-l border-b ">
+            <div class="bg-gray-50 border-r p-8 pl-48">
+              <ui-check-box formControlName="configurar"></ui-check-box>
+            </div>
+            <div class="p-8">
+              ⚙️ - Configurar
+            </div>
+          </div>  
+          <div class="flex-row gap-8 border-r border-l border-b radius-bottom-4 ">
+            <div class="bg-gray-50 border-r p-8 pl-48">
+              <ui-check-box formControlName="desplegar"></ui-check-box>
+            </div>
+            <div class="p-8">
+              🚀 - Desplegar
+            </div>
+          </div>  
+        </form>
+      </div>
+    </div>
+  
+    @if (submitted) {
+      <div class="result" role="status" aria-live="polite">
+        <span class="result-icon">✓</span>
+        <div>
+          <p class="result-title">Formulario enviado correctamente</p>
+          <pre class="result-json">{{ submittedValue | json }}</pre>
+        </div>
+      </div>
+    }
+  </section>
+  
+  <section class="card w-full" aria-labelledby="form-title">
+    <div class="card-header">
+      <h2>Revisión</h2>
+    </div>
+    <div class="card-body">
+  
+      <div class="flex-col gap-16">
+        <div class="status-chips">
+          <span
+            class="chip"
+            [class.chip--valid]="form.valid"
+            [class.chip--invalid]="form.invalid"
+          >{{ form.valid ? 'Válido' : 'Inválido' }}</span>
+  
+          <span class="chip" [class.chip--active]="form.touched">
+            {{ form.touched ? 'Tocado' : 'Sin tocar' }}
+          </span>
+  
+          <span class="chip" [class.chip--active]="form.dirty">
+            {{ form.dirty ? 'Modificado' : 'Limpio' }}
+          </span>
+        </div>
+  
+          <div class="fields-table">
+            <div class="fields-header">
+              <span>Campo</span>
+              <span>Valor</span>
+              <span>Estado</span>
+            </div>
+  
+            @for (entry of formControlState; track entry.name) {
+              <div class="field-row" [class.field-row--error]="entry.hasError">
+                <span class="field-name">{{ entry.name }}</span>
+                <span class="field-value">{{ parentIndeterminado ? 'Indeterminado' : entry.value===true ? 'Checked': 'Unchecked' }}</span>
+                <span class="field-status">
+                  @if (entry.touched) {
+                    <span class="status-icon status-icon--ok">✓</span>
+                  } @else {
+                    <span class="status-icon">–</span>
+                  }
+                </span>
+              </div>
+            }
+          </div>
+
+          <div class="fields-table">
+            <div class="fields-header">
+              <span>Campo</span>
+              <span>Valor</span>
+              <span>Estado</span>
+            </div>
+  
+            @for (entry of formState; track entry.name) {
+              <div class="field-row" [class.field-row--error]="entry.hasError">
+                <span class="field-name">{{ entry.name }}</span>
+                <span class="field-value">{{ entry.value }}</span>
+                <span class="field-status">
+                  @if (entry.hasError) {
+                    <span class="status-icon status-icon--error" [title]="entry.error">✗</span>
+                  } @else if (entry.touched) {
+                    <span class="status-icon status-icon--ok">✓</span>
+                  } @else {
+                    <span class="status-icon">–</span>
+                  }
+                </span>
+              </div>
+            }
+          </div>
+      </div>
+      <!-- <p class="debug-hint">
+        Los errores se muestran cuando el campo pierde el foco
+        (<code>touched</code>), o al intentar enviar el formulario.
+      </p> -->
+      <div class="flex-row gap-16">
+        <ui-button [type]="'SECONDARY'" (ui-click)="onReset()">Limpiar</ui-button>
+        <ui-button >Enviar</ui-button>
+      </div>
+
+    </div>
+  
+    
+  
+  </section>
+</section>

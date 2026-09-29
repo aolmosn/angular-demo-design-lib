@@ -1,0 +1,30 @@
+<section class="card w-full" aria-labelledby="iconos-title">
+  <div class="card-header">
+    <h2 id="iconos-title">Íconos</h2>
+  </div>
+  <div class="card-body">
+    <div class="flex-col gap-16">
+
+      <p class="label-section">Ícono izquierdo (<code>leftIcon</code>)</p>
+      <div class="flex-row gap-8">
+        <ui-button leftIcon="add">Agregar</ui-button>
+        <ui-button [type]="'SECONDARY'" leftIcon="edit">Editar</ui-button>
+        <ui-button [type]="'TERTIARY'"  leftIcon="download">Descargar</ui-button>
+      </div>
+
+      <p class="label-section">Ícono derecho (<code>rigthIcon</code>)</p>
+      <div class="flex-row gap-8">
+        <ui-button rigthIcon="arrow_forward">Siguiente</ui-button>
+        <ui-button [type]="'SECONDARY'" rigthIcon="open_in_new">Abrir</ui-button>
+        <ui-button [type]="'LINK'"      rigthIcon="chevron_right">Ver más</ui-button>
+      </div>
+
+      <p class="label-section">Ambos íconos</p>
+      <div class="flex-row gap-8">
+        <ui-button leftIcon="upload" rigthIcon="check">Subir archivo</ui-button>
+        <ui-button [type]="'SECONDARY'" leftIcon="share" rigthIcon="arrow_drop_down">Compartir</ui-button>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+<section class="flex-row gap-default w-full">
+
+  <!-- ── Variaciones ──────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="tipos-title">
+    <div class="card-header">
+      <h2 id="tipos-title">Tipos</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <!-- Básico -->
+        <p class="label-section">Básico</p>
+        <div class="border radius-8 flex-row flex-a-c p-4 gap-8">
+          <span style="flex:1">Elemento de tabla</span>
+          <ui-kebab-container>
+            <ui-kebab-option icon="content_copy">Copiar</ui-kebab-option>
+            <ui-kebab-option icon="download">Descargar Excel</ui-kebab-option>
+            <ui-kebab-option icon="picture_as_pdf">Descargar PDF</ui-kebab-option>
+          </ui-kebab-container>
+        </div>
+
+        <!-- Con handlers -->
+        <p class="label-section">Con acciones</p>
+        <div class="border radius-8 flex-row flex-a-c p-4 gap-8">
+          <span style="flex:1">Registro #42</span>
+          <ui-kebab-container>
+            <ui-kebab-option icon="edit"   (click)="onEditar()">Editar</ui-kebab-option>
+            <ui-kebab-option icon="content_copy" (click)="onCopiar()">Copiar</ui-kebab-option>
+            <ui-kebab-option icon="delete" (click)="onEliminar()">Eliminar</ui-kebab-option>
+          </ui-kebab-container>
+        </div>
+
+        <!-- Múltiples independientes -->
+        <p class="label-section">Múltiples kebabs independientes</p>
+        <div class="flex-col gap-8">
+          @for (item of [1, 2, 3]; track item) {
+            <div class="border radius-8 flex-row flex-a-c p-4 gap-8">
+              <span style="flex:1">Fila {{ item }}</span>
+              <ui-kebab-container>
+                <ui-kebab-option icon="edit"   (click)="onEditar()">Editar fila {{ item }}</ui-kebab-option>
+                <ui-kebab-option icon="delete" (click)="onEliminar()">Eliminar fila {{ item }}</ui-kebab-option>
+              </ui-kebab-container>
+            </div>
+          }
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Revisión ─────────────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="tipos-revision-title">
+    <div class="card-header">
+      <h2 id="tipos-revision-title">Revisión</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Última acción ejecutada</p>
+        <div class="border radius-8 p-4">
+          @if (lastAction) {
+            <span class="chip chip--valid">{{ lastAction }}</span>
+          } @else {
+            <span class="chip">Sin acción</span>
+          }
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</section>

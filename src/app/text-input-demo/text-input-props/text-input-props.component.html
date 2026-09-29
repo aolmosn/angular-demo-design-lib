@@ -1,0 +1,200 @@
+<section class="card w-full" aria-labelledby="ti-props-title">
+  <div class="card-header">
+    <h2 id="ti-props-title">API del componente</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Propiedades ──────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header">
+        <h3>Propiedades</h3>
+      </div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Atributo HTML</th>
+              <th>Tipo</th>
+              <th>Default</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>label</code></td>
+              <td><code>label</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Etiqueta visible del campo. Si está vacío, no se renderiza el <code>&lt;label&gt;</code>.</td>
+            </tr>
+            <tr>
+              <td><code>value</code></td>
+              <td><code>value</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Valor actual del input. Modificable desde el exterior vía property binding.</td>
+            </tr>
+            <tr>
+              <td><code>placeholder</code></td>
+              <td><code>placeholder</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Texto de placeholder nativo del input.</td>
+            </tr>
+            <tr>
+              <td><code>name</code></td>
+              <td><code>name</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Atributo <code>name</code> del input nativo para formularios HTML.</td>
+            </tr>
+            <tr>
+              <td><code>type</code></td>
+              <td><code>type</code></td>
+              <td><code>'text' | 'email' | 'password' | 'number' | 'search' | 'url' | 'tel'</code></td>
+              <td><code>'text'</code></td>
+              <td>Tipo del elemento <code>&lt;input&gt;</code> nativo.</td>
+            </tr>
+            <tr>
+              <td><code>size</code></td>
+              <td><code>size</code></td>
+              <td><code>'sm' | 'md' | 'lg'</code></td>
+              <td><code>'md'</code></td>
+              <td>Tamaño del campo: <code>sm</code> 32px, <code>md</code> 40px (default), <code>lg</code> 48px.</td>
+            </tr>
+            <tr>
+              <td><code>disabled</code></td>
+              <td><code>disabled</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Deshabilita el campo. Visualmente atenuado y sin interacción.</td>
+            </tr>
+            <tr>
+              <td><code>readonly</code></td>
+              <td><code>readonly</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Campo de solo lectura. Se puede copiar pero no editar.</td>
+            </tr>
+            <tr>
+              <td><code>required</code></td>
+              <td><code>required</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Marca el campo como obligatorio. Agrega asterisco rojo a la etiqueta.</td>
+            </tr>
+            <tr>
+              <td><code>invalid</code></td>
+              <td><code>invalid</code></td>
+              <td><code>boolean</code></td>
+              <td><code>false</code></td>
+              <td>Activa el estado de error visual. Muestra <code>error-text</code> si está definido.</td>
+            </tr>
+            <tr>
+              <td><code>helperText</code></td>
+              <td><code>helper-text</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Texto de ayuda secundario. Se oculta cuando <code>invalid</code> es <code>true</code> y hay un <code>error-text</code>.</td>
+            </tr>
+            <tr>
+              <td><code>errorText</code></td>
+              <td><code>error-text</code></td>
+              <td><code>string</code></td>
+              <td><code>''</code></td>
+              <td>Mensaje de error. Solo visible cuando <code>invalid</code> es <code>true</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Eventos ──────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header">
+        <h3>Eventos</h3>
+      </div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Evento</th>
+              <th>Detail</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ui-input</code></td>
+              <td><code>&#123; value: string &#125;</code></td>
+              <td>Se emite en cada keystroke. Equivalente a <code>input</code> nativo pero dentro del shadow DOM.</td>
+            </tr>
+            <tr>
+              <td><code>ui-change</code></td>
+              <td><code>&#123; value: string &#125;</code></td>
+              <td>Se emite al confirmar el valor (blur o Enter). Equivalente a <code>change</code> nativo.</td>
+            </tr>
+            <tr>
+              <td><code>ui-focus</code></td>
+              <td><code>&#123;&#125;</code></td>
+              <td>El input nativo recibió el foco.</td>
+            </tr>
+            <tr>
+              <td><code>ui-blur</code></td>
+              <td><code>&#123;&#125;</code></td>
+              <td>El input nativo perdió el foco.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CSS Parts ────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header">
+        <h3>CSS Parts</h3>
+      </div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr>
+              <th>Part</th>
+              <th>Elemento</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>::part(field)</code></td>
+              <td><code>.input-wrap</code></td>
+              <td>Contenedor raíz del componente.</td>
+            </tr>
+            <tr>
+              <td><code>::part(label)</code></td>
+              <td><code>&lt;label&gt;</code></td>
+              <td>Etiqueta del campo.</td>
+            </tr>
+            <tr>
+              <td><code>::part(input)</code></td>
+              <td><code>&lt;input&gt;</code></td>
+              <td>Input nativo.</td>
+            </tr>
+            <tr>
+              <td><code>::part(helper)</code></td>
+              <td><code>.input-helper</code></td>
+              <td>Texto de ayuda.</td>
+            </tr>
+            <tr>
+              <td><code>::part(error)</code></td>
+              <td><code>.input-error-msg</code></td>
+              <td>Mensaje de error.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

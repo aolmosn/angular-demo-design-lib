@@ -1,0 +1,65 @@
+<section class="flex-row gap-default w-full">
+
+  <!-- ── Demo interactivo ─────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="ob-tipos-title">
+    <div class="card-header">
+      <h2 id="ob-tipos-title">Demo interactivo</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Recorrido guiado</p>
+        <p style="font-size: 0.875rem; color: var(--ui-color-text-secondary, #6b7280); margin: 0;">
+          El componente <code>ui-onboarding</code> resalta elementos de la página
+          secuencialmente con un spotlight y un coachmark posicionado junto al elemento.
+        </p>
+
+        <div class="border radius-8 flex-col p-4 gap-8">
+          <div class="flex-row gap-8">
+            <ui-button
+              id="ob-start-btn"
+              [attr.disabled]="isRunning || null"
+              (ui-click)="start()"
+            >Iniciar onboarding</ui-button>
+            <ui-button
+              type="SECONDARY"
+              [attr.disabled]="!isRunning || null"
+              (ui-click)="stop()"
+            >Detener</ui-button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Log de eventos ───────────────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="ob-log-title">
+    <div class="card-header">
+      <h2 id="ob-log-title">Revisión</h2>
+    </div>
+    <div class="card-body">
+      <div class="flex-col gap-16">
+
+        <p class="label-section">Log de eventos</p>
+        <ul id="ob-log" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px;">
+          @if (stepLog.length === 0) {
+            <li style="font-size: 0.875rem; color: var(--ui-color-text-secondary, #6b7280);">
+              Iniciá el onboarding para ver los eventos acá.
+            </li>
+          } @else {
+            @for (entry of stepLog; track $index) {
+              <li>
+                <span class="chip" [class.chip--valid]="entry.startsWith('✓')">{{ entry }}</span>
+              </li>
+            }
+          }
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<ui-onboarding #onboarding [steps]="steps"></ui-onboarding>

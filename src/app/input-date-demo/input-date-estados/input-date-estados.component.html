@@ -1,0 +1,142 @@
+<section class="flex-col gap-default w-full">
+
+  <div class="flex-row gap-default w-full">
+
+    <!-- ── Tamaños ────────────────────────────────────────────────── -->
+    <section class="card w-full" aria-labelledby="id-sizes-title">
+      <div class="card-header">
+        <h2 id="id-sizes-title">Tamaños <code>size</code></h2>
+      </div>
+      <div class="card-body flex-col gap-16">
+
+        <div class="flex-col gap-16">
+          <div class="flex-col gap-8">
+            <p class="debug-hint"><code>size="sm"</code> — 32px de alto</p>
+            <ui-input-date
+              size="sm"
+              label="Fecha (pequeño)"
+              placeholder="Selecciona una fecha"
+            ></ui-input-date>
+          </div>
+
+          <div class="flex-col gap-8">
+            <p class="debug-hint"><code>size="md"</code> — 40px de alto (default)</p>
+            <ui-input-date
+              label="Fecha (mediano)"
+              placeholder="Selecciona una fecha"
+            ></ui-input-date>
+          </div>
+
+          <div class="flex-col gap-8">
+            <p class="debug-hint"><code>size="lg"</code> — 48px de alto</p>
+            <ui-input-date
+              size="lg"
+              label="Fecha (grande)"
+              placeholder="Selecciona una fecha"
+            ></ui-input-date>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Estados ────────────────────────────────────────────────── -->
+    <section class="card w-full" aria-labelledby="id-estados-title">
+      <div class="card-header">
+        <h2 id="id-estados-title">Estados</h2>
+      </div>
+      <div class="card-body flex-col gap-16">
+
+        <div class="flex-col gap-16">
+
+          <div class="flex-col gap-8">
+            <p class="debug-hint">Con texto de ayuda <code>helper-text</code></p>
+            <ui-input-date
+              label="Fecha de nacimiento"
+              placeholder="Selecciona una fecha"
+              helper-text="Debes ser mayor de 18 años"
+            ></ui-input-date>
+          </div>
+
+          <div class="flex-col gap-8">
+            <p class="debug-hint">Requerido <code>required</code></p>
+            <ui-input-date
+              label="Fecha de contrato"
+              placeholder="Selecciona una fecha"
+              required
+            ></ui-input-date>
+          </div>
+
+          <div class="flex-col gap-8">
+            <p class="debug-hint">Error <code>invalid</code> + <code>error-text</code></p>
+            <ui-input-date
+              label="Fecha de vencimiento"
+              placeholder="Selecciona una fecha"
+              invalid
+              error-text="La fecha seleccionada ya está vencida"
+            ></ui-input-date>
+          </div>
+
+          <div class="flex-col gap-8">
+            <p class="debug-hint">Deshabilitado <code>disabled</code></p>
+            <ui-input-date
+              label="Fecha de cierre"
+              value="2026-12-31"
+              disabled
+            ></ui-input-date>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ── Restricciones de fecha ──────────────────────────────────── -->
+  <section class="card w-full" aria-labelledby="id-restrict-title">
+    <div class="card-header">
+      <h2 id="id-restrict-title">Restricciones de fecha</h2>
+    </div>
+    <div class="card-body">
+
+      <div class="flex-row gap-default" style="flex-wrap:wrap;">
+
+        <div class="flex-col gap-8" style="flex:1;min-width:220px;">
+          <p class="debug-hint"><code>min-date</code> — solo fechas desde hoy en adelante</p>
+          <ui-input-date
+            label="Fecha de inicio (solo futuro)"
+            placeholder="Desde hoy"
+            min-date="2026-09-29"
+            helper-text="min-date=&quot;2026-09-29&quot;"
+          ></ui-input-date>
+        </div>
+
+        <div class="flex-col gap-8" style="flex:1;min-width:220px;">
+          <p class="debug-hint"><code>max-date</code> — solo fechas hasta fin de año</p>
+          <ui-input-date
+            label="Fecha límite (fin de año)"
+            placeholder="Hasta 31/12/2026"
+            max-date="2026-12-31"
+            helper-text="max-date=&quot;2026-12-31&quot;"
+          ></ui-input-date>
+        </div>
+
+        <div class="flex-col gap-8" style="flex:1;min-width:220px;">
+          <p class="debug-hint">Rango con <code>min-date</code> y <code>max-date</code></p>
+          <ui-input-date
+            mode="range"
+            label="Período disponible (oct–nov)"
+            placeholder="Selecciona dentro del rango"
+            min-date="2026-10-01"
+            max-date="2026-11-30"
+            helper-text="min=oct-01 / max=nov-30"
+          ></ui-input-date>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</section>
