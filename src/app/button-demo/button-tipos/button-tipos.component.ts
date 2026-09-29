@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UiButton } from '@design-lib/angular/button';
+import { UiButton } from '@aolmosn/angular/button';
 
 @Component({
   selector: 'app-button-tipos',

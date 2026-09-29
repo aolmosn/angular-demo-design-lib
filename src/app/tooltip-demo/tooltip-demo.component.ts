@@ -15,7 +15,7 @@ import { TooltipIntegrationComponent } from './tooltip-integration/tooltip-integ
   ],
 })
 export class TooltipDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Tooltip';
   testingComponent = ['ui-tooltip'];
 }

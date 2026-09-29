@@ -31,12 +31,12 @@ export class TableIntegrationComponent {
 
   codeTsBasic =
 `import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/table';
+import '@aolmosn/web-components/table';
 import type {
   TableColumn,
   TableSelectDetail,
   TablePageDetail,
-} from '@design-lib/web-components/table';
+} from '@aolmosn/web-components/table';
 
 interface Product {
   id: number;

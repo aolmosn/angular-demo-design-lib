@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { UiChip } from "@design-lib/angular/chip";
+import { UiChip } from "@aolmosn/angular/chip";
 
 @Component({
   selector: 'app-chip-tipos',

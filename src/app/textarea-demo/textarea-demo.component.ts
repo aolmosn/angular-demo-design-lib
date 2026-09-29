@@ -15,7 +15,7 @@ import { TextareaIntegrationComponent } from './textarea-integration/textarea-in
   ],
 })
 export class TextareaDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Textarea';
   desc  = 'ui-textarea';
 }

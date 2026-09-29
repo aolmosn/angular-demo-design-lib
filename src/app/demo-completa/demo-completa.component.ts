@@ -10,20 +10,20 @@ import {
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import '@design-lib/web-components/stepper';
-import '@design-lib/web-components/button';
-import '@design-lib/web-components/text-input';
-import '@design-lib/web-components/select';
-import '@design-lib/web-components/currency-input';
-import '@design-lib/web-components/textarea';
-import '@design-lib/web-components/check-box';
-import '@design-lib/web-components/table';
-import '@design-lib/web-components/alert';
+import '@aolmosn/web-components/stepper';
+import '@aolmosn/web-components/button';
+import '@aolmosn/web-components/text-input';
+import '@aolmosn/web-components/select';
+import '@aolmosn/web-components/currency-input';
+import '@aolmosn/web-components/textarea';
+import '@aolmosn/web-components/check-box';
+import '@aolmosn/web-components/table';
+import '@aolmosn/web-components/alert';
 
-import type { StepConfig, StepperChangeDetail } from '@design-lib/web-components/stepper';
-import type { SelectOption, SelectChangeDetail } from '@design-lib/web-components/select';
-import type { CurrencyOption, CurrencyInputChangeDetail } from '@design-lib/web-components/currency-input';
-import type { TableColumn } from '@design-lib/web-components/table';
+import type { StepConfig, StepperChangeDetail } from '@aolmosn/web-components/stepper';
+import type { SelectOption, SelectChangeDetail } from '@aolmosn/web-components/select';
+import type { CurrencyOption, CurrencyInputChangeDetail } from '@aolmosn/web-components/currency-input';
+import type { TableColumn } from '@aolmosn/web-components/table';
 
 // ── Interfaces ────────────────────────────────────────────────────
 interface OrderRow {

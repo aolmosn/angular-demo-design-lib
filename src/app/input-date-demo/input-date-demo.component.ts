@@ -15,7 +15,7 @@ import { InputDatePropsComponent } from './input-date-props/input-date-props.com
   ],
 })
 export class InputDateDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Input Date';
   testingComponent = ['ui-input-date'];
 }

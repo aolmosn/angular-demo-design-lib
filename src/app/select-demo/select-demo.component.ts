@@ -15,7 +15,7 @@ import { SelectIntegrationComponent } from './select-integration/select-integrat
   ],
 })
 export class SelectDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Select';
   desc  = 'ui-select';
 }

@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/tooltip';
+import '@aolmosn/web-components/tooltip';
 
 @Component({
   selector: 'app-tooltip-tipos',

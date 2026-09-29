@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { UiAlertComponent } from '@design-lib/angular/alert';
+import { UiAlertComponent } from '@aolmosn/angular/alert';
 import { AlertPlaygroundComponent } from './alert-playground/alert-playground.component';
 import { AlertWapperDemoComponent } from './alert-wrapper-demo/alert-wapper-demo.component';
 
@@ -11,7 +11,7 @@ import { AlertWapperDemoComponent } from './alert-wrapper-demo/alert-wapper-demo
 })
 export class AlertDemoComponent implements AfterViewInit {
 
-  lib = '@design-lib/angular'
+  lib = '@aolmosn/angular'
   title = 'Alert Demo'
   testingComponent = ['Alert']
 

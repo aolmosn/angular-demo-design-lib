@@ -15,7 +15,7 @@ import { TextInputIntegrationComponent } from './text-input-integration/text-inp
   ],
 })
 export class TextInputDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Text Input';
   desc  = 'ui-text-input';
 }

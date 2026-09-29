@@ -21,8 +21,8 @@ export class SelectIntegrationComponent {
 
   codeTs =
 `import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/select';
-import type { SelectOption, SelectChangeDetail } from '@design-lib/web-components/select';
+import '@aolmosn/web-components/select';
+import type { SelectOption, SelectChangeDetail } from '@aolmosn/web-components/select';
 
 @Component({
   standalone: true,

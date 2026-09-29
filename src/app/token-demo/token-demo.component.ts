@@ -18,7 +18,7 @@ import { TokenFormaComponent } from './token-forma/token-forma.component';
   ],
 })
 export class TokenDemoComponent {
-  lib = '@design-lib/tokens';
+  lib = '@aolmosn/tokens';
   title = 'Tokens';
   testingComponent = ['Tokens'];
 }

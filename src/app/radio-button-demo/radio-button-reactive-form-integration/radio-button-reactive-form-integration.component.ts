@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { UiRadioButtonComponent } from "@design-lib/angular/radio-button";
+import { UiRadioButtonComponent } from "@aolmosn/angular/radio-button";
 
 @Component({
     selector: 'app-radio-button-reactive-form-integration',
@@ -24,7 +24,7 @@ export class RadioButtonReactiveFormIntegrationComponent {
     codeJs: string = `
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
-import { UiRadioButtonComponent } from "@design-lib/angular/radio-button";
+import { UiRadioButtonComponent } from "@aolmosn/angular/radio-button";
 
 @Component({
     selector: 'app-demo',

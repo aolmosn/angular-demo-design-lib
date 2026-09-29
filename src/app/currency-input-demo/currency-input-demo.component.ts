@@ -15,7 +15,7 @@ import { CurrencyInputIntegrationComponent } from './currency-input-integration/
   ],
 })
 export class CurrencyInputDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Currency Input';
   desc  = 'ui-currency-input';
 }

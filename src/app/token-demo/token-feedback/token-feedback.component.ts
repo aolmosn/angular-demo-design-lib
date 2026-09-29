@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { tokens } from '@design-lib/tokens';
+import { tokens } from '@aolmosn/tokens';
 
 
 // Calcula si el fondo necesita texto claro (luminancia < 0.5)

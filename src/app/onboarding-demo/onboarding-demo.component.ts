@@ -10,7 +10,7 @@ import { OnboardingIntegrationComponent } from './onboarding-integration/onboard
   templateUrl: './onboarding-demo.component.html',
 })
 export class OnboardingDemoComponent {
-  lib              = '@design-lib/angular';
+  lib              = '@aolmosn/angular';
   title            = 'Onboarding';
   testingComponent = ['UiOnboarding'];
 }

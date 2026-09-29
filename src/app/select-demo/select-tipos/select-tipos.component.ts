@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/select';
-import type { SelectOption } from '@design-lib/web-components/select';
+import '@aolmosn/web-components/select';
+import type { SelectOption } from '@aolmosn/web-components/select';
 
 @Component({
   selector: 'app-select-tipos',

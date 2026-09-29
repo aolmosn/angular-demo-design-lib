@@ -16,7 +16,7 @@ import { KebabTriggerExternoComponent } from './kebab-trigger-externo/kebab-trig
   ],
 })
 export class KebabDemoComponent {
-  lib = '@design-lib/angular';
+  lib = '@aolmosn/angular';
   title = 'Kebab';
   testingComponent = ['UiKebab', 'UiKebabOption'];
 }

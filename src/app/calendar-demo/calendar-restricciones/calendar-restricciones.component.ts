@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/calendar';
+import '@aolmosn/web-components/calendar';
 
 function todayISO(): string {
   const d = new Date();

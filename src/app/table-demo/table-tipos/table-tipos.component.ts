@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import '@design-lib/web-components/table';
-import type { TableColumn, TableSelectDetail, TablePageDetail } from '@design-lib/web-components/table';
+import '@aolmosn/web-components/table';
+import type { TableColumn, TableSelectDetail, TablePageDetail } from '@aolmosn/web-components/table';
 
 interface Employee {
   id: number;

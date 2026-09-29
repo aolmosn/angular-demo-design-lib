@@ -30,8 +30,8 @@ export class StepperIntegrationComponent {
 
   codeTs =
 `import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import '@design-lib/web-components/stepper';
-import type { StepConfig, StepperChangeDetail } from '@design-lib/web-components/stepper';
+import '@aolmosn/web-components/stepper';
+import type { StepConfig, StepperChangeDetail } from '@aolmosn/web-components/stepper';
 
 @Component({
   standalone: true,

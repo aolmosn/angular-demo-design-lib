@@ -11,7 +11,7 @@ import { StepperIntegrationComponent } from './stepper-integration/stepper-integ
   imports: [StepperTiposComponent, StepperPropsComponent, StepperIntegrationComponent],
 })
 export class StepperDemoComponent {
-  lib   = '@design-lib/web-components';
+  lib   = '@aolmosn/web-components';
   title = 'Stepper';
   desc  = 'ui-stepper';
 }
