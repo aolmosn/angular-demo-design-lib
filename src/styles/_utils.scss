@@ -108,3 +108,22 @@ $radius-values: (
 
 // WIDTH ----------------
 .w-full { width: 100% }
+
+// Responsive grid utilities
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  > * { min-width: 0; }
+}
+
+@media (min-width: 640px) {
+  .md\:grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 900px) {
+  .lg\:grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .xl\:grid-3 { grid-template-columns: repeat(3, 1fr); }
+}

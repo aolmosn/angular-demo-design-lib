@@ -1,0 +1,39 @@
+:host { width: 100% }
+
+// ── Layout principal: formulario + panel lateral ──────────────────────
+.demo-layout {
+  display: grid;
+  grid-template-columns: 1fr 296px;
+  gap: 24px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── Panel lateral sticky ──────────────────────────────────────────────
+.demo-sidebar {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media (max-width: 900px) {
+    position: static;
+    // En móvil mueve el panel lateral debajo del formulario
+    order: 2;
+  }
+}
+
+// ── Grid de resumen paso 3 (2 tarjetas: cliente + orden) ─────────────
+.step-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}

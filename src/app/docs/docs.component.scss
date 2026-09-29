@@ -1,4 +1,10 @@
-:host { display: block; }
+:host {
+  display: block;
+  width: 100%;
+  // clip horizontal overflow sin crear un nuevo scroll container (sticky sigue funcionando)
+  overflow-x: clip;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
 
 // ── Hero ──────────────────────────────────────────────────────────────
 
@@ -35,7 +41,8 @@
 }
 
 .docs-hero-title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  width: 100%; // override global fit-content
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 700;
   color: var(--wk-gradient-brand-on);
   margin: 0;
@@ -43,11 +50,50 @@
 }
 
 .docs-hero-sub {
+  width: 100%; // override global fit-content
   font-size: var(--wk-font-size-md, 1rem);
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   margin: 0;
   max-width: 580px;
+}
+
+// ── Mobile section nav ────────────────────────────────────────────────
+
+.docs-mobile-nav {
+  display: none;
+  overflow-x: auto;
+  padding: 12px 16px;
+  gap: 8px;
+  background: var(--wk-color-surface-alt);
+  border-bottom: 1px solid var(--wk-color-border);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+
+  a {
+    flex: 0 0 auto;
+    padding: 5px 14px;
+    border-radius: var(--wk-radius-full);
+    font-size: var(--wk-font-size-xs, 0.75rem);
+    font-weight: 600;
+    color: var(--wk-color-on-surface-muted);
+    text-decoration: none;
+    background: var(--wk-color-surface-raised);
+    border: 1px solid var(--wk-color-border);
+    white-space: nowrap;
+    transition: background 0.12s, color 0.12s, border-color 0.12s;
+
+    &:hover {
+      background: var(--wk-color-info-subtle);
+      color: var(--wk-color-info-on-subtle);
+      border-color: var(--wk-color-info-subtle-border);
+    }
+  }
 }
 
 // ── Body layout ───────────────────────────────────────────────────────
@@ -62,7 +108,11 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: var(--wk-space-6, 24px) var(--wk-space-4, 16px);
+    padding: var(--wk-space-5, 20px) var(--wk-space-4, 16px);
+  }
+
+  @media (max-width: 400px) {
+    padding: var(--wk-space-4, 16px) 12px;
   }
 }
 
@@ -111,6 +161,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--wk-space-12, 48px);
+  max-width: 100%;
 }
 
 // ── Sections ──────────────────────────────────────────────────────────
@@ -119,9 +170,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--wk-space-5, 20px);
+  min-width: 0; // evita overflow en flex
 
   > h2 {
-    font-size: 1.375rem;
+    // override global width: fit-content — el border-bottom debe ir al full ancho
+    width: 100%;
+    font-size: clamp(1.125rem, 3vw, 1.375rem);
     font-weight: 700;
     color: var(--wk-color-on-surface);
     margin: 0;
@@ -130,6 +184,7 @@
   }
 
   > h3 {
+    width: 100%;
     font-size: var(--wk-font-size-md, 1rem);
     font-weight: 600;
     color: var(--wk-color-on-surface);
@@ -137,6 +192,7 @@
   }
 
   > p {
+    width: 100%; // override global width: fit-content
     font-size: var(--wk-font-size-sm, 0.875rem);
     color: var(--wk-color-on-surface-muted);
     line-height: 1.65;
@@ -157,8 +213,9 @@
 
 .code-block {
   border-radius: var(--wk-radius-lg, 10px);
-  overflow: hidden;
+  overflow: clip; // clip no crea scroll container — permite overflow-x: auto en el pre hijo
   border: 1px solid var(--wk-color-border);
+  max-width: 100%;
 
   &__header {
     background: var(--wk-color-surface-alt);
@@ -175,7 +232,12 @@
     margin: 0;
     padding: 20px;
     overflow-x: auto;
+    // max-width: 100% + width: 100% evita que el pre empuje el ancho del layout
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
     background: var(--wk-color-surface-raised);
+    -webkit-overflow-scrolling: touch;
 
     code {
       font-family: ui-monospace, 'Fira Code', monospace;
@@ -185,6 +247,11 @@
       background: none;
       padding: 0;
       border-radius: 0;
+    }
+
+    @media (max-width: 480px) {
+      padding: 14px;
+      code { font-size: 0.75rem; }
     }
   }
 }
@@ -215,9 +282,15 @@
   border: 1px solid var(--wk-color-border);
   border-radius: var(--wk-radius-lg, 10px);
   transition: border-color 0.15s;
+  min-width: 0;
 
   &:hover {
     border-color: var(--wk-color-info-border);
+  }
+
+  @media (max-width: 480px) {
+    padding: var(--wk-space-3, 12px);
+    gap: var(--wk-space-3, 12px);
   }
 }
 
@@ -264,6 +337,7 @@
   flex-wrap: wrap;
   gap: var(--wk-space-2, 8px);
   align-items: center;
+  min-width: 0;
 
   code {
     font-family: ui-monospace, monospace;
@@ -273,6 +347,8 @@
     padding: 4px 10px;
     border-radius: var(--wk-radius-full);
     border: 1px solid var(--wk-color-border);
+    max-width: 100%;
+    overflow-wrap: anywhere; // rompe nombres largos si no caben
   }
 }
 
@@ -285,8 +361,12 @@
 
 .utils-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: var(--wk-space-4, 16px);
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .utils-group {

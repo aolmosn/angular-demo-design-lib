@@ -106,7 +106,7 @@ const SEED_ROWS: OrderRow[] = [
   selector: 'app-demo-completa',
   templateUrl: './demo-completa.component.html',
   standalone: true,
-  styles: ':host { width: 100% }',
+  styleUrl: './demo-completa.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [CommonModule, ReactiveFormsModule],
 })

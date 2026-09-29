@@ -94,6 +94,14 @@ body {
   }
 }
 
+@media (max-width: 640px) {
+  .card-body {
+    padding-left: var(--wk-space-4, 16px);
+    padding-right: var(--wk-space-4, 16px);
+    padding-bottom: var(--wk-space-4, 16px);
+  }
+}
+
 .layout {
   max-width: 1100px;
   margin: 0 auto;

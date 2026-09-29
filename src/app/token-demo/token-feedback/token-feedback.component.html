@@ -56,43 +56,5 @@
     </div>
   </section>
 
-  <section class="card w-full" aria-label="Lista de tokens de feedback">
-    <div class="card-header">
-      <h2>Tokens prueba</h2>
-    </div>
-    <div class="card-body">
-      <div class="group-list">
-        <div class="group" *ngFor="let prop of semanticColorPalete">
-          <h3 class="group__title">
-            <!-- <i class="material-icons group__icon" [style.color]="'var(' + g.main + ')'">{{ g.icon }}</i> -->
-            {{ prop.name }}
-          </h3>
-          <div class="token-chips">
-            
-            <!-- <code class="t-chip" *ngFor="let t of prop.propiedades">{{ t.label }}</code> -->
-            <div *ngFor="let t of prop.propiedades" >
-              <div class="semantic-color-specification" [ngStyle]='{backgroundColor: t.background.hex, color: t.on.hex}'>
-                <span>{{t.type}}</span>
-                <div class="semantic-color-specification-prop" >
-                  <span class="semantic-color-specification-llave">background-color:</span>
-                  <div class="semantic-color-specification-valor">
-                    <span>{{ t.background.varRef }}</span>
-                    <span>{{ t.background.hex }}</span>
-                  </div>
-                </div>
-                <div class="semantic-color-specification-prop">
-                  <span class="semantic-color-specification-llave">color:</span>
-                  <div class="semantic-color-specification-valor">
-                    <span>{{ t.on.varRef }}</span>
-                    <span>{{ t.on.hex }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </section>
