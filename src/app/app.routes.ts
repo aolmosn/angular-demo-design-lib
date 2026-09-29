@@ -23,4 +23,5 @@ export const routes: Routes = [
   { path: 'nuevo-empleado',   loadComponent: () => import('./nuevo-empleado/nuevo-empleado.component').then(m => m.NuevoEmpleadoComponent) },
   { path: 'demo-completa',    loadComponent: () => import('./demo-completa/demo-completa.component').then(m => m.DemoCompletaComponent) },
   { path: 'input-date',       loadComponent: () => import('./input-date-demo/input-date-demo.component').then(m => m.InputDateDemoComponent) },
+  { path: 'styles',           loadComponent: () => import('./styles-demo/styles-demo.component').then(m => m.StylesDemoComponent) },
 ];

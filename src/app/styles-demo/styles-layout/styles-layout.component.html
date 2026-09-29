@@ -1,0 +1,177 @@
+<section class="card w-full" aria-labelledby="sl-layout-title">
+  <div class="card-header">
+    <h2 id="sl-layout-title">Layout</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <!-- ── Display ─────────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Display</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>CSS</th><th>Responsive</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of displayClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.css }}</code></td>
+              <td><span class="resp-badge">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Flex helpers ────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Flex — wrap / grow / shrink</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>CSS</th><th>Responsive</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of flexClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.css }}</code></td>
+              <td><span class="resp-badge">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Align + Justify demo ────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Align items <span class="sld-note">— aplica en contenedor flex/grid</span></h3>
+      <div class="sld-align-grid">
+        <div *ngFor="let r of alignClasses" class="sld-demo-card">
+          <div class="sld-label"><code>{{ r.cls }}</code></div>
+          <div class="sld-flex-box" [class]="'flex gap-8 ' + r.cls" style="height:72px;">
+            <div class="sld-item sld-item--tall"></div>
+            <div class="sld-item"></div>
+            <div class="sld-item sld-item--tall"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Justify content <span class="sld-note">— aplica en contenedor flex/grid</span></h3>
+      <div class="sld-align-grid">
+        <div *ngFor="let r of justifyClasses" class="sld-demo-card">
+          <div class="sld-label"><code>{{ r.cls }}</code></div>
+          <div class="sld-flex-box flex" [class]="r.cls">
+            <div class="sld-item"></div>
+            <div class="sld-item"></div>
+            <div class="sld-item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Grid ───────────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Grid — columnas simétricas</h3>
+      <div class="flex-col gap-8">
+        <ng-container *ngFor="let r of gridClasses.slice(0, 4)">
+          <div class="sld-label"><code>{{ r.cls }}</code><span class="sld-css">{{ r.css }}</span></div>
+          <div [class]="r.cls + ' gap-8'" style="margin-bottom:4px;">
+            <div *ngFor="let _ of gridItems(+r.cls.replace('grid-',''))" class="sld-grid-item">
+              col
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Grid — columnas asimétricas</h3>
+      <div class="flex-col gap-8">
+        <ng-container *ngFor="let r of gridClasses.slice(4)">
+          <div class="sld-label"><code>{{ r.cls }}</code><span class="sld-css">{{ r.css }}</span></div>
+          <div [class]="r.cls + ' gap-8'" style="margin-bottom:4px;">
+            <div class="sld-grid-item">col 1</div>
+            <div class="sld-grid-item">col 2</div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- ── col-span ───────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>col-span — span de columnas en grid</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>CSS</th><th>Responsive</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of colSpanClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.css }}</code></td>
+              <td><span class="resp-badge">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">col-span ejemplo — grid-4 con col-span-2</h3>
+      <div class="grid-4 gap-8">
+        <div class="sld-grid-item col-span-2">col-span-2</div>
+        <div class="sld-grid-item">col</div>
+        <div class="sld-grid-item">col</div>
+        <div class="sld-grid-item">col</div>
+        <div class="sld-grid-item col-span-3">col-span-3</div>
+        <div class="sld-grid-item col-span-full">col-span-full</div>
+      </div>
+    </div>
+
+    <!-- ── Width ──────────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Ancho — sistema de 12 columnas</h3>
+      <p class="sld-note" style="margin-bottom:8px;">
+        <code>w-1</code> a <code>w-12</code> — fracciones de <code>100% / 12</code>.
+        Todos son responsive: <code>md:w-6</code>, <code>lg:w-4</code>, etc.
+      </p>
+      <div class="flex-col gap-4">
+        <div *ngFor="let r of widthClasses.slice(2)" style="display:flex;align-items:center;gap:8px;">
+          <span style="width:72px;font-size:0.75rem;font-family:monospace;flex-shrink:0;">{{ r.cls }}</span>
+          <div style="background:var(--wk-color-info-subtle);border:1px solid var(--wk-color-info-border);
+                      border-radius:4px;height:20px;min-width:4px;" [style.width]="'calc(100% / 12 * ' + (+r.cls.replace('w-','')).toString() + ')'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Position + Overflow ────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Position</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>CSS</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of positionClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.css }}</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card-table">
+      <div class="card-table-header"><h3>Overflow</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Clase</th><th>CSS</th></tr></thead>
+          <tbody>
+            <tr *ngFor="let r of overflowClasses">
+              <td><code>{{ r.cls }}</code></td>
+              <td><code>{{ r.css }}</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>

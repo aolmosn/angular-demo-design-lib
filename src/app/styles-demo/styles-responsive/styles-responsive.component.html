@@ -1,0 +1,186 @@
+<section class="card w-full" aria-labelledby="sl-resp-title">
+  <div class="card-header">
+    <h2 id="sl-resp-title">Responsive — prefijos de breakpoint</h2>
+  </div>
+
+  <div class="card-body flex-col gap-16">
+
+    <p style="font-size:0.875rem;color:var(--wk-color-on-surface-muted);margin:0;line-height:1.6;">
+      La mayoría de las clases utilitarias tiene variantes responsive generadas automáticamente.
+      El formato es <code>prefix:clase</code> — aplica la propiedad solo a partir de ese ancho.
+      El sistema es <strong>mobile-first</strong>: sin prefijo = todos los anchos;
+      con prefijo = desde ese breakpoint en adelante.
+    </p>
+
+    <!-- ── Breakpoints ────────────────────────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Breakpoints disponibles</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead>
+            <tr><th>Prefijo</th><th>Mínimo</th><th>Dispositivo típico</th><th>Ejemplo de uso</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bp of breakpoints">
+              <td><code>{{ bp.prefix }}:</code></td>
+              <td><code>min-width: {{ bp.width }}</code></td>
+              <td>{{ bp.desc }}</td>
+              <td><code>{{ bp.prefix }}:flex-col</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Sintaxis ───────────────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Sintaxis</h3>
+      <div class="code-block">
+        <div class="code-block__header"><span>HTML</span></div>
+        <pre><code><span class="token-comment">&lt;!-- Sin prefijo: aplica en todos los anchos --&gt;</span>
+&lt;div class="<span class="token-string">flex-col</span>"&gt; ... &lt;/div&gt;
+
+<span class="token-comment">&lt;!-- Con prefijo: solo a partir de md (768px) --&gt;</span>
+&lt;div class="<span class="token-string">flex-col md:flex-row</span>"&gt; ... &lt;/div&gt;
+
+<span class="token-comment">&lt;!-- Varias columnas según ancho de ventana --&gt;</span>
+&lt;div class="<span class="token-string">grid-1 sm:grid-2 lg:grid-3 xl:grid-4</span>"&gt; ... &lt;/div&gt;
+
+<span class="token-comment">&lt;!-- Combinar con spacing --&gt;</span>
+&lt;div class="<span class="token-string">gap-8 md:gap-16 lg:gap-24</span>"&gt; ... &lt;/div&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- ── Clases con variante responsive ────────────────────── -->
+    <div class="card-table">
+      <div class="card-table-header"><h3>Grupos con variante responsive</h3></div>
+      <div class="card-table-body">
+        <table class="dl-table">
+          <thead><tr><th>Grupo</th><th>Ejemplo sin prefijo</th><th>Con prefijo</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Display</td>
+              <td><code>flex</code>, <code>hidden</code>, <code>block</code></td>
+              <td><code>md:flex</code>, <code>lg:hidden</code></td>
+            </tr>
+            <tr>
+              <td>Flex wrap / grow</td>
+              <td><code>flex-wrap</code>, <code>flex-1</code></td>
+              <td><code>sm:flex-wrap</code></td>
+            </tr>
+            <tr>
+              <td>Align / Justify</td>
+              <td><code>items-center</code>, <code>justify-between</code></td>
+              <td><code>md:items-start</code></td>
+            </tr>
+            <tr>
+              <td>Grid</td>
+              <td><code>grid-2</code>, <code>grid-1-2</code></td>
+              <td><code>lg:grid-3</code>, <code>md:grid-2-1</code></td>
+            </tr>
+            <tr>
+              <td>Width</td>
+              <td><code>w-full</code>, <code>w-6</code></td>
+              <td><code>md:w-6</code>, <code>lg:w-4</code></td>
+            </tr>
+            <tr>
+              <td>Gap / Padding / Margin</td>
+              <td><code>gap-8</code>, <code>p-16</code>, <code>mt-24</code></td>
+              <td><code>md:gap-16</code>, <code>lg:p-24</code></td>
+            </tr>
+            <tr>
+              <td>Tipografía</td>
+              <td><code>text-sm</code>, <code>text-lg</code></td>
+              <td><code>md:text-md</code>, <code>lg:text-xl</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Demo interactivo ───────────────────────────────────── -->
+    <div class="sld-subsection">
+      <h3 class="sld-subtitle">Demo — redimensiona la ventana para ver el efecto</h3>
+
+      <div class="flex-col gap-16">
+
+        <!-- Grid responsive -->
+        <div>
+          <div class="sld-resp-header">
+            <code class="sld-resp-cls">grid-1 md:grid-2 lg:grid-3</code>
+            <span class="sld-resp-tag sld-resp-tag--grid">grid</span>
+            <span class="sld-note">1 col en móvil → 2 desde md (768px) → 3 desde lg (1024px)</span>
+          </div>
+          <div class="grid-1 md:grid-2 lg:grid-3 gap-8 mt-8">
+            <div class="sld-grid-item">A</div>
+            <div class="sld-grid-item">B</div>
+            <div class="sld-grid-item">C</div>
+          </div>
+        </div>
+
+        <!-- Flex col → row -->
+        <div>
+          <div class="sld-resp-header">
+            <code class="sld-resp-cls">flex-col sm:flex-row</code>
+            <span class="sld-resp-tag sld-resp-tag--flex">flex</span>
+            <span class="sld-note">Apilado en móvil → fila desde sm (640px)</span>
+          </div>
+          <div class="flex-col sm:flex-row gap-8 mt-8">
+            <div class="sld-grid-item flex-1">A</div>
+            <div class="sld-grid-item flex-1">B</div>
+            <div class="sld-grid-item flex-1">C</div>
+          </div>
+        </div>
+
+        <!-- Gap responsive -->
+        <div>
+          <div class="sld-resp-header">
+            <code class="sld-resp-cls">flex-row gap-8 md:gap-16 lg:gap-24</code>
+            <span class="sld-resp-tag sld-resp-tag--spacing">spacing</span>
+            <span class="sld-note">Separación crece con el ancho de ventana</span>
+          </div>
+          <div class="flex-row gap-8 md:gap-16 lg:gap-24 mt-8">
+            <div class="sld-grid-item flex-1">A</div>
+            <div class="sld-grid-item flex-1">B</div>
+            <div class="sld-grid-item flex-1">C</div>
+          </div>
+        </div>
+
+        <!-- Display hidden → visible -->
+        <div>
+          <div class="sld-resp-header">
+            <code class="sld-resp-cls">hidden lg:block</code>
+            <span class="sld-resp-tag sld-resp-tag--display">display</span>
+            <span class="sld-note">El bloque derecho solo aparece desde lg (1024px)</span>
+          </div>
+          <div class="flex-row gap-8 mt-8">
+            <div class="sld-grid-item flex-1">Visible siempre</div>
+            <div class="sld-grid-item flex-1 hidden lg:block"
+              style="background:var(--wk-color-action-subtle);border-color:var(--wk-color-action-border);">
+              Visible desde lg
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid-4 con col-span responsive -->
+        <div>
+          <div class="sld-resp-header">
+            <code class="sld-resp-cls">grid-1 lg:grid-4 — col-span-full lg:col-span-2</code>
+            <span class="sld-resp-tag sld-resp-tag--grid">grid</span>
+            <span class="sld-note">El primer elemento ocupa toda la fila en móvil, 2 columnas en lg</span>
+          </div>
+          <div class="grid-1 lg:grid-4 gap-8 mt-8">
+            <div class="sld-grid-item col-span-full lg:col-span-2"
+              style="background:var(--wk-color-info-subtle);border-color:var(--wk-color-info-border);">
+              col-span-full → lg:col-span-2
+            </div>
+            <div class="sld-grid-item">C</div>
+            <div class="sld-grid-item">D</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
